@@ -1,0 +1,23 @@
+body {
+	background-color: black;
+	color: white;
+}
+
+.btn-custom {
+	background: black;
+    color: white;
+}
+
+.btn-custom:hover {
+	background: black;
+    color: red;
+}
+
+a {
+	color: white;
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+	color: red;
+	background: black;
+}
