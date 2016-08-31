@@ -19754,7 +19754,7 @@
 		// Here we set a generic state associated with the number of clicks
 		getInitialState: function getInitialState() {
 			// helpers.runQuery().then(function(data) {
-			// 	console.log('Data: ' + data);
+			// console.log('Data: ' + data);
 			// })
 			return {
 				searchTerm: "",
@@ -19866,7 +19866,7 @@
 									null,
 									React.createElement(
 										'a',
-										{ href: '#' },
+										{ href: '/auth/spotify' },
 										'Sign In'
 									)
 								)
@@ -19926,7 +19926,7 @@
 		// Here we set a generic state associated with the text being searched for
 		getInitialState: function getInitialState() {
 			return {
-				term: ""
+				track: ""
 			};
 		},
 
@@ -19943,10 +19943,11 @@
 
 		// When a user submits... 
 		handleClickPlay: function handleClickPlay() {
-			var track = {
+			var track = [{
 				uri: 'spotify:track:4beeB45WycRGaqXbCiJsLN'
-			};
-			helpers.playMusic(track);
+			}, { uri: 'spotify:track:6ZIT7Isugjflmm3TDIkgji' }, { uri: 'spotify:track:1VOjrMklQs25X93vgjJuGO' }, { uri: 'spotify:track:2U2lREJtuQipwd8W69lgOm' }];
+
+			helpers.playMusic(track[0]);
 		},
 
 		// When a user submits... 
@@ -19956,22 +19957,20 @@
 
 		// When a user submits... 
 		handleClickBack: function handleClickBack() {
+			var track = [{
+				uri: 'spotify:track:4beeB45WycRGaqXbCiJsLN'
+			}, { uri: 'spotify:track:6ZIT7Isugjflmm3TDIkgji' }, { uri: 'spotify:track:1VOjrMklQs25X93vgjJuGO' }, { uri: 'spotify:track:2U2lREJtuQipwd8W69lgOm' }];
 
-			console.log("CLICK");
-			console.log(this.state.term);
-
-			// Set the parent to have the search term
-			this.props.setTerm(this.state.term);
+			for (var i = 0; i < track.length; i--) {
+				helpers.playMusic(track[i]);
+			}
 		},
 
 		// When a user submits... 
 		handleClickForward: function handleClickForward() {
-
-			console.log("CLICK");
-			console.log(this.state.term);
-
-			// Set the parent to have the search term
-			this.props.setTerm(this.state.term);
+			var track = [{
+				uri: 'spotify:track:4beeB45WycRGaqXbCiJsLN'
+			}, { uri: 'spotify:track:6ZIT7Isugjflmm3TDIkgji' }, { uri: 'spotify:track:1VOjrMklQs25X93vgjJuGO' }, { uri: 'spotify:track:2U2lREJtuQipwd8W69lgOm' }];
 		},
 
 		// Here we render the function
@@ -20026,16 +20025,7 @@
 		// This function serves our purpose of running the query to geolocate. 
 		runQuery: function runQuery() {
 
-			console.log(location);
-
-			//Figure out the geolocation
-			var queryURL = "https://api.spotify.com/v1/me/tracks";
-
-			return axios.get(queryURL).then(function (response) {
-
-				console.log(response);
-				return response;
-			});
+			console.log('RunQuery Fired');
 		},
 
 		playMusic: function playMusic(track) {

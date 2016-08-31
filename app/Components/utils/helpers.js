@@ -6,18 +6,8 @@ var helpers = {
 
 	// This function serves our purpose of running the query to geolocate. 
 	runQuery: function(){
-
-		console.log(location);
-
-		//Figure out the geolocation
-		var queryURL = "https://api.spotify.com/v1/me/tracks";
-
-		return axios.get(queryURL)
-			.then(function(response){
-
-				console.log(response);
-			return response;
-		})
+	
+		console.log('RunQuery Fired');
 
 	},
 

@@ -10,11 +10,26 @@ var session = require('express-session');
 var swig = require('swig');
 var passport = require('passport');
 var SpotifyStrategy = require('./lib/index').Strategy;
-
 var consolidate = require('consolidate');
+var SpotifyWebApi = require('spotify-web-api-node');
+var appKey = process.env.appKey;
+var appSecret = process.env.appSecret;
 
-var appKey = '214b3fa2e80d46b799ae5622f9f28ee6';
-var appSecret = 'ff87a767b19b4841aebbc1674dc18da5';
+var scopes = ['user-read-private', 'user-read-private', 'user-read-email'],
+    redirectUri = 'http://localhost:3000/callback';
+    
+ 
+
+ 
+ // spotifyApi.getMySavedTracks({
+ //    limit : 10,
+ //    offset: 1
+ //  })
+ //  .then(function(data) {
+ //    console.log('Done!');
+ //  }, function(err) {
+ //    console.log('Something went wrong!', err);
+ //  });
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
@@ -44,13 +59,17 @@ passport.use(new SpotifyStrategy({
   function(accessToken, refreshToken, profile, done) {
     // asynchronous verification, for effect...
     process.nextTick(function () {
+      console.log('accessToken: ' + accessToken);
+      // console.log(profile);
+      profile.accessToken = accessToken;
       // To keep the example simple, the user's spotify profile is returned to
       // represent the logged-in user. In a typical application, you would want
       // to associate the spotify account with a user record in your database,
       // and return that user instead.
-      return done(null, profile);
+      return done(null, profile, accessToken);
     });
   }));
+
 
 
 
@@ -78,7 +97,7 @@ app.use(passport.session());
 
 app.use(express.static('./public'));
 
-// app.engine('html', consolidate.swig);
+app.engine('html', consolidate.swig);
 
 // -------------------------------------------------
 
@@ -103,6 +122,34 @@ app.get('/', function(req, res){
 
 app.get('/account', ensureAuthenticated, function(req, res){
   res.render('account.html', { user: req.user });
+});
+
+app.get('/tracks', function(req, res) {
+  // Set the credentials when making the request 
+  var spotifyApi = new SpotifyWebApi({
+  accessToken : req.user.accessToken
+  });
+
+  // Get tracks in the signed in user's Your Music library 
+  spotifyApi.getMySavedTracks({
+    limit : 20,
+    offset: 1
+  })
+  .then(function(data) {
+    console.log('Done!');
+    var trackObj = data.body.items
+    for (var i = 0; i<trackObj.length; i++) {
+      console.log('------------------------------------------');
+      console.log('Track: ' + trackObj[i].track.name);
+      console.log('Album: ' + trackObj[i].track.album.name);
+      console.log('Artist: ' + trackObj[i].track.artists[0].name);
+      console.log('------------------------------------------');
+    }
+    res.send('200');
+    console.log("I'M LOOPING AGAIN");
+  }, function(err) {
+    console.log('Something went wrong!', err);
+});
 });
 
 app.get('/login', function(req, res){
@@ -150,6 +197,7 @@ app.post('/pause', function(req, res){
   res.send('200');
 });
 
+
 // -------------------------------------------------
 
 // Listener
@@ -166,4 +214,5 @@ sp.sp();
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/login');
-}
+  console.log(req.user);
+};

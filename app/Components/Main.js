@@ -14,7 +14,7 @@ var Main = React.createClass({
 	// Here we set a generic state associated with the number of clicks
 	getInitialState: function(){
 		// helpers.runQuery().then(function(data) {
-		// 	console.log('Data: ' + data);
+			// console.log('Data: ' + data);
 		// })
 		return {
 			searchTerm: "",
@@ -74,7 +74,7 @@ var Main = React.createClass({
 					            <li><a href="#">Playlists</a></li>
 					            <li><a href="#">New Tracks</a></li>
 					            <li><a href="#">Favorite Tracks</a></li>
-					            <li><a href="#">Sign In</a></li>
+					            <li><a href="/auth/spotify">Sign In</a></li>
 					        </ul>
 					    </div>    
 					</nav>

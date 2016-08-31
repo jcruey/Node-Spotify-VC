@@ -5,10 +5,11 @@ var helpers = require('../utils/helpers.js');
 // This is the player component. 
 var Player = React.createClass({
 
+	
 	// Here we set a generic state associated with the text being searched for
 	getInitialState: function(){
 		return {
-			term: ""
+			track: ""
 		}
 	},
 
@@ -26,10 +27,15 @@ var Player = React.createClass({
 
 	// When a user submits... 
 	handleClickPlay: function(){
-		var track = {
+		var track = [{
 			  uri: 'spotify:track:4beeB45WycRGaqXbCiJsLN'
-		};
-		helpers.playMusic(track);
+			},
+			{uri: 'spotify:track:6ZIT7Isugjflmm3TDIkgji'},
+			{uri: 'spotify:track:1VOjrMklQs25X93vgjJuGO'},
+			{uri: 'spotify:track:2U2lREJtuQipwd8W69lgOm'}
+		]
+
+		helpers.playMusic(track[0]);
 	},
 
 	// When a user submits... 
@@ -40,24 +46,29 @@ var Player = React.createClass({
 
 	// When a user submits... 
 	handleClickBack: function(){
+		var track = [{
+			  uri: 'spotify:track:4beeB45WycRGaqXbCiJsLN'
+			},
+			{uri: 'spotify:track:6ZIT7Isugjflmm3TDIkgji'},
+			{uri: 'spotify:track:1VOjrMklQs25X93vgjJuGO'},
+			{uri: 'spotify:track:2U2lREJtuQipwd8W69lgOm'}
+		]
 
-		console.log("CLICK");
-		console.log(this.state.term);
-		
-		// Set the parent to have the search term
-		this.props.setTerm(this.state.term);
+		for (var i = 0; i<track.length; i--) {
+			helpers.playMusic(track[i])
+		}
 
 	},
 
 	// When a user submits... 
 	handleClickForward: function(){
-
-		console.log("CLICK");
-		console.log(this.state.term);
-		
-		// Set the parent to have the search term
-		this.props.setTerm(this.state.term);
-
+		var track = [{
+			  uri: 'spotify:track:4beeB45WycRGaqXbCiJsLN'
+			},
+			{uri: 'spotify:track:6ZIT7Isugjflmm3TDIkgji'},
+			{uri: 'spotify:track:1VOjrMklQs25X93vgjJuGO'},
+			{uri: 'spotify:track:2U2lREJtuQipwd8W69lgOm'}
+		]
 	},
 
 	// Here we render the function
