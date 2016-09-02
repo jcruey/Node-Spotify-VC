@@ -6,7 +6,10 @@ var helpers = {
 
 	// This function serves our purpose of running the query to geolocate. 
 	runQuery: function(){
-	
+		axios.get('/tracks')
+		.then(function(response){
+			console.log(response);
+		})
 		console.log('RunQuery Fired');
 
 	},
@@ -15,7 +18,7 @@ var helpers = {
 
 		console.log('Playing track');
 
-		return axios.post('/play/', track)
+		return axios.post('/play', track)
 			.then(function(response){
 				console.log(response);
 		})

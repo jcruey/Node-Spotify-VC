@@ -35,7 +35,7 @@ var Player = React.createClass({
 			{uri: 'spotify:track:2U2lREJtuQipwd8W69lgOm'}
 		]
 
-		helpers.playMusic(track[0]);
+		helpers.playMusic(track[2]);
 	},
 
 	// When a user submits... 
@@ -53,10 +53,6 @@ var Player = React.createClass({
 			{uri: 'spotify:track:1VOjrMklQs25X93vgjJuGO'},
 			{uri: 'spotify:track:2U2lREJtuQipwd8W69lgOm'}
 		]
-
-		for (var i = 0; i<track.length; i--) {
-			helpers.playMusic(track[i])
-		}
 
 	},
 

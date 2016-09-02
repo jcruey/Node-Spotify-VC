@@ -1,5 +1,6 @@
 // Include React 
 var React = require('react');
+var helpers = require('../utils/helpers.js')
 
 // This is the results component
 var Tracks = React.createClass({
@@ -19,30 +20,7 @@ var Tracks = React.createClass({
 				</tr>
 			</thead>
 			<tbody>
-				<tr>	
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>	
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>	
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
-				<tr>	
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-				</tr>
+				
 			</tbody>
 			</table>
 

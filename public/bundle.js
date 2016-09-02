@@ -19830,7 +19830,7 @@
 									{ className: 'active' },
 									React.createElement(
 										'a',
-										{ href: '#' },
+										{ href: '/home' },
 										'Home'
 									)
 								),
@@ -19866,8 +19866,8 @@
 									null,
 									React.createElement(
 										'a',
-										{ href: '/auth/spotify' },
-										'Sign In'
+										{ href: '/account' },
+										'Account'
 									)
 								)
 							)
@@ -19947,7 +19947,7 @@
 				uri: 'spotify:track:4beeB45WycRGaqXbCiJsLN'
 			}, { uri: 'spotify:track:6ZIT7Isugjflmm3TDIkgji' }, { uri: 'spotify:track:1VOjrMklQs25X93vgjJuGO' }, { uri: 'spotify:track:2U2lREJtuQipwd8W69lgOm' }];
 
-			helpers.playMusic(track[0]);
+			helpers.playMusic(track[2]);
 		},
 
 		// When a user submits... 
@@ -19960,10 +19960,6 @@
 			var track = [{
 				uri: 'spotify:track:4beeB45WycRGaqXbCiJsLN'
 			}, { uri: 'spotify:track:6ZIT7Isugjflmm3TDIkgji' }, { uri: 'spotify:track:1VOjrMklQs25X93vgjJuGO' }, { uri: 'spotify:track:2U2lREJtuQipwd8W69lgOm' }];
-
-			for (var i = 0; i < track.length; i--) {
-				helpers.playMusic(track[i]);
-			}
 		},
 
 		// When a user submits... 
@@ -20024,7 +20020,9 @@
 
 		// This function serves our purpose of running the query to geolocate. 
 		runQuery: function runQuery() {
-
+			axios.get('/tracks').then(function (response) {
+				console.log(response);
+			});
 			console.log('RunQuery Fired');
 		},
 
@@ -20032,7 +20030,7 @@
 
 			console.log('Playing track');
 
-			return axios.post('/play/', track).then(function (response) {
+			return axios.post('/play', track).then(function (response) {
 				console.log(response);
 			});
 		},
@@ -21267,86 +21265,52 @@
 /* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	// Include React 
 	var React = __webpack_require__(1);
+	var helpers = __webpack_require__(161);
 
 	// This is the results component
 	var Tracks = React.createClass({
-		displayName: "Tracks",
+		displayName: 'Tracks',
 
 
 		// Here we render the function
 		render: function render() {
 
 			return React.createElement(
-				"table",
-				{ className: "table" },
+				'table',
+				{ className: 'table' },
 				React.createElement(
-					"thead",
+					'thead',
 					null,
 					React.createElement(
-						"tr",
+						'tr',
 						null,
 						React.createElement(
-							"th",
+							'th',
 							null,
-							"#"
+							'#'
 						),
 						React.createElement(
-							"th",
+							'th',
 							null,
-							"Track"
+							'Track'
 						),
 						React.createElement(
-							"th",
+							'th',
 							null,
-							"Album"
+							'Album'
 						),
 						React.createElement(
-							"th",
+							'th',
 							null,
-							"Artist"
+							'Artist'
 						)
 					)
 				),
-				React.createElement(
-					"tbody",
-					null,
-					React.createElement(
-						"tr",
-						null,
-						React.createElement("td", null),
-						React.createElement("td", null),
-						React.createElement("td", null),
-						React.createElement("td", null)
-					),
-					React.createElement(
-						"tr",
-						null,
-						React.createElement("td", null),
-						React.createElement("td", null),
-						React.createElement("td", null),
-						React.createElement("td", null)
-					),
-					React.createElement(
-						"tr",
-						null,
-						React.createElement("td", null),
-						React.createElement("td", null),
-						React.createElement("td", null),
-						React.createElement("td", null)
-					),
-					React.createElement(
-						"tr",
-						null,
-						React.createElement("td", null),
-						React.createElement("td", null),
-						React.createElement("td", null),
-						React.createElement("td", null)
-					)
-				)
+				React.createElement('tbody', null)
 			);
 		}
 	});

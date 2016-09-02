@@ -17,19 +17,6 @@ var appSecret = process.env.appSecret;
 
 var scopes = ['user-read-private', 'user-read-private', 'user-read-email'],
     redirectUri = 'http://localhost:3000/callback';
-    
- 
-
- 
- // spotifyApi.getMySavedTracks({
- //    limit : 10,
- //    offset: 1
- //  })
- //  .then(function(data) {
- //    console.log('Done!');
- //  }, function(err) {
- //    console.log('Something went wrong!', err);
- //  });
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
@@ -77,7 +64,7 @@ passport.use(new SpotifyStrategy({
 var app = express();
 var PORT = process.env.PORT || 3000; // Sets an initial port. We'll use this later in our listener
 
-// configure Express
+//configure Express
 // app.set('views', __dirname + '/views');
 // app.set('view engine', 'ejs');
 
@@ -117,7 +104,11 @@ db.on('error', function (err) {
 
 // Main Route. This route will redirect to our rendered React application
 app.get('/', function(req, res){
-	res.render('/pubic/index.html', { user: req.user });
+  res.render('login.html', { user: req.user });
+});
+
+app.get('/home', function(req, res){
+	res.render('../public/home.html', { user: req.user });
 });
 
 app.get('/account', ensureAuthenticated, function(req, res){
@@ -143,18 +134,22 @@ app.get('/tracks', function(req, res) {
       console.log('Track: ' + trackObj[i].track.name);
       console.log('Album: ' + trackObj[i].track.album.name);
       console.log('Artist: ' + trackObj[i].track.artists[0].name);
+      console.log('Uri: ' + trackObj[i].track.uri);
       console.log('------------------------------------------');
     }
-    res.send('200');
-    console.log("I'M LOOPING AGAIN");
+    res.redirect('/home');
   }, function(err) {
     console.log('Something went wrong!', err);
 });
 });
 
-app.get('/login', function(req, res){
-  res.render('login.html', { user: req.user });
-});
+
+
+app.post('/spotifyLogin', function(req, res){
+    console.log('from returned: ', req.body);
+    sp.sp(req.body.userName, req.body.Password);
+    res.redirect('/auth/spotify');
+})
 
 // GET /auth/spotify
 //   Use passport.authenticate() as route middleware to authenticate the
@@ -176,7 +171,7 @@ app.get('/auth/spotify',
 app.get('/callback',
   passport.authenticate('spotify', { failureRedirect: '/login' }),
   function(req, res) {
-    res.redirect('/');
+    res.redirect('/tracks');
   });
 
 app.get('/logout', function(req, res){
@@ -188,6 +183,7 @@ app.get('/logout', function(req, res){
 app.post('/play', function(req, res){
 	console.log(req.body);
   sp.play(req.body);
+  sp.progress();
   res.send('200');
 });
 
@@ -204,7 +200,7 @@ app.post('/pause', function(req, res){
 app.listen(PORT, function() {
   console.log("App listening on PORT: " + PORT);
 });
-sp.sp();
+
 
 // Simple route middleware to ensure user is authenticated.
 //   Use this route middleware on any resource that needs to be protected.  If
@@ -213,6 +209,6 @@ sp.sp();
 //   login page.
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
-  res.redirect('/login');
+  res.redirect('/');
   console.log(req.user);
 };
