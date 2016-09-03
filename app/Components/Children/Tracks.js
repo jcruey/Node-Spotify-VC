@@ -20,12 +20,16 @@ var Tracks = React.createClass({
 	},
 
 	// When a user submits... 
-	handleClickPlay: function(err, b){
-		var track = b.target.getAttribute('data-track');
+	handleClickPlay: function(i){
+		// this.state.savedTracks[i + 1].track.uri
+		
+		console.log(i);
+		var song = this.state.savedTracks[i].track.uri
 		var trackObj = {
-			'uri': track
+			'uri': song
 		}
-		console.log(trackObj)
+		console.log('trackObj: ', trackObj)
+			console.log(song);
 		helpers.playMusic(trackObj);
 	},
 
@@ -46,8 +50,8 @@ var Tracks = React.createClass({
 				</tr>
 			</thead>
 				{savedTracks.map(function(track, i) {
-					return <tbody key={i}><tr><td><button onClick={self.handleClickPlay.bind(null, track.track.uri)} data-track={track.track.uri} className="btn btn-custom"><span title="Play" data-track={track.track.uri} className="play glyphicon glyphicon-play aligned"></span></button></td> <td>{track.track.name}</td> <td>{track.track.album.name}</td><td>{track.track.artists[0].name}</td></tr></tbody> 
-				})}
+					return <tbody key={i}><tr><td><button onClick={() => this.handleClickPlay(i)} data-index={i} data-track={track.track.uri} className="btn btn-custom"><span title="Play" data-track={track.track.uri} className="play glyphicon glyphicon-play aligned"></span></button></td> <td>{track.track.name}</td> <td>{track.track.album.name}</td><td>{track.track.artists[0].name}</td></tr></tbody> 
+				}.bind(this))}
 			</table>
 
 

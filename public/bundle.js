@@ -19941,11 +19941,8 @@
 
 		// When a user submits... 
 		handleClickPlay: function handleClickPlay() {
-			var track = [{
-				uri: 'spotify:track:4beeB45WycRGaqXbCiJsLN'
-			}, { uri: 'spotify:track:6ZIT7Isugjflmm3TDIkgji' }, { uri: 'spotify:track:1VOjrMklQs25X93vgjJuGO' }, { uri: 'spotify:track:2U2lREJtuQipwd8W69lgOm' }];
 
-			helpers.playMusic(track[2]);
+			helpers.playMusic(track);
 		},
 
 		// When a user submits... 
@@ -19954,18 +19951,10 @@
 		},
 
 		// When a user submits... 
-		handleClickBack: function handleClickBack() {
-			var track = [{
-				uri: 'spotify:track:4beeB45WycRGaqXbCiJsLN'
-			}, { uri: 'spotify:track:6ZIT7Isugjflmm3TDIkgji' }, { uri: 'spotify:track:1VOjrMklQs25X93vgjJuGO' }, { uri: 'spotify:track:2U2lREJtuQipwd8W69lgOm' }];
-		},
+		handleClickBack: function handleClickBack() {},
 
 		// When a user submits... 
-		handleClickForward: function handleClickForward() {
-			var track = [{
-				uri: 'spotify:track:4beeB45WycRGaqXbCiJsLN'
-			}, { uri: 'spotify:track:6ZIT7Isugjflmm3TDIkgji' }, { uri: 'spotify:track:1VOjrMklQs25X93vgjJuGO' }, { uri: 'spotify:track:2U2lREJtuQipwd8W69lgOm' }];
-		},
+		handleClickForward: function handleClickForward() {},
 
 		// Here we render the function
 		render: function render() {
@@ -21289,12 +21278,16 @@
 		},
 
 		// When a user submits... 
-		handleClickPlay: function handleClickPlay(err, b) {
-			var track = b.target.getAttribute('data-track');
+		handleClickPlay: function handleClickPlay(i) {
+			// this.state.savedTracks[i + 1].track.uri
+
+			console.log(i);
+			var song = this.state.savedTracks[i].track.uri;
 			var trackObj = {
-				'uri': track
+				'uri': song
 			};
-			console.log(trackObj);
+			console.log('trackObj: ', trackObj);
+			console.log(song);
 			helpers.playMusic(trackObj);
 		},
 
@@ -21331,6 +21324,8 @@
 					)
 				),
 				savedTracks.map(function (track, i) {
+					var _this = this;
+
 					return React.createElement(
 						'tbody',
 						{ key: i },
@@ -21342,7 +21337,9 @@
 								null,
 								React.createElement(
 									'button',
-									{ onClick: self.handleClickPlay.bind(null, track.track.uri), 'data-track': track.track.uri, className: 'btn btn-custom' },
+									{ onClick: function onClick() {
+											return _this.handleClickPlay(i);
+										}, 'data-index': i, 'data-track': track.track.uri, className: 'btn btn-custom' },
 									React.createElement('span', { title: 'Play', 'data-track': track.track.uri, className: 'play glyphicon glyphicon-play aligned' })
 								)
 							),
@@ -21365,7 +21362,7 @@
 							)
 						)
 					);
-				})
+				}.bind(this))
 			);
 		}
 	});

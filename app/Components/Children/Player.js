@@ -27,15 +27,8 @@ var Player = React.createClass({
 
 	// When a user submits... 
 	handleClickPlay: function(){
-		var track = [{
-			  uri: 'spotify:track:4beeB45WycRGaqXbCiJsLN'
-			},
-			{uri: 'spotify:track:6ZIT7Isugjflmm3TDIkgji'},
-			{uri: 'spotify:track:1VOjrMklQs25X93vgjJuGO'},
-			{uri: 'spotify:track:2U2lREJtuQipwd8W69lgOm'}
-		]
 
-		helpers.playMusic(track[2]);
+		helpers.playMusic(track);
 	},
 
 	// When a user submits... 
@@ -46,25 +39,12 @@ var Player = React.createClass({
 
 	// When a user submits... 
 	handleClickBack: function(){
-		var track = [{
-			  uri: 'spotify:track:4beeB45WycRGaqXbCiJsLN'
-			},
-			{uri: 'spotify:track:6ZIT7Isugjflmm3TDIkgji'},
-			{uri: 'spotify:track:1VOjrMklQs25X93vgjJuGO'},
-			{uri: 'spotify:track:2U2lREJtuQipwd8W69lgOm'}
-		]
 
 	},
 
 	// When a user submits... 
 	handleClickForward: function(){
-		var track = [{
-			  uri: 'spotify:track:4beeB45WycRGaqXbCiJsLN'
-			},
-			{uri: 'spotify:track:6ZIT7Isugjflmm3TDIkgji'},
-			{uri: 'spotify:track:1VOjrMklQs25X93vgjJuGO'},
-			{uri: 'spotify:track:2U2lREJtuQipwd8W69lgOm'}
-		]
+		
 	},
 
 	// Here we render the function
