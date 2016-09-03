@@ -137,7 +137,7 @@ app.get('/tracks', function(req, res) {
       console.log('Uri: ' + trackObj[i].track.uri);
       console.log('------------------------------------------');
     }
-    res.redirect('/home');
+    res.send(trackObj);
   }, function(err) {
     console.log('Something went wrong!', err);
 });
@@ -171,7 +171,7 @@ app.get('/auth/spotify',
 app.get('/callback',
   passport.authenticate('spotify', { failureRedirect: '/login' }),
   function(req, res) {
-    res.redirect('/tracks');
+    res.redirect('/home');
   });
 
 app.get('/logout', function(req, res){

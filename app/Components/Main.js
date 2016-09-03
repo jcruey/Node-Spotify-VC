@@ -13,9 +13,7 @@ var Main = React.createClass({
 
 	// Here we set a generic state associated with the number of clicks
 	getInitialState: function(){
-		// helpers.runQuery().then(function(data) {
-			// console.log('Data: ' + data);
-		// })
+		
 		return {
 			searchTerm: "",
 			results: ""

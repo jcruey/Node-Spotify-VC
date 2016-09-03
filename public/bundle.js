@@ -19753,9 +19753,7 @@
 
 		// Here we set a generic state associated with the number of clicks
 		getInitialState: function getInitialState() {
-			// helpers.runQuery().then(function(data) {
-			// console.log('Data: ' + data);
-			// })
+
 			return {
 				searchTerm: "",
 				results: ""
@@ -20020,10 +20018,11 @@
 
 		// This function serves our purpose of running the query to geolocate. 
 		runQuery: function runQuery() {
-			axios.get('/tracks').then(function (response) {
-				console.log(response);
+			return axios.get('/tracks').then(function (response) {
+				// console.log(response);
+				return response;
 			});
-			console.log('RunQuery Fired');
+			console.log('runQuery Fired');
 		},
 
 		playMusic: function playMusic(track) {
@@ -21276,9 +21275,34 @@
 		displayName: 'Tracks',
 
 
+		getInitialState: function getInitialState() {
+			return {
+				savedTracks: ""
+			};
+		},
+
+		componentDidMount: function componentDidMount() {
+			helpers.runQuery().then(function (response) {
+				this.setState({ savedTracks: response.data });
+				// console.log(this.state.savedTracks);
+			}.bind(this));
+		},
+
+		// When a user submits... 
+		handleClickPlay: function handleClickPlay(err, b) {
+			var track = b.target.getAttribute('data-track');
+			var trackObj = {
+				'uri': track
+			};
+			console.log(trackObj);
+			helpers.playMusic(trackObj);
+		},
+
 		// Here we render the function
 		render: function render() {
-
+			var savedTracks = this.state.savedTracks || [];
+			console.log(savedTracks);
+			var self = this;
 			return React.createElement(
 				'table',
 				{ className: 'table' },
@@ -21288,11 +21312,7 @@
 					React.createElement(
 						'tr',
 						null,
-						React.createElement(
-							'th',
-							null,
-							'#'
-						),
+						React.createElement('th', null),
 						React.createElement(
 							'th',
 							null,
@@ -21310,7 +21330,42 @@
 						)
 					)
 				),
-				React.createElement('tbody', null)
+				savedTracks.map(function (track, i) {
+					return React.createElement(
+						'tbody',
+						{ key: i },
+						React.createElement(
+							'tr',
+							null,
+							React.createElement(
+								'td',
+								null,
+								React.createElement(
+									'button',
+									{ onClick: self.handleClickPlay.bind(null, track.track.uri), 'data-track': track.track.uri, className: 'btn btn-custom' },
+									React.createElement('span', { title: 'Play', 'data-track': track.track.uri, className: 'play glyphicon glyphicon-play aligned' })
+								)
+							),
+							' ',
+							React.createElement(
+								'td',
+								null,
+								track.track.name
+							),
+							' ',
+							React.createElement(
+								'td',
+								null,
+								track.track.album.name
+							),
+							React.createElement(
+								'td',
+								null,
+								track.track.artists[0].name
+							)
+						)
+					);
+				})
 			);
 		}
 	});

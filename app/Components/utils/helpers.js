@@ -6,11 +6,12 @@ var helpers = {
 
 	// This function serves our purpose of running the query to geolocate. 
 	runQuery: function(){
-		axios.get('/tracks')
+		return axios.get('/tracks')
 		.then(function(response){
-			console.log(response);
+			// console.log(response);
+			return response;
 		})
-		console.log('RunQuery Fired');
+		console.log('runQuery Fired');
 
 	},
 
