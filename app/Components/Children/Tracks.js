@@ -7,24 +7,20 @@ var Tracks = React.createClass({
 
 	getInitialState: function() {
 		return {
-			savedTracks: ""
+			savedTracks: "",
+			index: ""
 		}
-	},
-
-	componentDidMount: function() {
-		helpers.runQuery()
-		.then(function(response) {
-			this.setState({savedTracks: response.data})
-			// console.log(this.state.savedTracks);
-		}.bind(this))
 	},
 
 	// When a user submits... 
 	handleClickPlay: function(i){
 		// this.state.savedTracks[i + 1].track.uri
-		
 		console.log(i);
-		var song = this.state.savedTracks[i].track.uri
+		this.setState({index: i});
+			this.props.setIndex(i);
+			console.log(this.state.index);
+				// this.props.setIndex(this.state.index)
+		var song = this.props.savedTracks[i].track.uri
 		var trackObj = {
 			'uri': song
 		}
@@ -35,7 +31,7 @@ var Tracks = React.createClass({
 
 	// Here we render the function
 	render: function(){
-		var savedTracks = this.state.savedTracks || [];
+		var savedTracks = this.props.savedTracks || [];
 		console.log(savedTracks);
 		var self = this;
 		return(

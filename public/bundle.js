@@ -19755,23 +19755,32 @@
 		getInitialState: function getInitialState() {
 
 			return {
-				searchTerm: "",
-				results: ""
+				savedTracks: "",
+				index: 0
 			};
 		},
 
 		// This function allows childrens to update the parent.
-		setTerm: function setTerm(term) {
+		setIndex: function setIndex(index) {
 			this.setState({
-				searchTerm: term
+				index: index
 			});
 		},
 
-		// If the component changes (i.e. if a search is entered)... 
+		componentDidMount: function componentDidMount() {
+			helpers.runQuery().then(function (response) {
+				this.setState({ savedTracks: response.data });
+				// console.log(this.state.savedTracks);
+			}.bind(this));
+		},
+
+		// //If the component changes (i.e. if index is updated)... 
 		// componentDidUpdate: function(prevProps, prevState){
 
-		// 	if(prevState.searchTerm != this.state.searchTerm){
+		// 	if(prevState.index != this.state.index){
 		// 		console.log("UPDATED");
+		// 	}
+		// },
 
 		// 		var self = this;
 		// 		// Run the query for the address
@@ -19878,7 +19887,9 @@
 					React.createElement(
 						'div',
 						{ className: 'col-md-6' },
-						React.createElement(Player, { setTerm: this.setTerm })
+						React.createElement(Player, {
+							savedTracks: this.state.savedTracks, setIndex: this.setIndex,
+							index: this.state.index })
 					),
 					React.createElement(
 						'div',
@@ -19896,7 +19907,8 @@
 					React.createElement(
 						'div',
 						{ className: 'col-md-12' },
-						React.createElement(Tracks, { address: this.state.tracks })
+						React.createElement(Tracks, { savedTracks: this.state.savedTracks, setIndex: this.setIndex,
+							index: this.state.index })
 					)
 				)
 			);
@@ -19924,25 +19936,23 @@
 		// Here we set a generic state associated with the text being searched for
 		getInitialState: function getInitialState() {
 			return {
-				track: ""
+				savedTracks: "",
+				index: 0
 			};
 		},
 
-		// This function will respond to the user input 
-		handleChange: function handleChange(event) {
-
-			// Here we create syntax to capture any change in text to the query terms (pre-search).
-			// See this Stack Overflow answer for more details: 
-			// http://stackoverflow.com/questions/21029999/react-js-identifying-different-inputs-with-one-onchange-handler
-			var newState = {};
-			newState[event.target.id] = event.target.value;
-			this.setState(newState);
-		},
-
 		// When a user submits... 
-		handleClickPlay: function handleClickPlay() {
+		handleClickPlay: function handleClickPlay(i) {
+			// this.state.savedTracks[i + 1].track.uri
 
-			helpers.playMusic(track);
+			console.log(i);
+			var song = this.props.savedTracks[i].track.uri;
+			var trackObj = {
+				'uri': song
+			};
+			console.log('trackObj: ', trackObj);
+			console.log(song);
+			helpers.playMusic(trackObj);
 		},
 
 		// When a user submits... 
@@ -19951,10 +19961,18 @@
 		},
 
 		// When a user submits... 
-		handleClickBack: function handleClickBack() {},
+		handleClickBack: function handleClickBack() {
+			var i = this.props.index - 1;
+			this.props.setIndex(i);
+			this.handleClickPlay(i);
+		},
 
 		// When a user submits... 
-		handleClickForward: function handleClickForward() {},
+		handleClickForward: function handleClickForward() {
+			var i = this.props.index + 1;
+			this.props.setIndex(i);
+			this.handleClickPlay(i);
+		},
 
 		// Here we render the function
 		render: function render() {
@@ -21266,23 +21284,20 @@
 
 		getInitialState: function getInitialState() {
 			return {
-				savedTracks: ""
+				savedTracks: "",
+				index: ""
 			};
-		},
-
-		componentDidMount: function componentDidMount() {
-			helpers.runQuery().then(function (response) {
-				this.setState({ savedTracks: response.data });
-				// console.log(this.state.savedTracks);
-			}.bind(this));
 		},
 
 		// When a user submits... 
 		handleClickPlay: function handleClickPlay(i) {
 			// this.state.savedTracks[i + 1].track.uri
-
 			console.log(i);
-			var song = this.state.savedTracks[i].track.uri;
+			this.setState({ index: i });
+			this.props.setIndex(i);
+			console.log(this.state.index);
+			// this.props.setIndex(this.state.index)
+			var song = this.props.savedTracks[i].track.uri;
 			var trackObj = {
 				'uri': song
 			};
@@ -21293,7 +21308,7 @@
 
 		// Here we render the function
 		render: function render() {
-			var savedTracks = this.state.savedTracks || [];
+			var savedTracks = this.props.savedTracks || [];
 			console.log(savedTracks);
 			var self = this;
 			return React.createElement(

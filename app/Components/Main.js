@@ -15,23 +15,33 @@ var Main = React.createClass({
 	getInitialState: function(){
 		
 		return {
-			searchTerm: "",
-			results: ""
+			savedTracks: "",
+			index: 0
 		}
 	},	
 
 	// This function allows childrens to update the parent.
-	setTerm: function(term){
+	setIndex: function(index){
 		this.setState({
-			searchTerm: term
+			index: index
 		})
 	},
 
-	// If the component changes (i.e. if a search is entered)... 
+	componentDidMount: function() {
+		helpers.runQuery()
+		.then(function(response) {
+			this.setState({savedTracks: response.data})
+			// console.log(this.state.savedTracks);
+		}.bind(this))
+	},
+
+	// //If the component changes (i.e. if index is updated)... 
 	// componentDidUpdate: function(prevProps, prevState){
 
-	// 	if(prevState.searchTerm != this.state.searchTerm){
+	// 	if(prevState.index != this.state.index){
 	// 		console.log("UPDATED");
+	// 	}
+	// },
 
 	// 		var self = this;
 	// 		// Run the query for the address
@@ -84,7 +94,10 @@ var Main = React.createClass({
 
 					<div className="col-md-6">
 					
-						<Player setTerm={this.setTerm} />
+						<Player 
+						savedTracks={this.state.savedTracks} setIndex={this.setIndex} 
+							index={this.state.index} />
+
 
 					</div>
 
@@ -97,7 +110,8 @@ var Main = React.createClass({
 				<div className="row">
 					<div className="col-md-12">
 				
-						<Tracks address={this.state.tracks} />
+						<Tracks savedTracks={this.state.savedTracks} setIndex={this.setIndex} 
+							index={this.state.index} />
 
 					</div>
 				</div>

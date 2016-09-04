@@ -7,28 +7,25 @@ var Player = React.createClass({
 
 	
 	// Here we set a generic state associated with the text being searched for
-	getInitialState: function(){
+	getInitialState: function() {
 		return {
-			track: ""
+			savedTracks: "",
+			index: 0
 		}
 	},
 
-	// This function will respond to the user input 
-	handleChange: function(event){
-
-    	// Here we create syntax to capture any change in text to the query terms (pre-search).
-    	// See this Stack Overflow answer for more details: 
-    	// http://stackoverflow.com/questions/21029999/react-js-identifying-different-inputs-with-one-onchange-handler
-    	var newState = {};
-    	newState[event.target.id] = event.target.value;
-    	this.setState(newState);
-
-	},
-
 	// When a user submits... 
-	handleClickPlay: function(){
-
-		helpers.playMusic(track);
+	handleClickPlay: function(i){
+		// this.state.savedTracks[i + 1].track.uri
+		
+		console.log(i);
+		var song = this.props.savedTracks[i].track.uri
+		var trackObj = {
+			'uri': song
+		}
+		console.log('trackObj: ', trackObj)
+			console.log(song);
+		helpers.playMusic(trackObj);
 	},
 
 	// When a user submits... 
@@ -39,12 +36,16 @@ var Player = React.createClass({
 
 	// When a user submits... 
 	handleClickBack: function(){
-
+		var i = this.props.index - 1;
+		this.props.setIndex(i);
+		this.handleClickPlay(i);
 	},
 
 	// When a user submits... 
 	handleClickForward: function(){
-		
+		var i = this.props.index + 1;
+		this.props.setIndex(i);
+		this.handleClickPlay(i);
 	},
 
 	// Here we render the function

@@ -123,20 +123,20 @@ app.get('/tracks', function(req, res) {
 
   // Get tracks in the signed in user's Your Music library 
   spotifyApi.getMySavedTracks({
-    limit : 20,
+    limit : 40,
     offset: 1
   })
   .then(function(data) {
     console.log('Done!');
     var trackObj = data.body.items
-    for (var i = 0; i<trackObj.length; i++) {
-      console.log('------------------------------------------');
-      console.log('Track: ' + trackObj[i].track.name);
-      console.log('Album: ' + trackObj[i].track.album.name);
-      console.log('Artist: ' + trackObj[i].track.artists[0].name);
-      console.log('Uri: ' + trackObj[i].track.uri);
-      console.log('------------------------------------------');
-    }
+    // for (var i = 0; i<trackObj.length; i++) {
+    //   console.log('------------------------------------------');
+    //   console.log('Track: ' + trackObj[i].track.name);
+    //   console.log('Album: ' + trackObj[i].track.album.name);
+    //   console.log('Artist: ' + trackObj[i].track.artists[0].name);
+    //   console.log('Uri: ' + trackObj[i].track.uri);
+    //   console.log('------------------------------------------');
+    // }
     res.send(trackObj);
   }, function(err) {
     console.log('Something went wrong!', err);
@@ -146,7 +146,6 @@ app.get('/tracks', function(req, res) {
 
 
 app.post('/spotifyLogin', function(req, res){
-    console.log('from returned: ', req.body);
     sp.sp(req.body.userName, req.body.Password);
     res.redirect('/auth/spotify');
 })
@@ -175,6 +174,7 @@ app.get('/callback',
   });
 
 app.get('/logout', function(req, res){
+  sp.logout();
   req.logout();
   res.redirect('/');
 });
