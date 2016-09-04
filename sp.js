@@ -2,19 +2,17 @@ var LibSpotify = require('./lib/Spotify');
 var appKeyPath = './spotify_appkey.key';
 var spotify = new LibSpotify({appkeyFile: appKeyPath});	
 
-exports.sp = function() {
-	spotify.login('username', 'password')
+exports.sp = function(userName, Password) {
+	spotify.login(userName, Password)
   .then(function () {
     //logged in
-    console.log("logged in successfully");
+    // console.log("logged in successfully");
   })
   .catch(function (err) {
   	console.log(err);
     //wrong username and/or password
   });
 
-	spotify.player.on('pause', function () { /* pause event */ });
-	spotify.player.on('progress', function (progress) { /* progress event */ });
 }
 
 exports.play = function(track) {
@@ -23,10 +21,11 @@ exports.play = function(track) {
 		spotify.player.on('play', function (track) { 
 		/* play event */ 
 		console.log('song playing!' + spotify.player.playing);
+		console.log(spotify.player.playing);
 		});
 	}
 	else {
-		spotify.player.play();
+		spotify.player.resume();
 	}
 }
 
@@ -36,3 +35,15 @@ exports.pause = function() {
 		console.log('song paused');
 	/* pause event */ });
 }
+
+exports.progress = function() {
+	spotify.player.on('progress', function (progress) {
+		console.dir(progress);
+	 /* progress event */ });
+}
+
+exports.logout = function() {
+	console.log(spotify);
+	spotify._onLogout();
+}
+
