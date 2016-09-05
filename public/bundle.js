@@ -19756,6 +19756,7 @@
 
 			return {
 				savedTracks: "",
+				trackArt: "",
 				index: 0
 			};
 		},
@@ -19767,36 +19768,18 @@
 			});
 		},
 
+		setArt: function setArt(trackArt) {
+			this.setState({
+				trackArt: [trackArt]
+			});
+		},
+
 		componentDidMount: function componentDidMount() {
 			helpers.runQuery().then(function (response) {
 				this.setState({ savedTracks: response.data });
 				// console.log(this.state.savedTracks);
 			}.bind(this));
 		},
-
-		// //If the component changes (i.e. if index is updated)... 
-		// componentDidUpdate: function(prevProps, prevState){
-
-		// 	if(prevState.index != this.state.index){
-		// 		console.log("UPDATED");
-		// 	}
-		// },
-
-		// 		var self = this;
-		// 		// Run the query for the address
-		// 		helpers.runQuery(location)
-		// 			.then(function(data){
-		// 				if (data != self.state.results)
-		// 				{
-		// 					console.log("Address", data);
-
-		// 					self.setState({
-		// 						results: data
-		// 					})
-		// 				}
-		// 			});
-		// 		}
-		// },
 
 		// Here we render the function
 		render: function render() {
@@ -19889,7 +19872,7 @@
 						{ className: 'col-md-6' },
 						React.createElement(Player, {
 							savedTracks: this.state.savedTracks, setIndex: this.setIndex,
-							index: this.state.index })
+							index: this.state.index, trackArt: this.state.trackArt, setArt: this.setArt })
 					),
 					React.createElement(
 						'div',
@@ -19908,7 +19891,7 @@
 						'div',
 						{ className: 'col-md-12' },
 						React.createElement(Tracks, { savedTracks: this.state.savedTracks, setIndex: this.setIndex,
-							index: this.state.index })
+							index: this.state.index, trackArt: this.state.trackArt, setArt: this.setArt })
 					)
 				)
 			);
@@ -19937,6 +19920,7 @@
 		getInitialState: function getInitialState() {
 			return {
 				savedTracks: "",
+				trackArt: [],
 				index: 0
 			};
 		},
@@ -19951,6 +19935,14 @@
 			};
 			console.log('trackObj: ', trackObj);
 			console.log(song);
+			var art = this.props.savedTracks[i].track.album.images[1].url;
+			var artObj = {
+				'url': art
+			};
+			this.setState({
+				trackArt: art
+			});
+			this.props.setArt(art);
 			helpers.playMusic(trackObj);
 		},
 
@@ -19963,6 +19955,14 @@
 		handleClickBack: function handleClickBack() {
 			var i = this.props.index - 1;
 			this.props.setIndex(i);
+			var art = this.props.savedTracks[i].track.album.images[1].url;
+			var artObj = {
+				'url': art
+			};
+			this.setState({
+				trackArt: art
+			});
+			this.props.setArt(art);
 			this.handleClickPlay(i);
 		},
 
@@ -19970,14 +19970,20 @@
 		handleClickForward: function handleClickForward() {
 			var i = this.props.index + 1;
 			this.props.setIndex(i);
+			var art = this.props.savedTracks[i].track.album.images[1].url;
+			var artObj = {
+				'url': art
+			};
+			this.setState({
+				trackArt: art
+			});
+			this.props.setArt(art);
 			this.handleClickPlay(i);
 		},
 
 		// Here we render the function
 		render: function render() {
 			var i = this.props.index;
-			var trackArt = this.props.savedTracks[i];
-			console.log(trackArt);
 			var self = this;
 
 			return React.createElement(
@@ -19989,7 +19995,11 @@
 					React.createElement(
 						'div',
 						{ className: 'row' },
-						React.createElement('div', { className: 'col-md-6' })
+						React.createElement(
+							'div',
+							{ className: 'col-md-6' },
+							React.createElement('img', { src: this.props.trackArt })
+						)
 					),
 					React.createElement(
 						'div',
@@ -21312,6 +21322,14 @@
 				'uri': song
 			};
 			console.log(song);
+			var art = this.props.savedTracks[i].track.album.images[1].url;
+			var artObj = {
+				'url': art
+			};
+			this.setState({
+				trackArt: art
+			});
+			this.props.setArt(art);
 			helpers.playMusic(trackObj);
 		},
 

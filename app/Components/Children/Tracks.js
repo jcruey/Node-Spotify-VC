@@ -23,6 +23,14 @@ var Tracks = React.createClass({
 			'uri': song
 		}
 		console.log(song);
+		var art = this.props.savedTracks[i].track.album.images[1].url
+		var artObj = {
+			'url': art
+		}
+		this.setState({
+			trackArt: art
+		})
+		this.props.setArt(art);	
 		helpers.playMusic(trackObj);
 	},
 

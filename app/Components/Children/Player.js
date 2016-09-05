@@ -10,13 +10,14 @@ var Player = React.createClass({
 	getInitialState: function() {
 		return {
 			savedTracks: "",
+			trackArt: [],
 			index: 0
 		}
 	},
 
 	// When a user submits... 
 	handleClickPlay: function(i){
-		var i = this.props.index
+		var i = this.props.index;
 		console.log(i);
 		var song = this.props.savedTracks[i].track.uri
 		var trackObj = {
@@ -24,6 +25,14 @@ var Player = React.createClass({
 		}
 		console.log('trackObj: ', trackObj)
 			console.log(song);
+		var art = this.props.savedTracks[i].track.album.images[1].url
+		var artObj = {
+			'url': art
+		}
+		this.setState({
+			trackArt: art
+		})
+		this.props.setArt(art);
 		helpers.playMusic(trackObj);
 	},
 
@@ -37,6 +46,14 @@ var Player = React.createClass({
 	handleClickBack: function(){
 		var i = this.props.index - 1;
 		this.props.setIndex(i);
+		var art = this.props.savedTracks[i].track.album.images[1].url
+		var artObj = {
+			'url': art
+		}
+		this.setState({
+			trackArt: art
+		})
+		this.props.setArt(art);
 		this.handleClickPlay(i);
 	},
 
@@ -44,14 +61,20 @@ var Player = React.createClass({
 	handleClickForward: function(){
 		var i = this.props.index + 1;
 		this.props.setIndex(i);
+		var art = this.props.savedTracks[i].track.album.images[1].url
+		var artObj = {
+			'url': art
+		}
+		this.setState({
+			trackArt: art
+		})
+		this.props.setArt(art);
 		this.handleClickPlay(i);
 	},
 
 	// Here we render the function
 	render: function(){
 		var i = this.props.index;
-		var trackArt = this.props.savedTracks[i];
-		console.log(trackArt);
 		var self = this;
 
 		return(
@@ -60,7 +83,7 @@ var Player = React.createClass({
 				<div className="col-md-12">
 					<div className="row">
 					<div className="col-md-6">
-					{/*<img src={self.savedTracks}/>*/}
+					<img src={this.props.trackArt}/>
 					</div>
 					</div>
 				<div className="btn-group">

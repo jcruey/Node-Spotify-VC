@@ -16,6 +16,7 @@ var Main = React.createClass({
 		
 		return {
 			savedTracks: "",
+			trackArt: "",
 			index: 0
 		}
 	},	
@@ -27,6 +28,12 @@ var Main = React.createClass({
 		})
 	},
 
+	setArt: function(trackArt){
+		this.setState({
+			trackArt: [trackArt]
+		})
+	},
+
 	componentDidMount: function() {
 		helpers.runQuery()
 		.then(function(response) {
@@ -35,29 +42,6 @@ var Main = React.createClass({
 		}.bind(this))
 	},
 
-	// //If the component changes (i.e. if index is updated)... 
-	// componentDidUpdate: function(prevProps, prevState){
-
-	// 	if(prevState.index != this.state.index){
-	// 		console.log("UPDATED");
-	// 	}
-	// },
-
-	// 		var self = this;
-	// 		// Run the query for the address
-	// 		helpers.runQuery(location)
-	// 			.then(function(data){
-	// 				if (data != self.state.results)
-	// 				{
-	// 					console.log("Address", data);
-
-	// 					self.setState({
-	// 						results: data
-	// 					})
-	// 				}
-	// 			});
-	// 		}
-	// },
 
 	// Here we render the function
 	render: function(){
@@ -96,7 +80,7 @@ var Main = React.createClass({
 					
 						<Player 
 						savedTracks={this.state.savedTracks} setIndex={this.setIndex} 
-							index={this.state.index} />
+							index={this.state.index} trackArt={this.state.trackArt} setArt={this.setArt} />
 
 
 					</div>
@@ -111,7 +95,7 @@ var Main = React.createClass({
 					<div className="col-md-12">
 				
 						<Tracks savedTracks={this.state.savedTracks} setIndex={this.setIndex} 
-							index={this.state.index} />
+							index={this.state.index} trackArt={this.state.trackArt} setArt={this.setArt} />
 
 					</div>
 				</div>
