@@ -16,6 +16,7 @@ var Main = React.createClass({
 		
 		return {
 			savedTracks: "",
+			topTracks: "",
 			trackArt: "",
 			index: 0
 		}
@@ -35,10 +36,9 @@ var Main = React.createClass({
 	},
 
 	componentDidMount: function() {
-		helpers.runQuery()
+		helpers.getSavedTracks()
 		.then(function(response) {
 			this.setState({savedTracks: response.data})
-			// console.log(this.state.savedTracks);
 		}.bind(this))
 	},
 
@@ -64,8 +64,8 @@ var Main = React.createClass({
 					        <ul className="nav navbar-nav navbar-nav navbar-right">
 					            <li className="active"><a href="/home">Home</a></li>
 					            <li><a href="#">Playlists</a></li>
-					            <li><a href="#">New Tracks</a></li>
-					            <li><a href="#">Favorite Tracks</a></li>
+					            <li><a href="/newTracks">New Tracks</a></li>
+					            <li><a href="/favoriteTracks">Favorite Tracks</a></li>
 					            <li><a href="/account">Account</a></li>
 					        </ul>
 					    </div>    

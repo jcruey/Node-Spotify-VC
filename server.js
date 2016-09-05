@@ -15,9 +15,6 @@ var SpotifyWebApi = require('spotify-web-api-node');
 var appKey = process.env.appKey;
 var appSecret = process.env.appSecret;
 
-var scopes = ['user-read-private', 'user-read-private', 'user-read-email'],
-    redirectUri = 'http://localhost:3000/callback';
-
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
 //   serialize users into and deserialize users out of the session. Typically,
@@ -108,7 +105,6 @@ app.get('/', function(req, res){
 });
 
 app.get('/home', function(req, res){
-  console.log('User: ', req.user)
 	res.render('../public/home.html', { user: req.user });
 });
 
@@ -124,8 +120,7 @@ app.get('/tracks', function(req, res) {
 
   // Get tracks in the signed in user's Your Music library 
   spotifyApi.getMySavedTracks({
-    limit : 40,
-    offset: 1
+    limit : 40
   })
   .then(function(data) {
     console.log('Done!');
@@ -144,7 +139,56 @@ app.get('/tracks', function(req, res) {
 });
 });
 
+app.get('/favoriteTracks', function(req, res) {
+  // Set the credentials when making the request 
+  var spotifyApi = new SpotifyWebApi({
+  accessToken : req.user.accessToken
+  });
+  // Get tracks in the signed in user's Your Music library 
+  spotifyApi.getMyTopTracks()
+  .then(function(data) {
+    console.log('Done!');
+    var favTrackObj = data.body.items
+    for (var i = 0; i<favTrackObj.length; i++) {
+      console.log('------------------------------------------');
+      console.log('Track: ' + favTrackObj[i].name);
+      console.log('Album: ' + favTrackObj[i].album.name);
+      console.log('Artist: ' + favTrackObj[i].artists[0].name);
+      console.log('Uri: ' + favTrackObj[i].uri);
+      console.log('------------------------------------------');
+    }
+    res.send(favTrackObj);
+  }, function(err) {
+    console.log('Something went wrong!', err);
+});
+});
 
+app.get('/newTracks', function(req, res) {
+  // Set the credentials when making the request 
+  var spotifyApi = new SpotifyWebApi({
+  accessToken : req.user.accessToken
+  });
+  // Get tracks in the signed in user's Your Music library 
+  // Retrieve new releases
+spotifyApi.getNewReleases({ limit : 15, offset: 1, country: 'US' })
+  .then(function(data) {
+    console.log('Done!', data.body.albums);
+    var newTrackObj = data.body.items
+    for (var i = 0; i<newTrackObj.length; i++) {
+      console.log('------------------------------------------');
+      console.log('Track: ' + newTrackObj[i].track.name);
+      console.log('Album: ' + newTrackObj[i].track.album.name);
+      console.log('Artist: ' + newTrackObj[i].track.artists[0].name);
+      console.log('Uri: ' + newTrackObj[i].track.uri);
+      console.log('------------------------------------------');
+    }
+    res.send(newTrackObj);
+  }, function(err) {
+    console.log('Something went wrong!', err);
+});
+  
+});
+  
 
 app.post('/spotifyLogin', function(req, res){
     sp.sp(req.body.userName, req.body.Password);
@@ -157,7 +201,7 @@ app.post('/spotifyLogin', function(req, res){
 //   the user to spotify.com. After authorization, spotify will redirect the user
 //   back to this application at /auth/spotify/callback
 app.get('/auth/spotify',
-  passport.authenticate('spotify', {scope: ['user-read-email', 'user-read-private', 'user-library-read'], showDialog: true}),
+  passport.authenticate('spotify', {scope: ['user-read-email', 'user-read-private', 'user-library-read', 'user-top-read'], showDialog: true}),
   function(req, res){
 // The request will be redirected to spotify for authentication, so this
 // function will not be called.

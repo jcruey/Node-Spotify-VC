@@ -19756,6 +19756,7 @@
 
 			return {
 				savedTracks: "",
+				topTracks: "",
 				trackArt: "",
 				index: 0
 			};
@@ -19775,9 +19776,8 @@
 		},
 
 		componentDidMount: function componentDidMount() {
-			helpers.runQuery().then(function (response) {
+			helpers.getSavedTracks().then(function (response) {
 				this.setState({ savedTracks: response.data });
-				// console.log(this.state.savedTracks);
 			}.bind(this));
 		},
 
@@ -19838,7 +19838,7 @@
 									null,
 									React.createElement(
 										'a',
-										{ href: '#' },
+										{ href: '/newTracks' },
 										'New Tracks'
 									)
 								),
@@ -19847,7 +19847,7 @@
 									null,
 									React.createElement(
 										'a',
-										{ href: '#' },
+										{ href: '/favoriteTracks' },
 										'Favorite Tracks'
 									)
 								),
@@ -20042,16 +20042,32 @@
 	// Include the axios package for performing HTTP requests (promise based alternative to request)
 	var axios = __webpack_require__(162);
 
-	// Helper Functions (in this case the only one is runQuery)
+	// Helper Functions
 	var helpers = {
 
-		// This function serves our purpose of running the query to geolocate. 
-		runQuery: function runQuery() {
+		// This function retrieves the current user's saved tracks from Spotify. 
+		getSavedTracks: function getSavedTracks() {
 			return axios.get('/tracks').then(function (response) {
 				// console.log(response);
 				return response;
 			});
-			console.log('runQuery Fired');
+			console.log('getSavedTracks Fired');
+		},
+
+		getTopTracks: function getTopTracks() {
+			return axios.get('/favoriteTracks').then(function (response) {
+				// console.log(response);
+				return response;
+			});
+			console.log('getTopTracks Fired');
+		},
+
+		getNewTracks: function getNewTracks() {
+			return axios.get('/newTracks').then(function (response) {
+				// console.log(response);
+				return response;
+			});
+			console.log('getNewTracks Fired');
 		},
 
 		playMusic: function playMusic(track) {

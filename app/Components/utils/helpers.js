@@ -1,17 +1,37 @@
 // Include the axios package for performing HTTP requests (promise based alternative to request)
 var axios = require('axios');
 
-// Helper Functions (in this case the only one is runQuery)
+// Helper Functions
 var helpers = {
 
-	// This function serves our purpose of running the query to geolocate. 
-	runQuery: function(){
+	// This function retrieves the current user's saved tracks from Spotify. 
+	getSavedTracks: function(){
 		return axios.get('/tracks')
 		.then(function(response){
 			// console.log(response);
 			return response;
 		})
-		console.log('runQuery Fired');
+		console.log('getSavedTracks Fired');
+
+	},
+
+	getTopTracks: function(){
+		return axios.get('/favoriteTracks')
+		.then(function(response){
+			// console.log(response);
+			return response;
+		})
+		console.log('getTopTracks Fired');
+
+	},
+
+	getNewTracks: function(){
+		return axios.get('/newTracks')
+		.then(function(response){
+			// console.log(response);
+			return response;
+		})
+		console.log('getNewTracks Fired');
 
 	},
 
