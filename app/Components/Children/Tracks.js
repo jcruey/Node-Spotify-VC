@@ -17,15 +17,12 @@ var Tracks = React.createClass({
 		// this.state.savedTracks[i + 1].track.uri
 		console.log(i);
 		this.setState({index: i});
-			this.props.setIndex(i);
-			console.log(this.state.index);
-				// this.props.setIndex(this.state.index)
+		this.props.setIndex(i);
 		var song = this.props.savedTracks[i].track.uri
 		var trackObj = {
 			'uri': song
 		}
-		console.log('trackObj: ', trackObj)
-			console.log(song);
+		console.log(song);
 		helpers.playMusic(trackObj);
 	},
 

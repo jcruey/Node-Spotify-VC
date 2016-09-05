@@ -16,8 +16,7 @@ var Player = React.createClass({
 
 	// When a user submits... 
 	handleClickPlay: function(i){
-		// this.state.savedTracks[i + 1].track.uri
-		
+		var i = this.props.index
 		console.log(i);
 		var song = this.props.savedTracks[i].track.uri
 		var trackObj = {
@@ -50,15 +49,26 @@ var Player = React.createClass({
 
 	// Here we render the function
 	render: function(){
+		var i = this.props.index;
+		var trackArt = this.props.savedTracks[i];
+		console.log(trackArt);
+		var self = this;
 
 		return(
 
 			<div className="row">
+				<div className="col-md-12">
+					<div className="row">
+					<div className="col-md-6">
+					{/*<img src={self.savedTracks}/>*/}
+					</div>
+					</div>
 				<div className="btn-group">
 					<button onClick={this.handleClickPlay} className="btn btn-custom"><span title="Play" id="play" className="glyphicon glyphicon-play aligned"></span></button>
 					<button onClick={this.handleClickStop} className="btn btn-custom"><span title="Stop" id="stop" className="glyphicon glyphicon-stop aligned"></span></button>
 					<button onClick={this.handleClickBack} className="btn btn-custom"><span title="back" id="play" className="glyphicon glyphicon-fast-backward aligned"></span></button>
 					<button onClick={this.handleClickForward} className="btn btn-custom"><span title="next" id="play" className="glyphicon glyphicon-fast-forward aligned"></span></button>		
+				</div>
 				</div>
 			</div>
 

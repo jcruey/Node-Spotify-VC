@@ -19943,8 +19943,7 @@
 
 		// When a user submits... 
 		handleClickPlay: function handleClickPlay(i) {
-			// this.state.savedTracks[i + 1].track.uri
-
+			var i = this.props.index;
 			console.log(i);
 			var song = this.props.savedTracks[i].track.uri;
 			var trackObj = {
@@ -19976,32 +19975,45 @@
 
 		// Here we render the function
 		render: function render() {
+			var i = this.props.index;
+			var trackArt = this.props.savedTracks[i];
+			console.log(trackArt);
+			var self = this;
 
 			return React.createElement(
 				'div',
 				{ className: 'row' },
 				React.createElement(
 					'div',
-					{ className: 'btn-group' },
+					{ className: 'col-md-12' },
 					React.createElement(
-						'button',
-						{ onClick: this.handleClickPlay, className: 'btn btn-custom' },
-						React.createElement('span', { title: 'Play', id: 'play', className: 'glyphicon glyphicon-play aligned' })
+						'div',
+						{ className: 'row' },
+						React.createElement('div', { className: 'col-md-6' })
 					),
 					React.createElement(
-						'button',
-						{ onClick: this.handleClickStop, className: 'btn btn-custom' },
-						React.createElement('span', { title: 'Stop', id: 'stop', className: 'glyphicon glyphicon-stop aligned' })
-					),
-					React.createElement(
-						'button',
-						{ onClick: this.handleClickBack, className: 'btn btn-custom' },
-						React.createElement('span', { title: 'back', id: 'play', className: 'glyphicon glyphicon-fast-backward aligned' })
-					),
-					React.createElement(
-						'button',
-						{ onClick: this.handleClickForward, className: 'btn btn-custom' },
-						React.createElement('span', { title: 'next', id: 'play', className: 'glyphicon glyphicon-fast-forward aligned' })
+						'div',
+						{ className: 'btn-group' },
+						React.createElement(
+							'button',
+							{ onClick: this.handleClickPlay, className: 'btn btn-custom' },
+							React.createElement('span', { title: 'Play', id: 'play', className: 'glyphicon glyphicon-play aligned' })
+						),
+						React.createElement(
+							'button',
+							{ onClick: this.handleClickStop, className: 'btn btn-custom' },
+							React.createElement('span', { title: 'Stop', id: 'stop', className: 'glyphicon glyphicon-stop aligned' })
+						),
+						React.createElement(
+							'button',
+							{ onClick: this.handleClickBack, className: 'btn btn-custom' },
+							React.createElement('span', { title: 'back', id: 'play', className: 'glyphicon glyphicon-fast-backward aligned' })
+						),
+						React.createElement(
+							'button',
+							{ onClick: this.handleClickForward, className: 'btn btn-custom' },
+							React.createElement('span', { title: 'next', id: 'play', className: 'glyphicon glyphicon-fast-forward aligned' })
+						)
 					)
 				)
 			);
@@ -21295,13 +21307,10 @@
 			console.log(i);
 			this.setState({ index: i });
 			this.props.setIndex(i);
-			console.log(this.state.index);
-			// this.props.setIndex(this.state.index)
 			var song = this.props.savedTracks[i].track.uri;
 			var trackObj = {
 				'uri': song
 			};
-			console.log('trackObj: ', trackObj);
 			console.log(song);
 			helpers.playMusic(trackObj);
 		},

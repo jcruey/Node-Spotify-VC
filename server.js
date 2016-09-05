@@ -108,6 +108,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/home', function(req, res){
+  console.log('User: ', req.user)
 	res.render('../public/home.html', { user: req.user });
 });
 
@@ -170,6 +171,7 @@ app.get('/auth/spotify',
 app.get('/callback',
   passport.authenticate('spotify', { failureRedirect: '/login' }),
   function(req, res) {
+    console.log('User: ', req.user);
     res.redirect('/home');
   });
 
