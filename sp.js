@@ -1,4 +1,4 @@
-var LibSpotify = require('./lib/Spotify');
+var LibSpotify = require('./lib/spotify');
 var appKeyPath = './spotify_appkey.key';
 var spotify = new LibSpotify({appkeyFile: appKeyPath});	
 
