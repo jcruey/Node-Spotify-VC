@@ -63,8 +63,8 @@ var Main = React.createClass({
 					    <div className="navbar-collapse collapse">
 					        <ul className="nav navbar-nav navbar-nav navbar-right">
 					            <li className="active"><a href="/home">Home</a></li>
-					            <li><a href="#">Playlists</a></li>
-					            <li><a href="/newTracks">New Tracks</a></li>
+					            <li><a href="/globalTop50">Favorite Artists</a></li>
+					            <li><a href="/newTracks">Release Radar</a></li>
 					            <li><a href="/favoriteTracks">Favorite Tracks</a></li>
 					            <li><a href="/account">Account</a></li>
 					        </ul>

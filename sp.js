@@ -36,10 +36,20 @@ exports.pause = function() {
 	/* pause event */ });
 }
 
+exports.stop = function() {
+	spotify.player.stop();
+	spotify.player.on('stop', function () { 
+		console.log('song stopped');
+	/* stop event */ });
+}
+
 exports.progress = function() {
 	spotify.player.on('progress', function (progress) {
 		console.dir(progress);
-	 /* progress event */ });
+	 if (progress.elapsed == progress.duration){ 
+        console.log('track ended')
+ 	}
+	 /* progress event */ });	
 }
 
 exports.logout = function() {

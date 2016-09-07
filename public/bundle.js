@@ -19829,8 +19829,8 @@
 									null,
 									React.createElement(
 										'a',
-										{ href: '#' },
-										'Playlists'
+										{ href: '/globalTop50' },
+										'Favorite Artists'
 									)
 								),
 								React.createElement(
@@ -19839,7 +19839,7 @@
 									React.createElement(
 										'a',
 										{ href: '/newTracks' },
-										'New Tracks'
+										'Release Radar'
 									)
 								),
 								React.createElement(
@@ -19948,7 +19948,7 @@
 
 		// When a user submits... 
 		handleClickStop: function handleClickStop() {
-			helpers.pauseMusic();
+			helpers.stopMusic();
 		},
 
 		// When a user submits... 
@@ -20084,6 +20084,15 @@
 			console.log('Pausing track');
 
 			return axios.post('/pause').then(function (response) {
+				console.log(response);
+			});
+		},
+
+		stopMusic: function stopMusic(track) {
+
+			console.log('Stopping track');
+
+			return axios.post('/stop').then(function (response) {
 				console.log(response);
 			});
 		}
@@ -21354,6 +21363,11 @@
 			var savedTracks = this.props.savedTracks || [];
 			console.log(savedTracks);
 			var self = this;
+			function msToMinSeconds(ms) {
+				var minutes = Math.floor(ms / 60000);
+				var seconds = (ms % 60000 / 1000).toFixed(0);
+				return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+			}
 			return React.createElement(
 				'table',
 				{ className: 'table' },
@@ -21378,6 +21392,11 @@
 							'th',
 							null,
 							'Artist'
+						),
+						React.createElement(
+							'th',
+							null,
+							'Duration'
 						)
 					)
 				),
@@ -21417,6 +21436,11 @@
 								'td',
 								null,
 								track.track.artists[0].name
+							),
+							React.createElement(
+								'td',
+								null,
+								msToMinSeconds(track.track.duration_ms)
 							)
 						)
 					);

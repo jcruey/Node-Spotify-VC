@@ -38,7 +38,7 @@ var Player = React.createClass({
 
 	// When a user submits... 
 	handleClickStop: function(){
-		helpers.pauseMusic();
+		helpers.stopMusic();
 
 	},
 

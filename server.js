@@ -123,7 +123,7 @@ app.get('/tracks', function(req, res) {
     limit : 40
   })
   .then(function(data) {
-    console.log('Done!');
+    console.log('Done!', data.body.items);
     var trackObj = data.body.items
     // for (var i = 0; i<trackObj.length; i++) {
     //   console.log('------------------------------------------');
@@ -170,22 +170,22 @@ app.get('/newTracks', function(req, res) {
   });
   // Get tracks in the signed in user's Your Music library 
   // Retrieve new releases
-spotifyApi.getNewReleases({ limit : 15, offset: 1, country: 'US' })
+    spotifyApi.getPlaylist('spotify', '37i9dQZEVXbhbFu2BQ8h0C')
   .then(function(data) {
-    console.log('Done!', data.body.albums);
-    var newTrackObj = data.body.items
-    for (var i = 0; i<newTrackObj.length; i++) {
+    var playlistTracks = data.body.tracks.items
+    console.log("Release Radar");
+    for (var i = 0; i<playlistTracks.length; i++) {
       console.log('------------------------------------------');
-      console.log('Track: ' + newTrackObj[i].track.name);
-      console.log('Album: ' + newTrackObj[i].track.album.name);
-      console.log('Artist: ' + newTrackObj[i].track.artists[0].name);
-      console.log('Uri: ' + newTrackObj[i].track.uri);
+      console.log('Track: ' + playlistTracks[i].track.name);
+      console.log('Album: ' + playlistTracks[i].track.album.name);
+      console.log('Artist: ' + playlistTracks[i].track.artists[0].name);
+      console.log('Uri: ' + playlistTracks[i].track.uri);
       console.log('------------------------------------------');
     }
-    res.send(newTrackObj);
+    res.send(playlistTracks);
   }, function(err) {
     console.log('Something went wrong!', err);
-});
+  });
   
 });
   
@@ -236,6 +236,12 @@ app.post('/play', function(req, res){
 // Route to hit pause function for player
 app.post('/pause', function(req, res){
   sp.pause();
+  res.send('200');
+});
+
+// Route to hit stop function for player
+app.post('/stop', function(req, res){
+  sp.stop();
   res.send('200');
 });
 

@@ -57,6 +57,17 @@ var helpers = {
 
 	},
 
+	stopMusic: function(track){
+
+		console.log('Stopping track');
+
+		return axios.post('/stop')
+			.then(function(response){
+				console.log(response);
+		})
+
+	},
+
 
 }
 

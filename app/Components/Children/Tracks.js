@@ -39,6 +39,11 @@ var Tracks = React.createClass({
 		var savedTracks = this.props.savedTracks || [];
 		console.log(savedTracks);
 		var self = this;
+		function msToMinSeconds(ms) {
+	      var minutes = Math.floor(ms / 60000);
+	      var seconds = ((ms % 60000) / 1000).toFixed(0);
+	      return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+    }
 		return(
 
 			<table className="table">
@@ -48,10 +53,11 @@ var Tracks = React.createClass({
 				    <th>Track</th> 
 				    <th>Album</th>
 				    <th>Artist</th>
+				    <th>Duration</th>
 				</tr>
 			</thead>
 				{savedTracks.map(function(track, i) {
-					return <tbody key={i}><tr><td><button onClick={() => this.handleClickPlay(i)} data-index={i} data-track={track.track.uri} className="btn btn-custom"><span title="Play" data-track={track.track.uri} className="play glyphicon glyphicon-play aligned"></span></button></td> <td>{track.track.name}</td> <td>{track.track.album.name}</td><td>{track.track.artists[0].name}</td></tr></tbody> 
+					return <tbody key={i}><tr><td><button onClick={() => this.handleClickPlay(i)} data-index={i} data-track={track.track.uri} className="btn btn-custom"><span title="Play" data-track={track.track.uri} className="play glyphicon glyphicon-play aligned"></span></button></td> <td>{track.track.name}</td> <td>{track.track.album.name}</td><td>{track.track.artists[0].name}</td><td>{msToMinSeconds(track.track.duration_ms)}</td></tr></tbody> 
 				}.bind(this))}
 			</table>
 
