@@ -230,7 +230,7 @@ app.get('/logout', function(req, res){
 
 // Route to hit play function for player
 app.post('/play', function(req, res){
-  console.log('Req.body: ', req.body);
+  // console.log('Req.body: ', req.body);
   trackList = req.body.tracks;
   currentIndex = req.body.index;
   trackObj = {
