@@ -1,0 +1,834 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/kseniacruey/.nvm/versions/node/v4.4.1/bin/node',
+1 verbose cli   '/Users/kseniacruey/.nvm/versions/node/v4.4.1/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'libspotify' ]
+2 info using npm@2.14.20
+3 info using node@v4.4.1
+4 verbose install initial load of /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/package.json
+5 warn package.json Node-Spotify-VC@1.0.0 No description
+6 warn package.json Node-Spotify-VC@1.0.0 No repository field.
+7 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/annyang/package.json
+8 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/axios/package.json
+9 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/babel-core/package.json
+10 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/babel-loader/package.json
+11 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/babel-preset-es2015/package.json
+12 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/babel-preset-react/package.json
+13 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/body-parser/package.json
+14 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/consolidate/package.json
+15 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/cookie-parser/package.json
+16 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/core-js/package.json
+17 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/express/package.json
+18 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/express-session/package.json
+19 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/lodash/package.json
+20 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/method-override/package.json
+21 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/mongoose/package.json
+22 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/morgan/package.json
+23 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/node-spotify/package.json
+24 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/passport/package.json
+25 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/passport-oauth/package.json
+26 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/passport-spotify/package.json
+27 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/pkginfo/package.json
+28 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/q/package.json
+29 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/react/package.json
+30 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/react-dom/package.json
+31 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/request/package.json
+32 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/spotify-web-api-node/package.json
+33 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/swig/package.json
+34 verbose installManyTop reading scoped package data from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/webpack/package.json
+35 info package.json passport-oauth@1.0.0 No license field.
+36 info package.json q@1.4.1 license should be a valid SPDX license expression
+37 info package.json passport-spotify@0.3.0 No license field.
+38 verbose readDependencies loading dependencies from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/package.json
+39 silly cache add args [ 'libspotify', null ]
+40 verbose cache add spec libspotify
+41 silly cache add parsed spec Result {
+41 silly cache add   raw: 'libspotify',
+41 silly cache add   scope: null,
+41 silly cache add   name: 'libspotify',
+41 silly cache add   rawSpec: '',
+41 silly cache add   spec: 'latest',
+41 silly cache add   type: 'tag' }
+42 silly addNamed libspotify@latest
+43 verbose addNamed "latest" is being treated as a dist-tag for libspotify
+44 info addNameTag [ 'libspotify', 'latest' ]
+45 silly mapToRegistry name libspotify
+46 silly mapToRegistry using default registry
+47 silly mapToRegistry registry https://registry.npmjs.org/
+48 silly mapToRegistry uri https://registry.npmjs.org/libspotify
+49 verbose addNameTag registry:https://registry.npmjs.org/libspotify not in flight; fetching
+50 verbose request uri https://registry.npmjs.org/libspotify
+51 verbose request no auth needed
+52 info attempt registry request try #1 at 10:18:59 AM
+53 verbose request id ba5ab421d95fe858
+54 verbose etag "DGU9X7W0TP25UFX2XPDYCKC0B"
+55 http request GET https://registry.npmjs.org/libspotify
+56 http 304 https://registry.npmjs.org/libspotify
+57 verbose headers { date: 'Sat, 10 Sep 2016 14:19:00 GMT',
+57 verbose headers   via: '1.1 varnish',
+57 verbose headers   'cache-control': 'max-age=300',
+57 verbose headers   etag: '"DGU9X7W0TP25UFX2XPDYCKC0B"',
+57 verbose headers   age: '0',
+57 verbose headers   connection: 'keep-alive',
+57 verbose headers   'x-served-by': 'cache-iad2624-IAD',
+57 verbose headers   'x-cache': 'MISS',
+57 verbose headers   'x-cache-hits': '0',
+57 verbose headers   'x-timer': 'S1473517140.249615,VS0,VE62',
+57 verbose headers   vary: 'Accept-Encoding' }
+58 silly get cb [ 304,
+58 silly get   { date: 'Sat, 10 Sep 2016 14:19:00 GMT',
+58 silly get     via: '1.1 varnish',
+58 silly get     'cache-control': 'max-age=300',
+58 silly get     etag: '"DGU9X7W0TP25UFX2XPDYCKC0B"',
+58 silly get     age: '0',
+58 silly get     connection: 'keep-alive',
+58 silly get     'x-served-by': 'cache-iad2624-IAD',
+58 silly get     'x-cache': 'MISS',
+58 silly get     'x-cache-hits': '0',
+58 silly get     'x-timer': 'S1473517140.249615,VS0,VE62',
+58 silly get     vary: 'Accept-Encoding' } ]
+59 verbose etag https://registry.npmjs.org/libspotify from cache
+60 verbose get saving libspotify to /Users/kseniacruey/.npm/registry.npmjs.org/libspotify/.cache.json
+61 verbose correctMkdir /Users/kseniacruey/.npm correctMkdir not in flight; initializing
+62 silly addNameTag next cb for libspotify with tag latest
+63 silly addNamed libspotify@0.2.2
+64 verbose addNamed "0.2.2" is a plain semver version for libspotify
+65 silly cache afterAdd libspotify@0.2.2
+66 verbose afterAdd /Users/kseniacruey/.npm/libspotify/0.2.2/package/package.json not in flight; writing
+67 verbose correctMkdir /Users/kseniacruey/.npm correctMkdir not in flight; initializing
+68 verbose afterAdd /Users/kseniacruey/.npm/libspotify/0.2.2/package/package.json written
+69 silly install resolved [ { name: 'libspotify',
+69 silly install resolved     description: 'Node bindings to the libspotify C library',
+69 silly install resolved     author: { name: 'Florent Jaby', email: 'florent.jaby@gmail.com' },
+69 silly install resolved     keywords: [ 'spotify', 'libspotify', 'bindings', 'play', 'player', 'music' ],
+69 silly install resolved     version: '0.2.2',
+69 silly install resolved     maintainers: [ [Object] ],
+69 silly install resolved     homepage: 'http://projects.flo.by/node-libspotify/',
+69 silly install resolved     bugs: { url: 'https://github.com/floby/node-libspotify/issues' },
+69 silly install resolved     repository:
+69 silly install resolved      { type: 'git',
+69 silly install resolved        url: 'git+https://github.com/Floby/node-libspotify.git' },
+69 silly install resolved     engines: { node: '>0.10.0' },
+69 silly install resolved     dependencies: { bindings: '~1.1.1', i: '~0.3', format: '0.1', backoff: '~2.0' },
+69 silly install resolved     devDependencies: { nodeunit: '~0.7', trycatch: '*', colors: '*' },
+69 silly install resolved     scripts:
+69 silly install resolved      { install: 'node-gyp configure build',
+69 silly install resolved        pretest: 'rm -rf /tmp/node-libspotify 2>/dev/null ; node-gyp clean >/dev/null && node-gyp configure --debug  >/dev/null && node-gyp build >/dev/null',
+69 silly install resolved        test: 'nodeunit test/test-*' },
+69 silly install resolved     main: 'lib/libspotify.js',
+69 silly install resolved     readme: '[![Build Status](https://travis-ci.org/Floby/node-libspotify.png?branch=master)](https://travis-ci.org/Floby/node-libspotify?branch=master)\n\nnode-libspotify\n===============\n\nNode bindings for the libspotify C library\n\n_This is still very alpha, but you can already play around I suppose_\n\nInstall & test\n--------------\n\nPlease note that you must have the libspotify library installed on your system\nyou can get it from [here](https://developer.spotify.com/technologies/libspotify/).\n\nYou must provide your own spotify application key, because I\'m not giving mine away :]\nYou also must provide valid credentials for a spotify account.\n\nOnce you cloned the repository run `npm install` then test the module with `npm test`.\n\nMain objectives\n---------------\n\nAs there are already a number of spotify bindings or modules for the REST API, the main goal\nof this module is not to give access to the artist and tracks catalog. It\'s main purpose is\nto allow for playback of the tracks. The idea is to expose a `Player` object in which the user\ncan load tracks, play them, and get decompressed audio data from it (as provided by the libspotify C library).\n\nWhat the user can do with the audio stream is up to him/her. As it is raw PCM data, it is easy to pipe to\nsome kind of encoder (like gstreamer) in order to broadcast music or stream it to a web user (as long as it complies\nwith the Spotify terms of service ;).\n\nThe user can also choose to play the song locally with a node module like [speaker](http://github.com/TooTallNate/node-speaker)\nor pipe the audio data to another process like [aplay](http://linux.die.net/man/1/aplay).\n\n\nThe main goal is now achieved. Audio data is exposed as the Player object which behaves like a readable stream.\n\nSnippet\n-------\n\nHere is a code snippet of how to play a track from spotify\n\n```js\n\nvar sp = require(\'../lib/libspotify\');\nvar cred = require(\'../spotify_key/passwd\');\nvar spawn = require(\'child_process\').spawn;\n\nvar session = new sp.Session({\n    applicationKey: __dirname + \'/../spotify_key/spotify_appkey.key\'\n});\nsession.login(cred.login, cred.password);\nsession.once(\'login\', function(err) {\n    if(err) this.emit(\'error\', err);\n\n    var search = new sp.Search(\'artist:"rick astley" track:"never gonna give you up"\');\n    search.trackCount = 1; // we\'re only interested in the first result;\n    search.execute();\n    search.once(\'ready\', function() {\n        if(!search.tracks.length) {\n            console.error(\'there is no track to play :[\');\n            session.logout();\n        }\n\n        var track = search.tracks[0];\n        var player = session.getPlayer();\n        player.load(track);\n        player.play();\n\n        // linux\n        var play = spawn(\'aplay\', [\'-c\', 2, \'-f\', \'S16_LE\', \'-r\', \'44100\']);\n        // osx with `brew install sox`\n        var play = spawn(\'play\', [\'-r\', 44100, \'-b\', 16, \'-L\', \'-c\', 2, \'-e\', \'signed-integer\', \'-t\', \'raw\', \'-\']);\n\n        player.pipe(play.stdin);\n\n        console.error(\'playing track. end in %s\', track.humanDuration);\n        player.on(\'data\', function(buffer) {\n            // buffer.length\n            // buffer.rate\n            // buffer.channels\n            // 16bit samples\n        });\n        player.once(\'track-end\', function() {\n            console.error(\'track ended\');\n            player.stop();\n            session.close();\n        });\n    });\n});\n\n```\n\n\nTODO\n====\n\n* Bind to the rest of the API...\n\n\n\nCredits\n=======\n\nThanks to [IainCole](https://github.com/IainCole/node-libspotify) for his help on the playlist subsystem.\nThanks to [LinusU](https://github.com/LinusU) and [swissmanu](https://github.com/swissmanu) for their help on album cover retreivals\n',
+69 silly install resolved     readmeFilename: 'README.md',
+69 silly install resolved     _id: 'libspotify@0.2.2',
+69 silly install resolved     dist:
+69 silly install resolved      { shasum: '558100d001c3d2d3e9c51b866e19b993e5463b7f',
+69 silly install resolved        tarball: 'https://registry.npmjs.org/libspotify/-/libspotify-0.2.2.tgz' },
+69 silly install resolved     _from: 'libspotify@latest',
+69 silly install resolved     _npmVersion: '1.2.32',
+69 silly install resolved     _npmUser: { name: 'floby', email: 'florent.jaby@gmail.com' },
+69 silly install resolved     directories: {},
+69 silly install resolved     _shasum: '558100d001c3d2d3e9c51b866e19b993e5463b7f',
+69 silly install resolved     _resolved: 'https://registry.npmjs.org/libspotify/-/libspotify-0.2.2.tgz' } ]
+70 info install libspotify@0.2.2 into /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC
+71 info installOne libspotify@0.2.2
+72 verbose installOne of libspotify to /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC not in flight; installing
+73 verbose correctMkdir /Users/kseniacruey/.npm/_locks correctMkdir not in flight; initializing
+74 verbose lock using /Users/kseniacruey/.npm/_locks/libspotify-be7da6c96e539048.lock for /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify
+75 silly install write writing libspotify 0.2.2 to /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify
+76 verbose unbuild node_modules/libspotify
+77 silly gentlyRm /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify is being purged from base /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC
+78 verbose gentlyRm don't care about contents; nuking /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify
+79 verbose tar unpack /Users/kseniacruey/.npm/libspotify/0.2.2/package.tgz
+80 verbose tar unpacking to /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify
+81 silly gentlyRm /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify is being purged
+82 verbose gentlyRm don't care about contents; nuking /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify
+83 silly gunzTarPerm modes [ '755', '644' ]
+84 silly gunzTarPerm extractEntry package.json
+85 silly gunzTarPerm extractEntry .npmignore
+86 silly gunzTarPerm extractEntry README.md
+87 silly gunzTarPerm extractEntry api.md
+88 silly gunzTarPerm extractEntry binding.gyp
+89 silly gunzTarPerm extractEntry .travis.yml
+90 silly gunzTarPerm extractEntry lib/Album.js
+91 silly gunzTarPerm extractEntry lib/Artist.js
+92 silly gunzTarPerm extractEntry lib/Player.js
+93 silly gunzTarPerm extractEntry lib/Playlist.js
+94 silly gunzTarPerm extractEntry lib/PlaylistContainer.js
+95 silly gunzTarPerm extractEntry lib/Search.js
+96 silly gunzTarPerm extractEntry lib/Session.js
+97 silly gunzTarPerm extractEntry lib/SpObject.js
+98 silly gunzTarPerm extractEntry lib/Track.js
+99 silly gunzTarPerm extractEntry lib/libspotify.js
+100 silly gunzTarPerm extractEntry test/test-000-a-check.js
+101 silly gunzTarPerm extractEntry test/test-020-search-02-process.js
+102 silly gunzTarPerm extractEntry test/test-030-track.js
+103 silly gunzTarPerm extractEntry test/test-031-album.js
+104 silly gunzTarPerm extractEntry test/test-020-search-01-create.js
+105 silly gunzTarPerm extractEntry test/test-050-player01-end-of-track.js
+106 silly gunzTarPerm extractEntry test/test-060-link.js
+107 silly gunzTarPerm extractEntry test/test-065-link-types.js
+108 silly gunzTarPerm extractEntry test/test-066-link-from-objects.js
+109 silly gunzTarPerm extractEntry test/test-070-backoff-ready.js
+110 silly gunzTarPerm extractEntry test/test-010-session02-login.js
+111 silly gunzTarPerm extractEntry test/test-080-playlist.js
+112 silly gunzTarPerm extractEntry test/test-010-session01-instance.js
+113 silly gunzTarPerm extractEntry test/test-999-cleanup.js
+114 silly gunzTarPerm extractEntry test/test-000-config.js
+115 silly gunzTarPerm extractEntry test/util.js
+116 silly gunzTarPerm extractEntry test/test-050-player00-track.js
+117 silly gunzTarPerm extractEntry scripts/travis-install.sh
+118 silly gunzTarPerm extractEntry scripts/travis-setup.sh
+119 silly gunzTarPerm extractEntry src/player.cc
+120 silly gunzTarPerm extractEntry src/album.cc
+121 silly gunzTarPerm extractEntry src/audio.cc
+122 silly gunzTarPerm extractEntry src/audio.h
+123 silly gunzTarPerm extractEntry src/binding.cc
+124 silly gunzTarPerm extractEntry src/common.h
+125 silly gunzTarPerm extractEntry src/link.cc
+126 silly gunzTarPerm extractEntry src/artist.cc
+127 silly gunzTarPerm extractEntry src/playlist.cc
+128 silly gunzTarPerm extractEntry src/playlistcallbacks.cc
+129 silly gunzTarPerm extractEntry src/queue.h
+130 silly gunzTarPerm extractEntry src/search.cc
+131 silly gunzTarPerm extractEntry src/session.cc
+132 silly gunzTarPerm extractEntry src/track.cc
+133 silly gunzTarPerm extractEntry example/play.js
+134 silly gunzTarPerm extractEntry example/speakers.js
+135 silly gunzTarPerm extractEntry example/write.js
+136 verbose write writing to /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/package.json
+137 info preinstall libspotify@0.2.2
+138 verbose readDependencies loading dependencies from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/package.json
+139 silly prepareForInstallMany adding bindings@~1.1.1 from libspotify dependencies
+140 silly prepareForInstallMany adding i@~0.3 from libspotify dependencies
+141 silly prepareForInstallMany adding format@0.1 from libspotify dependencies
+142 silly prepareForInstallMany adding backoff@~2.0 from libspotify dependencies
+143 verbose readDependencies loading dependencies from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/package.json
+144 silly cache add args [ 'i@~0.3', null ]
+145 verbose cache add spec i@~0.3
+146 silly cache add parsed spec Result {
+146 silly cache add   raw: 'i@~0.3',
+146 silly cache add   scope: null,
+146 silly cache add   name: 'i',
+146 silly cache add   rawSpec: '~0.3',
+146 silly cache add   spec: '>=0.3.0 <0.4.0',
+146 silly cache add   type: 'range' }
+147 silly addNamed i@>=0.3.0 <0.4.0
+148 verbose addNamed ">=0.3.0 <0.4.0" is a valid semver range for i
+149 silly addNameRange { name: 'i', range: '>=0.3.0 <0.4.0', hasData: false }
+150 silly mapToRegistry name i
+151 silly mapToRegistry using default registry
+152 silly mapToRegistry registry https://registry.npmjs.org/
+153 silly mapToRegistry uri https://registry.npmjs.org/i
+154 verbose addNameRange registry:https://registry.npmjs.org/i not in flight; fetching
+155 silly cache add args [ 'format@0.1', null ]
+156 verbose cache add spec format@0.1
+157 silly cache add parsed spec Result {
+157 silly cache add   raw: 'format@0.1',
+157 silly cache add   scope: null,
+157 silly cache add   name: 'format',
+157 silly cache add   rawSpec: '0.1',
+157 silly cache add   spec: '>=0.1.0 <0.2.0',
+157 silly cache add   type: 'range' }
+158 silly addNamed format@>=0.1.0 <0.2.0
+159 verbose addNamed ">=0.1.0 <0.2.0" is a valid semver range for format
+160 silly addNameRange { name: 'format', range: '>=0.1.0 <0.2.0', hasData: false }
+161 silly mapToRegistry name format
+162 silly mapToRegistry using default registry
+163 silly mapToRegistry registry https://registry.npmjs.org/
+164 silly mapToRegistry uri https://registry.npmjs.org/format
+165 verbose addNameRange registry:https://registry.npmjs.org/format not in flight; fetching
+166 silly cache add args [ 'backoff@~2.0', null ]
+167 verbose cache add spec backoff@~2.0
+168 silly cache add parsed spec Result {
+168 silly cache add   raw: 'backoff@~2.0',
+168 silly cache add   scope: null,
+168 silly cache add   name: 'backoff',
+168 silly cache add   rawSpec: '~2.0',
+168 silly cache add   spec: '>=2.0.0 <2.1.0',
+168 silly cache add   type: 'range' }
+169 silly addNamed backoff@>=2.0.0 <2.1.0
+170 verbose addNamed ">=2.0.0 <2.1.0" is a valid semver range for backoff
+171 silly addNameRange { name: 'backoff', range: '>=2.0.0 <2.1.0', hasData: false }
+172 silly mapToRegistry name backoff
+173 silly mapToRegistry using default registry
+174 silly mapToRegistry registry https://registry.npmjs.org/
+175 silly mapToRegistry uri https://registry.npmjs.org/backoff
+176 verbose addNameRange registry:https://registry.npmjs.org/backoff not in flight; fetching
+177 silly cache add args [ 'bindings@~1.1.1', null ]
+178 verbose cache add spec bindings@~1.1.1
+179 silly cache add parsed spec Result {
+179 silly cache add   raw: 'bindings@~1.1.1',
+179 silly cache add   scope: null,
+179 silly cache add   name: 'bindings',
+179 silly cache add   rawSpec: '~1.1.1',
+179 silly cache add   spec: '>=1.1.1 <1.2.0',
+179 silly cache add   type: 'range' }
+180 silly addNamed bindings@>=1.1.1 <1.2.0
+181 verbose addNamed ">=1.1.1 <1.2.0" is a valid semver range for bindings
+182 silly addNameRange { name: 'bindings', range: '>=1.1.1 <1.2.0', hasData: false }
+183 silly mapToRegistry name bindings
+184 silly mapToRegistry using default registry
+185 silly mapToRegistry registry https://registry.npmjs.org/
+186 silly mapToRegistry uri https://registry.npmjs.org/bindings
+187 verbose addNameRange registry:https://registry.npmjs.org/bindings not in flight; fetching
+188 verbose request uri https://registry.npmjs.org/i
+189 verbose request no auth needed
+190 info attempt registry request try #1 at 10:19:00 AM
+191 verbose etag "QVRTAPOIULHWK59ICSMRJS8R"
+192 http request GET https://registry.npmjs.org/i
+193 verbose request uri https://registry.npmjs.org/format
+194 verbose request no auth needed
+195 info attempt registry request try #1 at 10:19:00 AM
+196 verbose etag "9NAP9G0NHDECF6HAFL3WU8LP2"
+197 http request GET https://registry.npmjs.org/format
+198 verbose request uri https://registry.npmjs.org/backoff
+199 verbose request no auth needed
+200 info attempt registry request try #1 at 10:19:00 AM
+201 verbose etag "6535OGZFWCPTNI9BU4HI6XLKL"
+202 http request GET https://registry.npmjs.org/backoff
+203 verbose request uri https://registry.npmjs.org/bindings
+204 verbose request no auth needed
+205 info attempt registry request try #1 at 10:19:00 AM
+206 verbose etag "33TX4J3DNTGF7K41ZUV6OA182"
+207 http request GET https://registry.npmjs.org/bindings
+208 http 200 https://registry.npmjs.org/i
+209 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+209 verbose headers   etag: '"7BKYXMQ3RTTLUVB6W43H3FP4N"',
+209 verbose headers   'content-type': 'application/json',
+209 verbose headers   'content-encoding': 'gzip',
+209 verbose headers   'cache-control': 'max-age=300',
+209 verbose headers   'content-length': '2853',
+209 verbose headers   'accept-ranges': 'bytes',
+209 verbose headers   date: 'Sat, 10 Sep 2016 14:19:00 GMT',
+209 verbose headers   via: '1.1 varnish',
+209 verbose headers   age: '30',
+209 verbose headers   connection: 'keep-alive',
+209 verbose headers   'x-served-by': 'cache-iad2121-IAD',
+209 verbose headers   'x-cache': 'HIT',
+209 verbose headers   'x-cache-hits': '1',
+209 verbose headers   'x-timer': 'S1473517140.634402,VS0,VE0',
+209 verbose headers   vary: 'Accept-Encoding' }
+210 silly get cb [ 200,
+210 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+210 silly get     etag: '"7BKYXMQ3RTTLUVB6W43H3FP4N"',
+210 silly get     'content-type': 'application/json',
+210 silly get     'content-encoding': 'gzip',
+210 silly get     'cache-control': 'max-age=300',
+210 silly get     'content-length': '2853',
+210 silly get     'accept-ranges': 'bytes',
+210 silly get     date: 'Sat, 10 Sep 2016 14:19:00 GMT',
+210 silly get     via: '1.1 varnish',
+210 silly get     age: '30',
+210 silly get     connection: 'keep-alive',
+210 silly get     'x-served-by': 'cache-iad2121-IAD',
+210 silly get     'x-cache': 'HIT',
+210 silly get     'x-cache-hits': '1',
+210 silly get     'x-timer': 'S1473517140.634402,VS0,VE0',
+210 silly get     vary: 'Accept-Encoding' } ]
+211 verbose get saving i to /Users/kseniacruey/.npm/registry.npmjs.org/i/.cache.json
+212 verbose correctMkdir /Users/kseniacruey/.npm correctMkdir not in flight; initializing
+213 http 304 https://registry.npmjs.org/bindings
+214 verbose headers { date: 'Sat, 10 Sep 2016 14:19:00 GMT',
+214 verbose headers   via: '1.1 varnish',
+214 verbose headers   'cache-control': 'max-age=300',
+214 verbose headers   etag: '"33TX4J3DNTGF7K41ZUV6OA182"',
+214 verbose headers   age: '230',
+214 verbose headers   connection: 'keep-alive',
+214 verbose headers   'x-served-by': 'cache-iad2622-IAD',
+214 verbose headers   'x-cache': 'HIT',
+214 verbose headers   'x-cache-hits': '2',
+214 verbose headers   'x-timer': 'S1473517140.640147,VS0,VE0',
+214 verbose headers   vary: 'Accept-Encoding' }
+215 silly get cb [ 304,
+215 silly get   { date: 'Sat, 10 Sep 2016 14:19:00 GMT',
+215 silly get     via: '1.1 varnish',
+215 silly get     'cache-control': 'max-age=300',
+215 silly get     etag: '"33TX4J3DNTGF7K41ZUV6OA182"',
+215 silly get     age: '230',
+215 silly get     connection: 'keep-alive',
+215 silly get     'x-served-by': 'cache-iad2622-IAD',
+215 silly get     'x-cache': 'HIT',
+215 silly get     'x-cache-hits': '2',
+215 silly get     'x-timer': 'S1473517140.640147,VS0,VE0',
+215 silly get     vary: 'Accept-Encoding' } ]
+216 verbose etag https://registry.npmjs.org/bindings from cache
+217 verbose get saving bindings to /Users/kseniacruey/.npm/registry.npmjs.org/bindings/.cache.json
+218 verbose correctMkdir /Users/kseniacruey/.npm correctMkdir not in flight; initializing
+219 silly addNameRange number 2 { name: 'i', range: '>=0.3.0 <0.4.0', hasData: true }
+220 silly addNameRange versions [ 'i',
+220 silly addNameRange   [ '0.2.0', '0.3.0', '0.3.1', '0.3.3', '0.3.4', '0.3.5' ] ]
+221 silly addNamed i@0.3.5
+222 verbose addNamed "0.3.5" is a plain semver version for i
+223 silly addNameRange number 2 { name: 'bindings', range: '>=1.1.1 <1.2.0', hasData: true }
+224 silly addNameRange versions [ 'bindings',
+224 silly addNameRange   [ '0.0.1',
+224 silly addNameRange     '0.1.0',
+224 silly addNameRange     '0.1.1',
+224 silly addNameRange     '0.2.0',
+224 silly addNameRange     '0.2.1',
+224 silly addNameRange     '0.2.2',
+224 silly addNameRange     '0.2.3',
+224 silly addNameRange     '0.2.4',
+224 silly addNameRange     '0.3.0',
+224 silly addNameRange     '0.4.0',
+224 silly addNameRange     '1.0.0',
+224 silly addNameRange     '1.1.0',
+224 silly addNameRange     '1.1.1',
+224 silly addNameRange     '1.2.0',
+224 silly addNameRange     '1.2.1' ] ]
+225 silly addNamed bindings@1.1.1
+226 verbose addNamed "1.1.1" is a plain semver version for bindings
+227 silly cache afterAdd i@0.3.5
+228 verbose afterAdd /Users/kseniacruey/.npm/i/0.3.5/package/package.json not in flight; writing
+229 verbose correctMkdir /Users/kseniacruey/.npm correctMkdir not in flight; initializing
+230 silly cache afterAdd bindings@1.1.1
+231 verbose afterAdd /Users/kseniacruey/.npm/bindings/1.1.1/package/package.json not in flight; writing
+232 verbose correctMkdir /Users/kseniacruey/.npm correctMkdir not in flight; initializing
+233 verbose afterAdd /Users/kseniacruey/.npm/i/0.3.5/package/package.json written
+234 verbose afterAdd /Users/kseniacruey/.npm/bindings/1.1.1/package/package.json written
+235 http 304 https://registry.npmjs.org/backoff
+236 verbose headers { date: 'Sat, 10 Sep 2016 14:19:00 GMT',
+236 verbose headers   via: '1.1 varnish',
+236 verbose headers   'cache-control': 'max-age=300',
+236 verbose headers   etag: '"6535OGZFWCPTNI9BU4HI6XLKL"',
+236 verbose headers   age: '0',
+236 verbose headers   connection: 'keep-alive',
+236 verbose headers   'x-served-by': 'cache-iad2151-IAD',
+236 verbose headers   'x-cache': 'HIT',
+236 verbose headers   'x-cache-hits': '1',
+236 verbose headers   'x-timer': 'S1473517140.637204,VS0,VE384',
+236 verbose headers   vary: 'Accept-Encoding' }
+237 silly get cb [ 304,
+237 silly get   { date: 'Sat, 10 Sep 2016 14:19:00 GMT',
+237 silly get     via: '1.1 varnish',
+237 silly get     'cache-control': 'max-age=300',
+237 silly get     etag: '"6535OGZFWCPTNI9BU4HI6XLKL"',
+237 silly get     age: '0',
+237 silly get     connection: 'keep-alive',
+237 silly get     'x-served-by': 'cache-iad2151-IAD',
+237 silly get     'x-cache': 'HIT',
+237 silly get     'x-cache-hits': '1',
+237 silly get     'x-timer': 'S1473517140.637204,VS0,VE384',
+237 silly get     vary: 'Accept-Encoding' } ]
+238 verbose etag https://registry.npmjs.org/backoff from cache
+239 verbose get saving backoff to /Users/kseniacruey/.npm/registry.npmjs.org/backoff/.cache.json
+240 verbose correctMkdir /Users/kseniacruey/.npm correctMkdir not in flight; initializing
+241 http 304 https://registry.npmjs.org/format
+242 verbose headers { date: 'Sat, 10 Sep 2016 14:19:00 GMT',
+242 verbose headers   via: '1.1 varnish',
+242 verbose headers   'cache-control': 'max-age=300',
+242 verbose headers   etag: '"9NAP9G0NHDECF6HAFL3WU8LP2"',
+242 verbose headers   age: '0',
+242 verbose headers   connection: 'keep-alive',
+242 verbose headers   'x-served-by': 'cache-iad2638-IAD',
+242 verbose headers   'x-cache': 'MISS',
+242 verbose headers   'x-cache-hits': '0',
+242 verbose headers   'x-timer': 'S1473517140.636274,VS0,VE391',
+242 verbose headers   vary: 'Accept-Encoding' }
+243 silly get cb [ 304,
+243 silly get   { date: 'Sat, 10 Sep 2016 14:19:00 GMT',
+243 silly get     via: '1.1 varnish',
+243 silly get     'cache-control': 'max-age=300',
+243 silly get     etag: '"9NAP9G0NHDECF6HAFL3WU8LP2"',
+243 silly get     age: '0',
+243 silly get     connection: 'keep-alive',
+243 silly get     'x-served-by': 'cache-iad2638-IAD',
+243 silly get     'x-cache': 'MISS',
+243 silly get     'x-cache-hits': '0',
+243 silly get     'x-timer': 'S1473517140.636274,VS0,VE391',
+243 silly get     vary: 'Accept-Encoding' } ]
+244 verbose etag https://registry.npmjs.org/format from cache
+245 verbose get saving format to /Users/kseniacruey/.npm/registry.npmjs.org/format/.cache.json
+246 verbose correctMkdir /Users/kseniacruey/.npm correctMkdir not in flight; initializing
+247 silly addNameRange number 2 { name: 'backoff', range: '>=2.0.0 <2.1.0', hasData: true }
+248 silly addNameRange versions [ 'backoff',
+248 silly addNameRange   [ '0.0.1',
+248 silly addNameRange     '0.0.2',
+248 silly addNameRange     '0.0.3',
+248 silly addNameRange     '0.1.0',
+248 silly addNameRange     '0.2.0',
+248 silly addNameRange     '0.2.1',
+248 silly addNameRange     '0.3.0',
+248 silly addNameRange     '1.0.0',
+248 silly addNameRange     '1.1.0',
+248 silly addNameRange     '1.2.0',
+248 silly addNameRange     '1.2.1',
+248 silly addNameRange     '2.0.0',
+248 silly addNameRange     '2.1.0',
+248 silly addNameRange     '2.2.0',
+248 silly addNameRange     '2.3.0',
+248 silly addNameRange     '2.4.0',
+248 silly addNameRange     '2.4.1',
+248 silly addNameRange     '2.5.0' ] ]
+249 silly addNamed backoff@2.0.0
+250 verbose addNamed "2.0.0" is a plain semver version for backoff
+251 silly addNameRange number 2 { name: 'format', range: '>=0.1.0 <0.2.0', hasData: true }
+252 silly addNameRange versions [ 'format',
+252 silly addNameRange   [ '0.1.0',
+252 silly addNameRange     '0.1.1',
+252 silly addNameRange     '0.1.2',
+252 silly addNameRange     '0.1.3',
+252 silly addNameRange     '0.1.4',
+252 silly addNameRange     '0.2.0',
+252 silly addNameRange     '0.2.1',
+252 silly addNameRange     '0.2.2' ] ]
+253 silly addNamed format@0.1.4
+254 verbose addNamed "0.1.4" is a plain semver version for format
+255 silly cache afterAdd backoff@2.0.0
+256 verbose afterAdd /Users/kseniacruey/.npm/backoff/2.0.0/package/package.json not in flight; writing
+257 verbose correctMkdir /Users/kseniacruey/.npm correctMkdir not in flight; initializing
+258 silly cache afterAdd format@0.1.4
+259 verbose afterAdd /Users/kseniacruey/.npm/format/0.1.4/package/package.json not in flight; writing
+260 verbose correctMkdir /Users/kseniacruey/.npm correctMkdir not in flight; initializing
+261 verbose afterAdd /Users/kseniacruey/.npm/backoff/2.0.0/package/package.json written
+262 verbose afterAdd /Users/kseniacruey/.npm/format/0.1.4/package/package.json written
+263 silly install resolved [ { name: 'i',
+263 silly install resolved     version: '0.3.5',
+263 silly install resolved     author:
+263 silly install resolved      { name: 'Pavan Kumar Sunkara',
+263 silly install resolved        email: 'pavan.sss1991@gmail.com',
+263 silly install resolved        url: 'pksunkara.github.com' },
+263 silly install resolved     description: 'custom inflections for nodejs',
+263 silly install resolved     main: './lib/inflect',
+263 silly install resolved     repository: { type: 'git', url: 'git://github.com/pksunkara/inflect.git' },
+263 silly install resolved     keywords:
+263 silly install resolved      [ 'singular',
+263 silly install resolved        'plural',
+263 silly install resolved        'camelize',
+263 silly install resolved        'underscore',
+263 silly install resolved        'dasherize',
+263 silly install resolved        'demodulize',
+263 silly install resolved        'ordinalize',
+263 silly install resolved        'uncountable',
+263 silly install resolved        'pluralize',
+263 silly install resolved        'singularize',
+263 silly install resolved        'titleize',
+263 silly install resolved        'tableize',
+263 silly install resolved        'classify',
+263 silly install resolved        'foreign_key' ],
+263 silly install resolved     homepage: 'http://pksunkara.github.com/inflect',
+263 silly install resolved     scripts: { test: 'vows --spec $(find test -name \'*-test.js\')' },
+263 silly install resolved     contributors: [ [Object] ],
+263 silly install resolved     dependencies: {},
+263 silly install resolved     devDependencies: { vows: '0.7.0' },
+263 silly install resolved     engines: { node: '>=0.4' },
+263 silly install resolved     bugs: { url: 'https://github.com/pksunkara/inflect/issues' },
+263 silly install resolved     licenses: [ [Object] ],
+263 silly install resolved     gitHead: 'bbcadd57a182007ab158acea511515b815385d4d',
+263 silly install resolved     _id: 'i@0.3.5',
+263 silly install resolved     _shasum: '1d2b854158ec8169113c6cb7f6b6801e99e211d5',
+263 silly install resolved     _from: 'i@>=0.3.0 <0.4.0',
+263 silly install resolved     _npmVersion: '2.14.9',
+263 silly install resolved     _nodeVersion: '0.12.9',
+263 silly install resolved     _npmUser: { name: 'pksunkara', email: 'pavan.sss1991@gmail.com' },
+263 silly install resolved     dist:
+263 silly install resolved      { shasum: '1d2b854158ec8169113c6cb7f6b6801e99e211d5',
+263 silly install resolved        tarball: 'https://registry.npmjs.org/i/-/i-0.3.5.tgz' },
+263 silly install resolved     maintainers: [ [Object] ],
+263 silly install resolved     _npmOperationalInternal:
+263 silly install resolved      { host: 'packages-16-east.internal.npmjs.com',
+263 silly install resolved        tmp: 'tmp/i-0.3.5.tgz_1462355680372_0.1744775390252471' },
+263 silly install resolved     directories: {},
+263 silly install resolved     _resolved: 'https://registry.npmjs.org/i/-/i-0.3.5.tgz',
+263 silly install resolved     readme: 'ERROR: No README data found!' },
+263 silly install resolved   { name: 'bindings',
+263 silly install resolved     description: 'Helper module for loading your native module\'s .node file',
+263 silly install resolved     keywords: [ 'native', 'addon', 'bindings', 'gyp', 'waf', 'c', 'c++' ],
+263 silly install resolved     version: '1.1.1',
+263 silly install resolved     author:
+263 silly install resolved      { name: 'Nathan Rajlich',
+263 silly install resolved        email: 'nathan@tootallnate.net',
+263 silly install resolved        url: 'http://tootallnate.net' },
+263 silly install resolved     repository:
+263 silly install resolved      { type: 'git',
+263 silly install resolved        url: 'git://github.com/TooTallNate/node-bindings.git' },
+263 silly install resolved     main: './bindings.js',
+263 silly install resolved     bugs: { url: 'https://github.com/TooTallNate/node-bindings/issues' },
+263 silly install resolved     _id: 'bindings@1.1.1',
+263 silly install resolved     dist:
+263 silly install resolved      { shasum: '951f7ae010302ffc50b265b124032017ed2bf6f3',
+263 silly install resolved        tarball: 'https://registry.npmjs.org/bindings/-/bindings-1.1.1.tgz' },
+263 silly install resolved     _from: 'bindings@>=1.1.1 <1.2.0',
+263 silly install resolved     _npmVersion: '1.3.2',
+263 silly install resolved     _npmUser: { name: 'tootallnate', email: 'nathan@tootallnate.net' },
+263 silly install resolved     maintainers: [ [Object], [Object] ],
+263 silly install resolved     directories: {},
+263 silly install resolved     _shasum: '951f7ae010302ffc50b265b124032017ed2bf6f3',
+263 silly install resolved     _resolved: 'https://registry.npmjs.org/bindings/-/bindings-1.1.1.tgz',
+263 silly install resolved     readme: 'ERROR: No README data found!',
+263 silly install resolved     homepage: 'https://github.com/TooTallNate/node-bindings#readme' },
+263 silly install resolved   { name: 'backoff',
+263 silly install resolved     description: 'Fibonacci and exponential backoffs.',
+263 silly install resolved     version: '2.0.0',
+263 silly install resolved     author: { name: 'Mathieu Turcotte', email: 'turcotte.mat@gmail.com' },
+263 silly install resolved     keywords: [ 'backoff', 'retry', 'fibonacci', 'exponential' ],
+263 silly install resolved     repository:
+263 silly install resolved      { type: 'git',
+263 silly install resolved        url: 'git+https://github.com/MathieuTurcotte/node-backoff.git' },
+263 silly install resolved     devDependencies: { sinon: '1.5.2', nodeunit: '0.7', jshint: '0.9.0' },
+263 silly install resolved     scripts:
+263 silly install resolved      { pretest: 'node_modules/jshint/bin/hint lib/ lib/ tests/ examples/ index.js',
+263 silly install resolved        test: 'node_modules/nodeunit/bin/nodeunit tests/' },
+263 silly install resolved     engines: { node: '>= 0.6' },
+263 silly install resolved     _id: 'backoff@2.0.0',
+263 silly install resolved     dist:
+263 silly install resolved      { shasum: 'b4394776f91c28a361049071dd891c00394fd805',
+263 silly install resolved        tarball: 'https://registry.npmjs.org/backoff/-/backoff-2.0.0.tgz' },
+263 silly install resolved     _npmVersion: '1.1.62',
+263 silly install resolved     _npmUser: { name: 'mathieu', email: 'turcotte.mat@gmail.com' },
+263 silly install resolved     maintainers: [ [Object] ],
+263 silly install resolved     directories: {},
+263 silly install resolved     _shasum: 'b4394776f91c28a361049071dd891c00394fd805',
+263 silly install resolved     _resolved: 'https://registry.npmjs.org/backoff/-/backoff-2.0.0.tgz',
+263 silly install resolved     _from: 'backoff@>=2.0.0 <2.1.0',
+263 silly install resolved     bugs: { url: 'https://github.com/MathieuTurcotte/node-backoff/issues' },
+263 silly install resolved     readme: 'ERROR: No README data found!',
+263 silly install resolved     homepage: 'https://github.com/MathieuTurcotte/node-backoff#readme' },
+263 silly install resolved   { name: 'format',
+263 silly install resolved     description: 'printf, sprintf, and vsprintf for JavaScript',
+263 silly install resolved     version: '0.1.4',
+263 silly install resolved     homepage: 'http://samhuri.net/proj/format',
+263 silly install resolved     author: { name: 'Sami Samhuri', email: 'sami@samhuri.net' },
+263 silly install resolved     repository: { type: 'git', url: 'git://github.com/samsonjs/format.git' },
+263 silly install resolved     bugs:
+263 silly install resolved      { url: 'https://github.com/samsonjs/format/issues',
+263 silly install resolved        email: 'sami@samhuri.net' },
+263 silly install resolved     directories: { lib: './lib' },
+263 silly install resolved     main: './lib/index',
+263 silly install resolved     engines: { node: '>=0.4.x' },
+263 silly install resolved     licenses: [ [Object] ],
+263 silly install resolved     dependencies: {},
+263 silly install resolved     devDependencies: {},
+263 silly install resolved     _npmUser: { name: 'sjs', email: 'sami@samhuri.net' },
+263 silly install resolved     _id: 'format@0.1.4',
+263 silly install resolved     _engineSupported: true,
+263 silly install resolved     _npmVersion: '1.0.104',
+263 silly install resolved     _nodeVersion: 'v0.6.0',
+263 silly install resolved     _defaultsLoaded: true,
+263 silly install resolved     dist:
+263 silly install resolved      { shasum: '848c3578a7e46635a7106d236aa7eaccff2c1358',
+263 silly install resolved        tarball: 'https://registry.npmjs.org/format/-/format-0.1.4.tgz' },
+263 silly install resolved     maintainers: [ [Object] ],
+263 silly install resolved     _shasum: '848c3578a7e46635a7106d236aa7eaccff2c1358',
+263 silly install resolved     _resolved: 'https://registry.npmjs.org/format/-/format-0.1.4.tgz',
+263 silly install resolved     _from: 'format@>=0.1.0 <0.2.0',
+263 silly install resolved     readme: 'ERROR: No README data found!' } ]
+264 info install i@0.3.5 into /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify
+265 info install bindings@1.1.1 into /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify
+266 info install backoff@2.0.0 into /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify
+267 info install format@0.1.4 into /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify
+268 info installOne i@0.3.5
+269 verbose installOne of i to /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify not in flight; installing
+270 verbose correctMkdir /Users/kseniacruey/.npm/_locks correctMkdir not in flight; initializing
+271 info installOne bindings@1.1.1
+272 verbose installOne of bindings to /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify not in flight; installing
+273 verbose correctMkdir /Users/kseniacruey/.npm/_locks correctMkdir not in flight; initializing
+274 info installOne backoff@2.0.0
+275 verbose installOne of backoff to /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify not in flight; installing
+276 verbose correctMkdir /Users/kseniacruey/.npm/_locks correctMkdir not in flight; initializing
+277 info installOne format@0.1.4
+278 verbose installOne of format to /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify not in flight; installing
+279 verbose correctMkdir /Users/kseniacruey/.npm/_locks correctMkdir not in flight; initializing
+280 verbose lock using /Users/kseniacruey/.npm/_locks/i-de53f29766e6d275.lock for /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/i
+281 verbose lock using /Users/kseniacruey/.npm/_locks/bindings-de825c279dd422fb.lock for /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/bindings
+282 silly install write writing i 0.3.5 to /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/i
+283 silly install write writing bindings 1.1.1 to /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/bindings
+284 verbose lock using /Users/kseniacruey/.npm/_locks/format-169f022c299fe006.lock for /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/format
+285 verbose lock using /Users/kseniacruey/.npm/_locks/backoff-fc38c61c13d99e82.lock for /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/backoff
+286 silly install write writing format 0.1.4 to /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/format
+287 silly install write writing backoff 2.0.0 to /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/backoff
+288 verbose unbuild node_modules/libspotify/node_modules/i
+289 verbose unbuild node_modules/libspotify/node_modules/bindings
+290 verbose unbuild node_modules/libspotify/node_modules/format
+291 verbose unbuild node_modules/libspotify/node_modules/backoff
+292 silly gentlyRm /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/i is being purged from base /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC
+293 verbose gentlyRm don't care about contents; nuking /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/i
+294 silly gentlyRm /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/bindings is being purged from base /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC
+295 verbose gentlyRm don't care about contents; nuking /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/bindings
+296 verbose tar unpack /Users/kseniacruey/.npm/i/0.3.5/package.tgz
+297 verbose tar unpacking to /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/i
+298 silly gentlyRm /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/i is being purged
+299 verbose gentlyRm don't care about contents; nuking /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/i
+300 verbose tar unpack /Users/kseniacruey/.npm/bindings/1.1.1/package.tgz
+301 verbose tar unpacking to /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/bindings
+302 silly gentlyRm /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/bindings is being purged
+303 verbose gentlyRm don't care about contents; nuking /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/bindings
+304 silly gentlyRm /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/format is being purged from base /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC
+305 verbose gentlyRm don't care about contents; nuking /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/format
+306 silly gentlyRm /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/backoff is being purged from base /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC
+307 verbose gentlyRm don't care about contents; nuking /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/backoff
+308 silly gunzTarPerm modes [ '755', '644' ]
+309 silly gunzTarPerm modes [ '755', '644' ]
+310 verbose tar unpack /Users/kseniacruey/.npm/format/0.1.4/package.tgz
+311 verbose tar unpacking to /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/format
+312 silly gentlyRm /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/format is being purged
+313 verbose gentlyRm don't care about contents; nuking /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/format
+314 verbose tar unpack /Users/kseniacruey/.npm/backoff/2.0.0/package.tgz
+315 verbose tar unpacking to /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/backoff
+316 silly gentlyRm /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/backoff is being purged
+317 verbose gentlyRm don't care about contents; nuking /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/backoff
+318 silly gunzTarPerm modes [ '755', '644' ]
+319 silly gunzTarPerm modes [ '755', '644' ]
+320 silly gunzTarPerm extractEntry package.json
+321 silly gunzTarPerm extractEntry package.json
+322 silly gunzTarPerm extractEntry format.tmproj
+323 silly gunzTarPerm extractEntry package.json
+324 silly gunzTarPerm extractEntry README.md
+325 silly gunzTarPerm extractEntry bindings.js
+326 silly gunzTarPerm extractEntry .npmignore
+327 silly gunzTarPerm extractEntry README.md
+328 silly gunzTarPerm extractEntry LICENSE
+329 silly gunzTarPerm extractEntry package.json
+330 silly gunzTarPerm extractEntry .npmignore
+331 silly gunzTarPerm extractEntry README.md
+332 silly gunzTarPerm extractEntry LICENSE
+333 silly gunzTarPerm extractEntry .travis.yml
+334 silly gunzTarPerm extractEntry Readme.md
+335 silly gunzTarPerm extractEntry test_format.js
+336 silly gunzTarPerm extractEntry LICENSE
+337 silly gunzTarPerm extractEntry index.js
+338 silly gunzTarPerm extractEntry lib/defaults.js
+339 silly gunzTarPerm extractEntry lib/inflect.js
+340 silly gunzTarPerm extractEntry lib/index.js
+341 silly gunzTarPerm extractEntry .jshintrc
+342 silly gunzTarPerm extractEntry lib/inflections.js
+343 silly gunzTarPerm extractEntry lib/methods.js
+344 silly gunzTarPerm extractEntry lib/native.js
+345 silly gunzTarPerm extractEntry lib/util.js
+346 silly gunzTarPerm extractEntry test/inflector/cases.js
+347 silly gunzTarPerm extractEntry test/inflector/inflections-test.js
+348 silly gunzTarPerm extractEntry test/inflector/methods-test.js
+349 silly gunzTarPerm extractEntry test/utils/array-test.js
+350 silly gunzTarPerm extractEntry test/utils/string-test.js
+351 silly gunzTarPerm extractEntry .travis.yml
+352 silly gunzTarPerm extractEntry examples/exponential.js
+353 verbose write writing to /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/bindings/package.json
+354 silly gunzTarPerm extractEntry examples/exponential_strategy.js
+355 silly gunzTarPerm extractEntry examples/fail.js
+356 info preinstall bindings@1.1.1
+357 verbose readDependencies loading dependencies from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/bindings/package.json
+358 verbose readDependencies loading dependencies from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/bindings/package.json
+359 silly gunzTarPerm extractEntry examples/fibonacci.js
+360 silly gunzTarPerm extractEntry examples/fibonacci_strategy.js
+361 silly install resolved []
+362 verbose about to build /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/bindings
+363 info build /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/bindings
+364 silly gunzTarPerm extractEntry examples/function_call.js
+365 silly gunzTarPerm extractEntry examples/randomized.js
+366 info linkStuff bindings@1.1.1
+367 silly linkStuff bindings@1.1.1 has /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules as its parent node_modules
+368 verbose write writing to /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/format/package.json
+369 silly gunzTarPerm extractEntry examples/readme.js
+370 silly gunzTarPerm extractEntry examples/reset.js
+371 info preinstall format@0.1.4
+372 verbose readDependencies loading dependencies from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/format/package.json
+373 verbose linkBins bindings@1.1.1
+374 verbose linkMans bindings@1.1.1
+375 verbose rebuildBundles bindings@1.1.1
+376 info install bindings@1.1.1
+377 info postinstall bindings@1.1.1
+378 verbose readDependencies loading dependencies from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/format/package.json
+379 verbose unlock done using /Users/kseniacruey/.npm/_locks/bindings-de825c279dd422fb.lock for /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/bindings
+380 silly gunzTarPerm extractEntry lib/backoff.js
+381 silly gunzTarPerm extractEntry lib/function_call.js
+382 silly install resolved []
+383 verbose about to build /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/format
+384 info build /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/format
+385 silly gunzTarPerm extractEntry lib/strategy/exponential.js
+386 silly gunzTarPerm extractEntry lib/strategy/fibonacci.js
+387 info linkStuff format@0.1.4
+388 silly linkStuff format@0.1.4 has /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules as its parent node_modules
+389 silly gunzTarPerm extractEntry lib/strategy/strategy.js
+390 silly gunzTarPerm extractEntry tests/api.js
+391 verbose linkBins format@0.1.4
+392 verbose linkMans format@0.1.4
+393 verbose rebuildBundles format@0.1.4
+394 info install format@0.1.4
+395 info postinstall format@0.1.4
+396 verbose unlock done using /Users/kseniacruey/.npm/_locks/format-169f022c299fe006.lock for /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/format
+397 silly gunzTarPerm extractEntry tests/backoff.js
+398 silly gunzTarPerm extractEntry tests/backoff_strategy.js
+399 silly gunzTarPerm extractEntry tests/exponential_backoff_strategy.js
+400 silly gunzTarPerm extractEntry tests/fibonacci_backoff_strategy.js
+401 silly gunzTarPerm extractEntry tests/function_call.js
+402 verbose write writing to /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/i/package.json
+403 info preinstall i@0.3.5
+404 verbose readDependencies loading dependencies from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/i/package.json
+405 verbose readDependencies loading dependencies from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/i/package.json
+406 silly install resolved []
+407 verbose about to build /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/i
+408 info build /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/i
+409 info linkStuff i@0.3.5
+410 silly linkStuff i@0.3.5 has /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules as its parent node_modules
+411 verbose linkBins i@0.3.5
+412 verbose linkMans i@0.3.5
+413 verbose rebuildBundles i@0.3.5
+414 info install i@0.3.5
+415 info postinstall i@0.3.5
+416 verbose unlock done using /Users/kseniacruey/.npm/_locks/i-de53f29766e6d275.lock for /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/i
+417 verbose write writing to /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/backoff/package.json
+418 info preinstall backoff@2.0.0
+419 verbose readDependencies loading dependencies from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/backoff/package.json
+420 verbose readDependencies loading dependencies from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/backoff/package.json
+421 silly install resolved []
+422 verbose about to build /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/backoff
+423 info build /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/backoff
+424 info linkStuff backoff@2.0.0
+425 silly linkStuff backoff@2.0.0 has /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules as its parent node_modules
+426 verbose linkBins backoff@2.0.0
+427 verbose linkMans backoff@2.0.0
+428 verbose rebuildBundles backoff@2.0.0
+429 info install backoff@2.0.0
+430 info postinstall backoff@2.0.0
+431 verbose unlock done using /Users/kseniacruey/.npm/_locks/backoff-fc38c61c13d99e82.lock for /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify/node_modules/backoff
+432 verbose about to build /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify
+433 info build /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify
+434 info linkStuff libspotify@0.2.2
+435 silly linkStuff libspotify@0.2.2 has /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules as its parent node_modules
+436 verbose linkBins libspotify@0.2.2
+437 verbose linkMans libspotify@0.2.2
+438 verbose rebuildBundles libspotify@0.2.2
+439 verbose rebuildBundles [ 'backoff', 'bindings', 'format', 'i' ]
+440 info install libspotify@0.2.2
+441 verbose unsafe-perm in lifecycle true
+442 info libspotify@0.2.2 Failed to exec install script
+443 verbose unlock done using /Users/kseniacruey/.npm/_locks/libspotify-be7da6c96e539048.lock for /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify
+444 verbose stack Error: libspotify@0.2.2 install: `node-gyp configure build`
+444 verbose stack Exit status 1
+444 verbose stack     at EventEmitter.<anonymous> (/Users/kseniacruey/.nvm/versions/node/v4.4.1/lib/node_modules/npm/lib/utils/lifecycle.js:214:16)
+444 verbose stack     at emitTwo (events.js:87:13)
+444 verbose stack     at EventEmitter.emit (events.js:172:7)
+444 verbose stack     at ChildProcess.<anonymous> (/Users/kseniacruey/.nvm/versions/node/v4.4.1/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+444 verbose stack     at emitTwo (events.js:87:13)
+444 verbose stack     at ChildProcess.emit (events.js:172:7)
+444 verbose stack     at maybeClose (internal/child_process.js:827:16)
+444 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+445 verbose pkgid libspotify@0.2.2
+446 verbose cwd /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC
+447 error Darwin 15.6.0
+448 error argv "/Users/kseniacruey/.nvm/versions/node/v4.4.1/bin/node" "/Users/kseniacruey/.nvm/versions/node/v4.4.1/bin/npm" "install" "libspotify"
+449 error node v4.4.1
+450 error npm  v2.14.20
+451 error code ELIFECYCLE
+452 error libspotify@0.2.2 install: `node-gyp configure build`
+452 error Exit status 1
+453 error Failed at the libspotify@0.2.2 install script 'node-gyp configure build'.
+453 error This is most likely a problem with the libspotify package,
+453 error not with npm itself.
+453 error Tell the author that this fails on your system:
+453 error     node-gyp configure build
+453 error You can get information on how to open an issue for this project with:
+453 error     npm bugs libspotify
+453 error Or if that isn't available, you can get their info via:
+453 error
+453 error     npm owner ls libspotify
+453 error There is likely additional logging output above.
+454 verbose exit [ 1, true ]
+455 verbose unbuild node_modules/libspotify
+456 info preuninstall libspotify@0.2.2
+457 info uninstall libspotify@0.2.2
+458 verbose unbuild rmStuff libspotify@0.2.2 from /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules
+459 info postuninstall libspotify@0.2.2
+460 silly gentlyRm /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify is being purged from base /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC
+461 verbose gentlyRm don't care about contents; nuking /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify
+462 silly vacuum-fs purging /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules/libspotify
+463 silly vacuum-fs quitting because other entries in /Users/kseniacruey/Desktop/Bootcamp/Node-Spotify-VC/node_modules

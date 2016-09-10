@@ -8,6 +8,7 @@ var Tracks = React.createClass({
 	getInitialState: function() {
 		return {
 			savedTracks: "",
+			currentTrackName: "",
 			index: ""
 		}
 	},
@@ -18,12 +19,18 @@ var Tracks = React.createClass({
 		console.log(i);
 		this.setState({index: i});
 		this.props.setIndex(i);
-		var song = this.props.savedTracks[i].track.uri
+		var song = this.props.savedTracks[i].track.uri;
 		var trackObj = {
 			'uri': song
 		}
-		console.log(song);
-		var art = this.props.savedTracks[i].track.album.images[1].url
+		console.log('song: ', song);
+		var art = this.props.savedTracks[i].track.album.images[1].url;
+		var songName = this.props.savedTracks[i].track.name;
+		this.props.setCurrentTrackName(songName);
+		this.setState({
+			currentTrackName: songName
+		})
+		console.log('songname: ', songName);
 		var artObj = {
 			'url': art
 		}

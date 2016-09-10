@@ -11,6 +11,8 @@ var Player = React.createClass({
 		return {
 			savedTracks: "",
 			trackArt: [],
+			currentTrackName: "",
+			currentTrackElapsed: "",
 			index: 0
 		}
 	},
@@ -20,12 +22,18 @@ var Player = React.createClass({
 		var i = this.props.index;
 		console.log(i);
 		var song = this.props.savedTracks[i].track.uri
+		var art = this.props.savedTracks[i].track.album.images[1].url
+		var songName = this.props.savedTracks[i].track.name;
+		this.props.setCurrentTrackName(songName);
+		this.setState({
+			currentTrackName: songName
+		})
+		console.log('songname: ', songName);
 		var trackObj = {
 			'uri': song
 		}
 		console.log('trackObj: ', trackObj)
 			console.log(song);
-		var art = this.props.savedTracks[i].track.album.images[1].url
 		var artObj = {
 			'url': art
 		}
@@ -47,6 +55,12 @@ var Player = React.createClass({
 		var i = this.props.index - 1;
 		this.props.setIndex(i);
 		var art = this.props.savedTracks[i].track.album.images[1].url
+		var songName = this.props.savedTracks[i].track.name;
+		this.props.setCurrentTrackName(songName);
+		this.setState({
+			currentTrackName: songName
+		})
+		console.log('songname: ', songName);
 		var artObj = {
 			'url': art
 		}
@@ -62,6 +76,12 @@ var Player = React.createClass({
 		var i = this.props.index + 1;
 		this.props.setIndex(i);
 		var art = this.props.savedTracks[i].track.album.images[1].url
+		var songName = this.props.savedTracks[i].track.name;
+		this.props.setCurrentTrackName(songName);
+		this.setState({
+			currentTrackName: songName
+		})
+		console.log('songname: ', songName);
 		var artObj = {
 			'url': art
 		}
@@ -82,10 +102,15 @@ var Player = React.createClass({
 			<div className="row">
 				<div className="col-md-12">
 					<div className="row">
-					<div className="col-md-6">
-					<img src={this.props.trackArt}/>
+						<div className="col-md-6">
+							<img src={this.props.trackArt}/>
+						</div>
 					</div>
-					</div>
+						<div className='row'>
+							<div className='col-md-6'>
+								<p>{this.props.currentTrackName}</p>
+							</div>
+						</div>
 				<div className="btn-group">
 					<button onClick={this.handleClickPlay} className="btn btn-custom"><span title="Play" id="play" className="glyphicon glyphicon-play aligned"></span></button>
 					<button onClick={this.handleClickStop} className="btn btn-custom"><span title="Stop" id="stop" className="glyphicon glyphicon-stop aligned"></span></button>

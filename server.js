@@ -2,7 +2,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var logger = require('morgan');
-var mongojs = require('mongojs');
+var mongoose = require('mongoose');
 var sp = require('./sp.js');
 var cookieParser = require('cookie-parser');
 var methodOverride = require('method-override');
@@ -30,7 +30,6 @@ passport.deserializeUser(function(obj, done) {
   done(null, obj);
 });
 
-
 // Use the SpotifyStrategy within Passport.
 //   Strategies in Passport require a `verify` function, which accept
 //   credentials (in this case, an accessToken, refreshToken, and spotify
@@ -54,16 +53,9 @@ passport.use(new SpotifyStrategy({
     });
   }));
 
-
-
-
 // Create Instance of Express
 var app = express();
 var PORT = process.env.PORT || 3000; // Sets an initial port. We'll use this later in our listener
-
-//configure Express
-// app.set('views', __dirname + '/views');
-// app.set('view engine', 'ejs');
 
 // Run Morgan for Logging
 app.use(logger('dev'));
@@ -78,25 +70,33 @@ app.use(session({ secret: 'keyboard cat' }));
 // persistent login sessions (recommended).
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.use(express.static('./public'));
-
 app.engine('html', consolidate.swig);
 
 // -------------------------------------------------
 
-// MongoDB Configuration configuration (Change this URL to your own DB)
-var databaseUrl = 'Music';
-var collections = ["Playlists"];
+// use mongoose to connect to the database 
+mongoose.connect('mongodb://localhost/spotifyVC');
 
-// use mongojs to hook the database to the db variable 
-var db = mongojs(databaseUrl, collections);
-
-db.on('error', function (err) {
-  console.log('MongoDB Error: ', err);
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("Connected to the DB successfully!");
 });
 
+// MongoDB Configuration configuration (Change this URL to your own DB)
+var Schema = mongoose.Schema
+var spotifySchema = new Schema({
+  user: {
+    name: String,
+    savedTracks:  [],
+    favTracks: [],
+    releaseRadar: [],
+    favArtists: []
+  }
+});
 
+var userSchema = mongoose.model('userSchema', spotifySchema); 
 // -------------------------------------------------
 
 // Main Route. This route will redirect to our rendered React application
@@ -123,7 +123,7 @@ app.get('/tracks', function(req, res) {
     limit : 40
   })
   .then(function(data) {
-    console.log('Done!', data.body.items);
+    console.log('Done!');
     var trackObj = data.body.items
     // for (var i = 0; i<trackObj.length; i++) {
     //   console.log('------------------------------------------');
@@ -134,6 +134,7 @@ app.get('/tracks', function(req, res) {
     //   console.log('------------------------------------------');
     // }
     res.send(trackObj);
+
   }, function(err) {
     console.log('Something went wrong!', err);
 });
@@ -189,7 +190,6 @@ app.get('/newTracks', function(req, res) {
   
 });
   
-
 app.post('/spotifyLogin', function(req, res){
     sp.sp(req.body.userName, req.body.Password);
     res.redirect('/auth/spotify');
@@ -252,7 +252,6 @@ app.post('/stop', function(req, res){
 app.listen(PORT, function() {
   console.log("App listening on PORT: " + PORT);
 });
-
 
 // Simple route middleware to ensure user is authenticated.
 //   Use this route middleware on any resource that needs to be protected.  If

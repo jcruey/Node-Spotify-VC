@@ -223,25 +223,40 @@
 	var cachedSetTimeout;
 	var cachedClearTimeout;
 
+	function defaultSetTimout() {
+	    throw new Error('setTimeout has not been defined');
+	}
+	function defaultClearTimeout () {
+	    throw new Error('clearTimeout has not been defined');
+	}
 	(function () {
 	    try {
-	        cachedSetTimeout = setTimeout;
-	    } catch (e) {
-	        cachedSetTimeout = function () {
-	            throw new Error('setTimeout is not defined');
+	        if (typeof setTimeout === 'function') {
+	            cachedSetTimeout = setTimeout;
+	        } else {
+	            cachedSetTimeout = defaultSetTimout;
 	        }
+	    } catch (e) {
+	        cachedSetTimeout = defaultSetTimout;
 	    }
 	    try {
-	        cachedClearTimeout = clearTimeout;
-	    } catch (e) {
-	        cachedClearTimeout = function () {
-	            throw new Error('clearTimeout is not defined');
+	        if (typeof clearTimeout === 'function') {
+	            cachedClearTimeout = clearTimeout;
+	        } else {
+	            cachedClearTimeout = defaultClearTimeout;
 	        }
+	    } catch (e) {
+	        cachedClearTimeout = defaultClearTimeout;
 	    }
 	} ())
 	function runTimeout(fun) {
 	    if (cachedSetTimeout === setTimeout) {
 	        //normal enviroments in sane situations
+	        return setTimeout(fun, 0);
+	    }
+	    // if setTimeout wasn't available but was latter defined
+	    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+	        cachedSetTimeout = setTimeout;
 	        return setTimeout(fun, 0);
 	    }
 	    try {
@@ -262,6 +277,11 @@
 	function runClearTimeout(marker) {
 	    if (cachedClearTimeout === clearTimeout) {
 	        //normal enviroments in sane situations
+	        return clearTimeout(marker);
+	    }
+	    // if clearTimeout wasn't available but was latter defined
+	    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+	        cachedClearTimeout = clearTimeout;
 	        return clearTimeout(marker);
 	    }
 	    try {
@@ -19758,6 +19778,8 @@
 				savedTracks: "",
 				topTracks: "",
 				trackArt: "",
+				currentTrackName: "",
+				currentTrackElapsed: "",
 				index: 0
 			};
 		},
@@ -19772,6 +19794,18 @@
 		setArt: function setArt(trackArt) {
 			this.setState({
 				trackArt: [trackArt]
+			});
+		},
+
+		setCurrentTrackName: function setCurrentTrackName(currentTrackName) {
+			this.setState({
+				currentTrackName: [currentTrackName]
+			});
+		},
+
+		setCurrentTrackElapsed: function setCurrentTrackElapsed(currentTrackElapsed) {
+			this.setState({
+				currentTrackElapsed: [currentTrackElapsed]
 			});
 		},
 
@@ -19872,7 +19906,11 @@
 						{ className: 'col-md-6' },
 						React.createElement(Player, {
 							savedTracks: this.state.savedTracks, setIndex: this.setIndex,
-							index: this.state.index, trackArt: this.state.trackArt, setArt: this.setArt })
+							index: this.state.index, trackArt: this.state.trackArt,
+							setArt: this.setArt, currentTrackName: this.state.currentTrackName,
+							setCurrentTrackName: this.setCurrentTrackName,
+							currentTrackElapsed: this.state.currentTrackElapsed,
+							setCurrentTrackElapsed: this.setCurrentTrackElapsed })
 					),
 					React.createElement(
 						'div',
@@ -19891,7 +19929,11 @@
 						'div',
 						{ className: 'col-md-12' },
 						React.createElement(Tracks, { savedTracks: this.state.savedTracks, setIndex: this.setIndex,
-							index: this.state.index, trackArt: this.state.trackArt, setArt: this.setArt })
+							index: this.state.index, trackArt: this.state.trackArt, setArt: this.setArt,
+							currentTrackName: this.state.currentTrackName,
+							setCurrentTrackName: this.setCurrentTrackName,
+							currentTrackElapsed: this.state.currentTrackElapsed,
+							setCurrentTrackElapsed: this.setCurrentTrackElapsed })
 					)
 				)
 			);
@@ -19921,6 +19963,8 @@
 			return {
 				savedTracks: "",
 				trackArt: [],
+				currentTrackName: "",
+				currentTrackElapsed: "",
 				index: 0
 			};
 		},
@@ -19930,12 +19974,18 @@
 			var i = this.props.index;
 			console.log(i);
 			var song = this.props.savedTracks[i].track.uri;
+			var art = this.props.savedTracks[i].track.album.images[1].url;
+			var songName = this.props.savedTracks[i].track.name;
+			this.props.setCurrentTrackName(songName);
+			this.setState({
+				currentTrackName: songName
+			});
+			console.log('songname: ', songName);
 			var trackObj = {
 				'uri': song
 			};
 			console.log('trackObj: ', trackObj);
 			console.log(song);
-			var art = this.props.savedTracks[i].track.album.images[1].url;
 			var artObj = {
 				'url': art
 			};
@@ -19956,6 +20006,12 @@
 			var i = this.props.index - 1;
 			this.props.setIndex(i);
 			var art = this.props.savedTracks[i].track.album.images[1].url;
+			var songName = this.props.savedTracks[i].track.name;
+			this.props.setCurrentTrackName(songName);
+			this.setState({
+				currentTrackName: songName
+			});
+			console.log('songname: ', songName);
 			var artObj = {
 				'url': art
 			};
@@ -19971,6 +20027,12 @@
 			var i = this.props.index + 1;
 			this.props.setIndex(i);
 			var art = this.props.savedTracks[i].track.album.images[1].url;
+			var songName = this.props.savedTracks[i].track.name;
+			this.props.setCurrentTrackName(songName);
+			this.setState({
+				currentTrackName: songName
+			});
+			console.log('songname: ', songName);
 			var artObj = {
 				'url': art
 			};
@@ -19999,6 +20061,19 @@
 							'div',
 							{ className: 'col-md-6' },
 							React.createElement('img', { src: this.props.trackArt })
+						)
+					),
+					React.createElement(
+						'div',
+						{ className: 'row' },
+						React.createElement(
+							'div',
+							{ className: 'col-md-6' },
+							React.createElement(
+								'p',
+								null,
+								this.props.currentTrackName
+							)
 						)
 					),
 					React.createElement(
@@ -21332,6 +21407,7 @@
 		getInitialState: function getInitialState() {
 			return {
 				savedTracks: "",
+				currentTrackName: "",
 				index: ""
 			};
 		},
@@ -21346,8 +21422,14 @@
 			var trackObj = {
 				'uri': song
 			};
-			console.log(song);
+			console.log('song: ', song);
 			var art = this.props.savedTracks[i].track.album.images[1].url;
+			var songName = this.props.savedTracks[i].track.name;
+			this.props.setCurrentTrackName(songName);
+			this.setState({
+				currentTrackName: songName
+			});
+			console.log('songname: ', songName);
 			var artObj = {
 				'url': art
 			};

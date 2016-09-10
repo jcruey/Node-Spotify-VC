@@ -18,6 +18,8 @@ var Main = React.createClass({
 			savedTracks: "",
 			topTracks: "",
 			trackArt: "",
+			currentTrackName: "",
+			currentTrackElapsed: "",
 			index: 0
 		}
 	},	
@@ -32,6 +34,18 @@ var Main = React.createClass({
 	setArt: function(trackArt){
 		this.setState({
 			trackArt: [trackArt]
+		})
+	},
+
+	setCurrentTrackName: function(currentTrackName){
+		this.setState({
+			currentTrackName: [currentTrackName]
+		})
+	},
+
+	setCurrentTrackElapsed: function(currentTrackElapsed){
+		this.setState({
+			currentTrackElapsed: [currentTrackElapsed]
 		})
 	},
 
@@ -80,7 +94,11 @@ var Main = React.createClass({
 					
 						<Player 
 						savedTracks={this.state.savedTracks} setIndex={this.setIndex} 
-							index={this.state.index} trackArt={this.state.trackArt} setArt={this.setArt} />
+							index={this.state.index} trackArt={this.state.trackArt} 
+							setArt={this.setArt} currentTrackName={this.state.currentTrackName} 
+							setCurrentTrackName={this.setCurrentTrackName}
+							currentTrackElapsed={this.state.currentTrackElapsed}
+							setCurrentTrackElapsed={this.setCurrentTrackElapsed}/>
 
 
 					</div>
@@ -95,7 +113,11 @@ var Main = React.createClass({
 					<div className="col-md-12">
 				
 						<Tracks savedTracks={this.state.savedTracks} setIndex={this.setIndex} 
-							index={this.state.index} trackArt={this.state.trackArt} setArt={this.setArt} />
+							index={this.state.index} trackArt={this.state.trackArt} setArt={this.setArt} 
+							currentTrackName={this.state.currentTrackName} 
+							setCurrentTrackName={this.setCurrentTrackName}
+							currentTrackElapsed={this.state.currentTrackElapsed}
+							setCurrentTrackElapsed={this.setCurrentTrackElapsed}/>
 
 					</div>
 				</div>
