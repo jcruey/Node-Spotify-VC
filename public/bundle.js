@@ -19797,6 +19797,30 @@
 			});
 		},
 
+		setNewTracks: function setNewTracks() {
+			helpers.getNewTracks(function (data) {
+				this.setState({
+					savedTracks: data
+				});
+			});
+		},
+
+		setFavTracks: function setFavTracks() {
+			helpers.getFavTracks(function (data) {
+				this.setState({
+					savedTracks: response.data
+				});
+			});
+		},
+
+		setFavArtists: function setFavArtists() {
+			helpers.getFavArtists(function (data) {
+				this.setState({
+					savedTracks: response.data
+				});
+			});
+		},
+
 		setCurrentTrackName: function setCurrentTrackName(currentTrackName) {
 			this.setState({
 				currentTrackName: [currentTrackName]
@@ -19817,6 +19841,7 @@
 
 		// Here we render the function
 		render: function render() {
+			var self = this;
 
 			return React.createElement(
 				'div',
@@ -19863,7 +19888,7 @@
 									null,
 									React.createElement(
 										'a',
-										{ href: '/globalTop50' },
+										{ onClick: self.setFavArtists },
 										'Favorite Artists'
 									)
 								),
@@ -19872,7 +19897,7 @@
 									null,
 									React.createElement(
 										'a',
-										{ href: '/newTracks' },
+										{ onClick: self.setNewTracks },
 										'Release Radar'
 									)
 								),
@@ -19881,7 +19906,7 @@
 									null,
 									React.createElement(
 										'a',
-										{ href: '/favoriteTracks' },
+										{ onClick: self.setFavTracks },
 										'Favorite Tracks'
 									)
 								),
@@ -19993,7 +20018,7 @@
 				trackArt: art
 			});
 			this.props.setArt(art);
-			helpers.playMusic(trackObj);
+			helpers.playMusic(this.props.savedTracks, i);
 		},
 
 		// When a user submits... 
@@ -20129,7 +20154,7 @@
 			console.log('getSavedTracks Fired');
 		},
 
-		getTopTracks: function getTopTracks() {
+		getFavTracks: function getFavTracks() {
 			return axios.get('/favoriteTracks').then(function (response) {
 				// console.log(response);
 				return response;
@@ -20145,11 +20170,10 @@
 			console.log('getNewTracks Fired');
 		},
 
-		playMusic: function playMusic(track) {
+		playMusic: function playMusic(track, i) {
 
-			console.log('Playing track');
-
-			return axios.post('/play', track).then(function (response) {
+			console.log('Playing track', track[i].track.uri);
+			return axios.post('/play', { tracks: track, index: i }).then(function (response) {
 				console.log(response);
 			});
 		},
@@ -21437,7 +21461,7 @@
 				trackArt: art
 			});
 			this.props.setArt(art);
-			helpers.playMusic(trackObj);
+			helpers.playMusic(this.props.savedTracks, i);
 		},
 
 		// Here we render the function

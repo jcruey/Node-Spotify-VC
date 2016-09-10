@@ -41,7 +41,7 @@ var Player = React.createClass({
 			trackArt: art
 		})
 		this.props.setArt(art);
-		helpers.playMusic(trackObj);
+		helpers.playMusic(this.props.savedTracks, i);
 	},
 
 	// When a user submits... 

@@ -15,6 +15,9 @@ var SpotifyWebApi = require('spotify-web-api-node');
 var appKey = process.env.appKey;
 var appSecret = process.env.appSecret;
 
+var trackList = [];
+var currentIndex = 0;
+
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
 //   serialize users into and deserialize users out of the session. Typically,
@@ -125,7 +128,7 @@ app.get('/tracks', function(req, res) {
   .then(function(data) {
     console.log('Done!');
     var trackObj = data.body.items
-    // for (var i = 0; i<trackObj.length; i++) {
+;    // for (var i = 0; i<trackObj.length; i++) {
     //   console.log('------------------------------------------');
     //   console.log('Track: ' + trackObj[i].track.name);
     //   console.log('Album: ' + trackObj[i].track.album.name);
@@ -150,14 +153,14 @@ app.get('/favoriteTracks', function(req, res) {
   .then(function(data) {
     console.log('Done!');
     var favTrackObj = data.body.items
-    for (var i = 0; i<favTrackObj.length; i++) {
-      console.log('------------------------------------------');
-      console.log('Track: ' + favTrackObj[i].name);
-      console.log('Album: ' + favTrackObj[i].album.name);
-      console.log('Artist: ' + favTrackObj[i].artists[0].name);
-      console.log('Uri: ' + favTrackObj[i].uri);
-      console.log('------------------------------------------');
-    }
+    // for (var i = 0; i<favTrackObj.length; i++) {
+    //   console.log('------------------------------------------');
+    //   console.log('Track: ' + favTrackObj[i].name);
+    //   console.log('Album: ' + favTrackObj[i].album.name);
+    //   console.log('Artist: ' + favTrackObj[i].artists[0].name);
+    //   console.log('Uri: ' + favTrackObj[i].uri);
+    //   console.log('------------------------------------------');
+    // }
     res.send(favTrackObj);
   }, function(err) {
     console.log('Something went wrong!', err);
@@ -175,14 +178,14 @@ app.get('/newTracks', function(req, res) {
   .then(function(data) {
     var playlistTracks = data.body.tracks.items
     console.log("Release Radar");
-    for (var i = 0; i<playlistTracks.length; i++) {
-      console.log('------------------------------------------');
-      console.log('Track: ' + playlistTracks[i].track.name);
-      console.log('Album: ' + playlistTracks[i].track.album.name);
-      console.log('Artist: ' + playlistTracks[i].track.artists[0].name);
-      console.log('Uri: ' + playlistTracks[i].track.uri);
-      console.log('------------------------------------------');
-    }
+    // for (var i = 0; i<playlistTracks.length; i++) {
+    //   console.log('------------------------------------------');
+    //   console.log('Track: ' + playlistTracks[i].track.name);
+    //   console.log('Album: ' + playlistTracks[i].track.album.name);
+    //   console.log('Artist: ' + playlistTracks[i].track.artists[0].name);
+    //   console.log('Uri: ' + playlistTracks[i].track.uri);
+    //   console.log('------------------------------------------');
+    // }
     res.send(playlistTracks);
   }, function(err) {
     console.log('Something went wrong!', err);
@@ -227,9 +230,17 @@ app.get('/logout', function(req, res){
 
 // Route to hit play function for player
 app.post('/play', function(req, res){
-	console.log(req.body);
-  sp.play(req.body);
-  sp.progress();
+  console.log('Req.body: ', req.body);
+  trackList = req.body.tracks;
+  currentIndex = req.body.index;
+  trackObj = {
+    uri: trackList[currentIndex].track.uri
+  }
+  console.log('Current Track: ', trackObj);
+  sp.play(trackObj)
+  // sp.progress(trackList, index, function(){
+  // index++
+  // });
   res.send('200');
 });
 

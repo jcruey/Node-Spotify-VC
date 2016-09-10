@@ -38,7 +38,7 @@ var Tracks = React.createClass({
 			trackArt: art
 		})
 		this.props.setArt(art);	
-		helpers.playMusic(trackObj);
+		helpers.playMusic(this.props.savedTracks, i);
 	},
 
 	// Here we render the function

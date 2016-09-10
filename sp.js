@@ -25,7 +25,8 @@ exports.play = function(track) {
 		});
 	}
 	else {
-		spotify.player.resume();
+		spotify.player.stop();
+		spotify.player.play(track);
 	}
 }
 
@@ -43,10 +44,12 @@ exports.stop = function() {
 	/* stop event */ });
 }
 
-exports.progress = function() {
+exports.progress = function(trackList, index, callback) {
 	spotify.player.on('progress', function (progress) {
 		console.dir(progress);
-	 if (progress.elapsed == progress.duration){ 
+	 if (progress.elapsed == progress.duration){
+	 	this.play(trackList[index + 1])
+	 	callback();
         console.log('track ended')
  	}
 	 /* progress event */ });	

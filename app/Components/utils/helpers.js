@@ -15,7 +15,7 @@ var helpers = {
 
 	},
 
-	getTopTracks: function(){
+	getFavTracks: function(){
 		return axios.get('/favoriteTracks')
 		.then(function(response){
 			// console.log(response);
@@ -35,11 +35,10 @@ var helpers = {
 
 	},
 
-	playMusic: function(track){
+	playMusic: function(track, i){
 
-		console.log('Playing track');
-
-		return axios.post('/play', track)
+		console.log('Playing track', track[i].track.uri);
+		return axios.post('/play', {tracks: track, index:i})
 			.then(function(response){
 				console.log(response);
 		})

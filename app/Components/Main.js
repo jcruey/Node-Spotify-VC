@@ -37,6 +37,30 @@ var Main = React.createClass({
 		})
 	},
 
+	setNewTracks: function(){
+		helpers.getNewTracks(function(data){
+			this.setState({
+				savedTracks: data
+			})
+		});
+	},
+
+	setFavTracks: function(){
+		helpers.getFavTracks(function(data){
+			this.setState({
+				savedTracks: response.data
+			})
+		});
+	},
+
+	setFavArtists: function(){
+		helpers.getFavArtists(function(data){
+			this.setState({
+				savedTracks: response.data
+			})
+		});
+	},
+
 	setCurrentTrackName: function(currentTrackName){
 		this.setState({
 			currentTrackName: [currentTrackName]
@@ -59,6 +83,7 @@ var Main = React.createClass({
 
 	// Here we render the function
 	render: function(){
+		var self = this;
 
 		return(
 
@@ -77,9 +102,9 @@ var Main = React.createClass({
 					    <div className="navbar-collapse collapse">
 					        <ul className="nav navbar-nav navbar-nav navbar-right">
 					            <li className="active"><a href="/home">Home</a></li>
-					            <li><a href="/globalTop50">Favorite Artists</a></li>
-					            <li><a href="/newTracks">Release Radar</a></li>
-					            <li><a href="/favoriteTracks">Favorite Tracks</a></li>
+					            <li><a onClick={self.setFavArtists}>Favorite Artists</a></li>
+					            <li><a onClick={self.setNewTracks}>Release Radar</a></li>
+					            <li><a onClick={self.setFavTracks}>Favorite Tracks</a></li>
 					            <li><a href="/account">Account</a></li>
 					        </ul>
 					    </div>    
