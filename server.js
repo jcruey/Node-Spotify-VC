@@ -90,13 +90,11 @@ db.once('open', function() {
 // MongoDB Configuration configuration (Change this URL to your own DB)
 var Schema = mongoose.Schema
 var spotifySchema = new Schema({
-  user: {
-    name: String,
-    savedTracks:  [],
-    favTracks: [],
-    releaseRadar: [],
-    favArtists: []
-  }
+  username: String,
+  savedTracks:  [],
+  favTracks: [],
+  releaseRadar: [],
+  favArtists: []
 });
 
 var userSchema = mongoose.model('userSchema', spotifySchema); 
@@ -136,8 +134,13 @@ app.get('/tracks', function(req, res) {
     //   console.log('Uri: ' + trackObj[i].track.uri);
     //   console.log('------------------------------------------');
     // }
-    res.send(trackObj);
-
+    userSchema.findOne({"username": req.user.username}).exec(function(err, user){
+      user.savedTracks = trackObj;
+      user.save(function(){
+        res.send(trackObj);
+      });
+    });
+  
   }, function(err) {
     console.log('Something went wrong!', err);
 });
@@ -163,7 +166,13 @@ app.get('/favoriteTracks', function(req, res) {
     //   console.log('Uri: ' + favTrackObj[i].uri);
     //   console.log('------------------------------------------');
     }
-    res.send(tracks);
+    userSchema.findOne({"username": req.user.username}).exec(function(err, user){
+      user.favTracks = tracks;
+      user.save(function(){
+        res.send(tracks);
+      });
+    });
+  
   }, function(err) {
     console.log('Something went wrong!', err);
 });
@@ -188,7 +197,13 @@ app.get('/newTracks', function(req, res) {
     //   console.log('Uri: ' + playlistTracks[i].track.uri);
     //   console.log('------------------------------------------');
     // }
-    res.send(playlistTracks);
+    userSchema.findOne({"username": req.user.username}).exec(function(err, user){
+      user.releaseRadar = playlistTracks;
+      user.save(function(){
+        res.send(playlistTracks);
+      });
+    });
+    
   }, function(err) {
     console.log('Something went wrong!', err);
   });
@@ -220,17 +235,31 @@ app.get('/auth/spotify',
 app.get('/callback',
   passport.authenticate('spotify', { failureRedirect: '/login' }),
   function(req, res) {
-    console.log('user: ', req.user);
-    var query = {},
-    update = { user: req.user },
-    options = { upsert: true, new: true, setDefaultsOnInsert: true };
-    // Find the document
-    userSchema.findOneAndUpdate(query, update, options, function(error, result) {
-    if (error) return;
+    userSchema.findOne({"username": req.user.username}).exec(function(err, user){
+      if (!user) {
+        var user = new userSchema({
+          username: req.user.username
+        });
+        user.save(function(){
+          res.redirect('/home');
+        });
+      } else {
+        res.redirect('/home');
+      }
+    });
+
+    // console.log('user: ', req.user);
+    // var query = {},
+    // update = { user: req.user },
+    // options = { upsert: true, new: true, setDefaultsOnInsert: true };
+    // // Find the document
+    // userSchema.findOneAndUpdate(query, update, options, function(error, result) {
+    // if (error) {
+    //   console.log('error is', error)
+    //   return;
+    // }
 
     // do something with the document
-});
-    res.redirect('/home');
   });
 
 app.get('/logout', function(req, res){
