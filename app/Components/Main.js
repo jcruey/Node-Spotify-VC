@@ -38,23 +38,27 @@ var Main = React.createClass({
 	},
 
 	setNewTracks: function(){
-		helpers.getNewTracks(function(data){
-			this.setState({
-				savedTracks: data
-			})
-		});
-	},
-
-	setFavTracks: function(){
-		helpers.getFavTracks(function(data){
-			this.setState({
+		var self = this;
+		helpers.getNewTracks().then(function(response){
+			self.setState({
 				savedTracks: response.data
 			})
 		});
 	},
 
+	setFavTracks: function(){
+		var self = this;
+		helpers.getFavTracks().then(function(response){
+			// console.log('response',response.data);
+			self.setState({
+				savedTracks: response.data
+			})
+		})
+
+	},
+
 	setFavArtists: function(){
-		helpers.getFavArtists(function(data){
+		helpers.getFavArtists(function(response){
 			this.setState({
 				savedTracks: response.data
 			})
@@ -76,6 +80,7 @@ var Main = React.createClass({
 	componentDidMount: function() {
 		helpers.getSavedTracks()
 		.then(function(response) {
+			// console.log('response',response.data);
 			this.setState({savedTracks: response.data})
 		}.bind(this))
 	},

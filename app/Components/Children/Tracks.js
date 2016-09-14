@@ -44,7 +44,7 @@ var Tracks = React.createClass({
 	// Here we render the function
 	render: function(){
 		var savedTracks = this.props.savedTracks || [];
-		console.log(savedTracks);
+		// console.log(savedTracks);
 		var self = this;
 		function msToMinSeconds(ms) {
 	      var minutes = Math.floor(ms / 60000);

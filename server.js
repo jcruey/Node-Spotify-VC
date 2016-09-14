@@ -152,16 +152,18 @@ app.get('/favoriteTracks', function(req, res) {
   spotifyApi.getMyTopTracks()
   .then(function(data) {
     console.log('Done!');
-    var favTrackObj = data.body.items
-    // for (var i = 0; i<favTrackObj.length; i++) {
+    var favTrackObj = data.body.items; 
+    var tracks = [];
+    for (var i = 0; i<favTrackObj.length; i++) {
+      tracks.push({track: favTrackObj[i]});
     //   console.log('------------------------------------------');
     //   console.log('Track: ' + favTrackObj[i].name);
     //   console.log('Album: ' + favTrackObj[i].album.name);
     //   console.log('Artist: ' + favTrackObj[i].artists[0].name);
     //   console.log('Uri: ' + favTrackObj[i].uri);
     //   console.log('------------------------------------------');
-    // }
-    res.send(favTrackObj);
+    }
+    res.send(tracks);
   }, function(err) {
     console.log('Something went wrong!', err);
 });
@@ -218,7 +220,16 @@ app.get('/auth/spotify',
 app.get('/callback',
   passport.authenticate('spotify', { failureRedirect: '/login' }),
   function(req, res) {
-    console.log('User: ', req.user);
+    console.log('user: ', req.user);
+    var query = {},
+    update = { user: req.user },
+    options = { upsert: true, new: true, setDefaultsOnInsert: true };
+    // Find the document
+    userSchema.findOneAndUpdate(query, update, options, function(error, result) {
+    if (error) return;
+
+    // do something with the document
+});
     res.redirect('/home');
   });
 
@@ -233,14 +244,14 @@ app.post('/play', function(req, res){
   // console.log('Req.body: ', req.body);
   trackList = req.body.tracks;
   currentIndex = req.body.index;
-  trackObj = {
+  var trackObj = {
     uri: trackList[currentIndex].track.uri
   }
   console.log('Current Track: ', trackObj);
   sp.play(trackObj)
-  // sp.progress(trackList, index, function(){
-  // index++
-  // });
+  sp.progress(trackList, currentIndex, function(){
+    // currentIndex++ 
+    });
   res.send('200');
 });
 

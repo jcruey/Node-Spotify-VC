@@ -19798,23 +19798,26 @@
 		},
 
 		setNewTracks: function setNewTracks() {
-			helpers.getNewTracks(function (data) {
-				this.setState({
-					savedTracks: data
+			var self = this;
+			helpers.getNewTracks().then(function (response) {
+				self.setState({
+					savedTracks: response.data
 				});
 			});
 		},
 
 		setFavTracks: function setFavTracks() {
-			helpers.getFavTracks(function (data) {
-				this.setState({
+			var self = this;
+			helpers.getFavTracks().then(function (response) {
+				// console.log('response',response.data);
+				self.setState({
 					savedTracks: response.data
 				});
 			});
 		},
 
 		setFavArtists: function setFavArtists() {
-			helpers.getFavArtists(function (data) {
+			helpers.getFavArtists(function (response) {
 				this.setState({
 					savedTracks: response.data
 				});
@@ -19835,6 +19838,7 @@
 
 		componentDidMount: function componentDidMount() {
 			helpers.getSavedTracks().then(function (response) {
+				// console.log('response',response.data);
 				this.setState({ savedTracks: response.data });
 			}.bind(this));
 		},
@@ -20148,7 +20152,7 @@
 		// This function retrieves the current user's saved tracks from Spotify. 
 		getSavedTracks: function getSavedTracks() {
 			return axios.get('/tracks').then(function (response) {
-				// console.log(response);
+				console.log('savedTracks', response);
 				return response;
 			});
 			console.log('getSavedTracks Fired');
@@ -20156,7 +20160,7 @@
 
 		getFavTracks: function getFavTracks() {
 			return axios.get('/favoriteTracks').then(function (response) {
-				// console.log(response);
+				console.log('favTracks', response);
 				return response;
 			});
 			console.log('getTopTracks Fired');
@@ -20164,7 +20168,7 @@
 
 		getNewTracks: function getNewTracks() {
 			return axios.get('/newTracks').then(function (response) {
-				// console.log(response);
+				console.log('newTracks', response);
 				return response;
 			});
 			console.log('getNewTracks Fired');
@@ -21467,7 +21471,7 @@
 		// Here we render the function
 		render: function render() {
 			var savedTracks = this.props.savedTracks || [];
-			console.log(savedTracks);
+			// console.log(savedTracks);
 			var self = this;
 			function msToMinSeconds(ms) {
 				var minutes = Math.floor(ms / 60000);

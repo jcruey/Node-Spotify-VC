@@ -8,7 +8,7 @@ var helpers = {
 	getSavedTracks: function(){
 		return axios.get('/tracks')
 		.then(function(response){
-			// console.log(response);
+			console.log('savedTracks', response);
 			return response;
 		})
 		console.log('getSavedTracks Fired');
@@ -18,7 +18,7 @@ var helpers = {
 	getFavTracks: function(){
 		return axios.get('/favoriteTracks')
 		.then(function(response){
-			// console.log(response);
+			console.log('favTracks', response);
 			return response;
 		})
 		console.log('getTopTracks Fired');
@@ -28,7 +28,7 @@ var helpers = {
 	getNewTracks: function(){
 		return axios.get('/newTracks')
 		.then(function(response){
-			// console.log(response);
+			console.log('newTracks', response);
 			return response;
 		})
 		console.log('getNewTracks Fired');

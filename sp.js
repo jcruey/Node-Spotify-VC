@@ -45,14 +45,19 @@ exports.stop = function() {
 }
 
 exports.progress = function(trackList, index, callback) {
+	var newIndex = index;
 	spotify.player.on('progress', function (progress) {
 		console.dir(progress);
+		console.log(trackList[newIndex].track.uri);
+		console.log(newIndex);
 	 if (progress.elapsed == progress.duration){
-	 	this.play(trackList[index + 1])
+	 	newIndex++;
+	 	this.play(trackList[newIndex].track)
 	 	callback();
         console.log('track ended')
  	}
 	 /* progress event */ });	
+
 }
 
 exports.logout = function() {
