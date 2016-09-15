@@ -25,6 +25,16 @@ var helpers = {
 
 	},
 
+	getFavArtists: function(){
+		return axios.get('/discoverWeekly')
+		.then(function(response){
+			console.log('discoverWeekly', response);
+			return response;
+		})
+		console.log('getFavArtists Fired');
+
+	},
+
 	getNewTracks: function(){
 		return axios.get('/newTracks')
 		.then(function(response){

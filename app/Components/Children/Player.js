@@ -1,6 +1,7 @@
 // Include React 
 var React = require('react');
 var helpers = require('../utils/helpers.js');
+var ReactTranscriber = require('react-transcriber');
 
 // This is the player component. 
 var Player = React.createClass({
@@ -52,7 +53,8 @@ var Player = React.createClass({
 
 	// When a user submits... 
 	handleClickBack: function(){
-		var i = this.props.index - 1;
+		var i = this.props.index;
+		i--;
 		this.props.setIndex(i);
 		var art = this.props.savedTracks[i].track.album.images[1].url
 		var songName = this.props.savedTracks[i].track.name;
@@ -73,7 +75,8 @@ var Player = React.createClass({
 
 	// When a user submits... 
 	handleClickForward: function(){
-		var i = this.props.index + 1;
+		var i = this.props.index;
+		i++;
 		this.props.setIndex(i);
 		var art = this.props.savedTracks[i].track.album.images[1].url
 		var songName = this.props.savedTracks[i].track.name;

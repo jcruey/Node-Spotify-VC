@@ -17,6 +17,8 @@ var appSecret = process.env.appSecret;
 
 var trackList = [];
 var currentIndex = 0;
+var dwplaylistID = "";
+var rrplaylistID = "";
 
 // Passport session setup.
 //   To support persistent login sessions, Passport needs to be able to
@@ -94,7 +96,8 @@ var spotifySchema = new Schema({
   savedTracks:  [],
   favTracks: [],
   releaseRadar: [],
-  favArtists: []
+  discoverWeekly: [],
+  playlists: []
 });
 
 var userSchema = mongoose.model('userSchema', spotifySchema); 
@@ -140,10 +143,21 @@ app.get('/tracks', function(req, res) {
         res.send(trackObj);
       });
     });
-  
   }, function(err) {
     console.log('Something went wrong!', err);
 });
+spotifyApi.getUserPlaylists(req.user.username)
+  .then(function(data) {
+    var playlistObj = data.body.items;
+    userSchema.findOne({"username": req.user.username}).exec(function(err, user){
+      dwplaylistID = user.playlists[1].id;
+      rrplaylistID = user.playlists[0].id;
+      user.playlists = playlistObj;
+      user.save(function(){
+        console.log('saved to DB');
+      });
+    });
+  });
 });
 
 app.get('/favoriteTracks', function(req, res) {
@@ -172,6 +186,37 @@ app.get('/favoriteTracks', function(req, res) {
         res.send(tracks);
       });
     });
+
+  }, function(err) {
+    console.log('Something went wrong!', err);
+});
+});
+
+app.get('/discoverWeekly', function(req, res) {
+  // Set the credentials when making the request 
+  var spotifyApi = new SpotifyWebApi({
+  accessToken : req.user.accessToken
+  });
+  // Get tracks in the signed in user's Your Music library 
+  // Retrieve new releases
+    spotifyApi.getPlaylist('spotifydiscover', dwplaylistID)
+  .then(function(data) {
+    var playlistTracks = data.body.tracks.items
+    console.log("Discover Weekly");
+    // for (var i = 0; i<playlistTracks.length; i++) {
+    //   console.log('------------------------------------------');
+    //   console.log('Track: ' + playlistTracks[i].track.name);
+    //   console.log('Album: ' + playlistTracks[i].track.album.name);
+    //   console.log('Artist: ' + playlistTracks[i].track.artists[0].name);
+    //   console.log('Uri: ' + playlistTracks[i].track.uri);
+    //   console.log('------------------------------------------');
+    // }
+    userSchema.findOne({"username": req.user.username}).exec(function(err, user){
+      user.discoverWeekly = playlistTracks;
+      user.save(function(){
+        res.send(playlistTracks);
+      });
+    });
   
   }, function(err) {
     console.log('Something went wrong!', err);
@@ -185,7 +230,7 @@ app.get('/newTracks', function(req, res) {
   });
   // Get tracks in the signed in user's Your Music library 
   // Retrieve new releases
-    spotifyApi.getPlaylist('spotify', '37i9dQZEVXbhbFu2BQ8h0C')
+    spotifyApi.getPlaylist('spotify', rrplaylistID)
   .then(function(data) {
     var playlistTracks = data.body.tracks.items
     console.log("Release Radar");
@@ -221,7 +266,7 @@ app.post('/spotifyLogin', function(req, res){
 //   the user to spotify.com. After authorization, spotify will redirect the user
 //   back to this application at /auth/spotify/callback
 app.get('/auth/spotify',
-  passport.authenticate('spotify', {scope: ['user-read-email', 'user-read-private', 'user-library-read', 'user-top-read'], showDialog: true}),
+  passport.authenticate('spotify', {scope: ['user-read-email', 'user-read-private', 'user-library-read', 'user-top-read', 'playlist-read-private'], showDialog: true}),
   function(req, res){
 // The request will be redirected to spotify for authentication, so this
 // function will not be called.

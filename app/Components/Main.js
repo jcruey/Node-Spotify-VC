@@ -17,6 +17,7 @@ var Main = React.createClass({
 		return {
 			savedTracks: "",
 			topTracks: "",
+			topArtists: "",
 			trackArt: "",
 			currentTrackName: "",
 			currentTrackElapsed: "",
@@ -58,8 +59,9 @@ var Main = React.createClass({
 	},
 
 	setFavArtists: function(){
-		helpers.getFavArtists(function(response){
-			this.setState({
+		var self = this;
+		helpers.getFavArtists().then(function(response){
+			self.setState({
 				savedTracks: response.data
 			})
 		});
@@ -107,7 +109,7 @@ var Main = React.createClass({
 					    <div className="navbar-collapse collapse">
 					        <ul className="nav navbar-nav navbar-nav navbar-right">
 					            <li className="active"><a href="/home">Home</a></li>
-					            <li><a onClick={self.setFavArtists}>Favorite Artists</a></li>
+					            <li><a onClick={self.setFavArtists}>Discover Weekly</a></li>
 					            <li><a onClick={self.setNewTracks}>Release Radar</a></li>
 					            <li><a onClick={self.setFavTracks}>Favorite Tracks</a></li>
 					            <li><a href="/account">Account</a></li>

@@ -51,9 +51,11 @@ exports.progress = function(trackList, index, callback) {
 		console.log(trackList[global.currentIndex].track.uri);
 		console.log('globalindex', global.currentIndex);
 		console.log('tracklistlength', trackList.length);
-	if(global.currentIndex > trackList.length) return;
+	if(global.currentIndex > trackList.length) {
+		spotify.player.stop();
+	};
 
-	 if (progress.elapsed == progress.duration){
+	 if (progress.elapsed == 10/*progress.duration*/){
 	 	global.currentIndex++;
 	 	console.log(global.currentIndex);
 	 	this.play(trackList[global.currentIndex].track)
