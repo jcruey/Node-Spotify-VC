@@ -48,7 +48,7 @@ exports.progress = function(trackList, index, callback) {
 	global.currentIndex = index;
 	
 	spotify.player.on('progress', function (progress) {
-		console.dir(progress);
+		// console.dir(progress);
 		console.log(trackList[global.currentIndex].track.name);
 		console.log('globalindex', global.currentIndex);
 		console.log('tracklistlength', trackList.length);

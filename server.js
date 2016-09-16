@@ -169,7 +169,8 @@ app.get('/favoriteTracks', function(req, res) {
   spotifyApi.getMyTopTracks()
   .then(function(data) {
     console.log('Done!');
-    var favTrackObj = data.body.items; 
+    var favTrackObj = data.body.items;
+    
     var tracks = [];
     for (var i = 0; i<favTrackObj.length; i++) {
       tracks.push({track: favTrackObj[i]});
@@ -180,6 +181,7 @@ app.get('/favoriteTracks', function(req, res) {
     //   console.log('Uri: ' + favTrackObj[i].uri);
     //   console.log('------------------------------------------');
     }
+    trackList = tracks;
     userSchema.findOne({"username": req.user.username}).exec(function(err, user){
       user.favTracks = tracks;
       user.save(function(){
@@ -202,6 +204,7 @@ app.get('/discoverWeekly', function(req, res) {
     spotifyApi.getPlaylist('spotifydiscover', dwplaylistID)
   .then(function(data) {
     var playlistTracks = data.body.tracks.items
+      trackList = data.body.tracks.items;
     console.log("Discover Weekly");
     // for (var i = 0; i<playlistTracks.length; i++) {
     //   console.log('------------------------------------------');
@@ -233,6 +236,7 @@ app.get('/newTracks', function(req, res) {
     spotifyApi.getPlaylist('spotify', rrplaylistID)
   .then(function(data) {
     var playlistTracks = data.body.tracks.items
+      trackList = data.body.tracks.items;
     console.log("Release Radar");
     // for (var i = 0; i<playlistTracks.length; i++) {
     //   console.log('------------------------------------------');
@@ -292,19 +296,6 @@ app.get('/callback',
         res.redirect('/home');
       }
     });
-
-    // console.log('user: ', req.user);
-    // var query = {},
-    // update = { user: req.user },
-    // options = { upsert: true, new: true, setDefaultsOnInsert: true };
-    // // Find the document
-    // userSchema.findOneAndUpdate(query, update, options, function(error, result) {
-    // if (error) {
-    //   console.log('error is', error)
-    //   return;
-    // }
-
-    // do something with the document
   });
 
 app.get('/logout', function(req, res){
@@ -322,11 +313,12 @@ app.post('/play', function(req, res){
     uri: trackList[currentIndex].track.uri
   }
   console.log('Current Track: ', trackObj);
+  console.log('Song Playing: ', trackList[currentIndex].track.name, trackObj.uri);
   sp.play(trackObj)
   // sp.progress(trackList, currentIndex, function(){
-  //   // currentIndex++ 
-  //   // globalSocket.emit('show next album art', currentIndex)
-  //   });
+    // currentIndex++ 
+    // globalSocket.emit('show next album art', currentIndex)
+  // });
   res.send('200');
 });
 
@@ -343,7 +335,8 @@ app.post('/stop', function(req, res){
 });
 
 app.post('/checkIndex', function(req, res){
-  var updateData = {tracks: trackList, index: currentIndex}
+  currentIndex = global.currentIndex;
+  var updateData = {index: currentIndex}
   res.send(updateData);
 })
 
