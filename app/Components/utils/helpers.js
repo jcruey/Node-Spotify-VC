@@ -46,7 +46,7 @@ var helpers = {
 	},
 
 	playMusic: function(track, i){
-
+		console.log('called Index:', i);
 		console.log('Playing track', track[i].track.uri);
 		return axios.post('/play', {tracks: track, index:i})
 			.then(function(response){
@@ -75,7 +75,15 @@ var helpers = {
 				console.log(response);
 		})
 
-	},
+	}
+
+	// checkGlobalIndex: function() {
+	// 	return axios.post('/checkIndex')
+	// 		.then(function(response){
+	// 			// console.log('updateData ', response);
+	// 			return response;
+	// 		});
+	// }
 
 
 }

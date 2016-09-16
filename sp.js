@@ -46,23 +46,24 @@ exports.stop = function() {
 
 exports.progress = function(trackList, index, callback) {
 	global.currentIndex = index;
+	
 	spotify.player.on('progress', function (progress) {
 		console.dir(progress);
-		console.log(trackList[global.currentIndex].track.uri);
+		console.log(trackList[global.currentIndex].track.name);
 		console.log('globalindex', global.currentIndex);
 		console.log('tracklistlength', trackList.length);
-	if(global.currentIndex > trackList.length) {
-		spotify.player.stop();
-	};
 
-	 if (progress.elapsed == 10/*progress.duration*/){
-	 	global.currentIndex++;
-	 	console.log(global.currentIndex);
-	 	this.play(trackList[global.currentIndex].track)
-	 	callback();
-        console.log('track ended')
- 	}
+		if (global.currentIndex >= trackList.length-1) return;
+		
+		if (progress.elapsed >= progress.duration){
+		 	console.log('track ended')
+		 	global.currentIndex++;
+		 	console.log(global.currentIndex);
+		 	this.play(trackList[global.currentIndex].track)
+		 	callback();  
+	 	}
 	 /* progress event */ });	
+
 
 }
 

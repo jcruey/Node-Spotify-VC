@@ -1,4 +1,7 @@
 module.exports = {
+
+   // will allow errors in console to display on correct page and line
+  devtool: 'source-map',
   
   // This code will be compiled 
   entry: "./app/app.js",

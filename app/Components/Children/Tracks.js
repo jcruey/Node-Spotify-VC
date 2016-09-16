@@ -13,9 +13,108 @@ var Tracks = React.createClass({
 		}
 	},
 
+
+	componentDidMount: function(){
+		this.annyangSetup();
+		// this.turnOnSockets
+	},
+
+	annyangSetup: function(){
+		if (annyang) {
+			var self = this
+		  // Let's define a command. 
+		  var commands = {
+		    'play': function(i) {
+		    	var i = self.props.index;
+				console.log(i);
+				var song = self.props.savedTracks[i].track.uri
+				var art = self.props.savedTracks[i].track.album.images[1].url
+				var songName = self.props.savedTracks[i].track.name;
+				self.props.setCurrentTrackName(songName);
+				self.setState({
+					currentTrackName: songName
+				})
+				console.log('songname: ', songName);
+				var trackObj = {
+					'uri': song
+				}
+				console.log('trackObj: ', trackObj)
+					console.log(song);
+				var artObj = {
+					'url': art
+				}
+				self.setState({
+					trackArt: art
+				})
+				self.props.setArt(art);
+				helpers.playMusic(self.props.savedTracks, i);
+		     },
+
+		     'stop': function() {
+		     	helpers.stopMusic();
+		     },
+
+		     'next': function() {
+		     	var i = self.props.index;
+				i++;
+				self.props.setIndex(i);
+				var art = self.props.savedTracks[i].track.album.images[1].url
+				var songName = self.props.savedTracks[i].track.name;
+				self.props.setCurrentTrackName(songName);
+				self.setState({
+					currentTrackName: songName
+				})
+				console.log('songname: ', songName);
+				var artObj = {
+					'url': art
+				}
+				self.setState({
+					trackArt: art
+				})
+				self.props.setArt(art);
+				self.handleClickPlay(i);
+		     },
+
+		     'back': function() {
+		     	var i = self.props.index;
+				i--;
+				self.props.setIndex(i);
+				var art = self.props.savedTracks[i].track.album.images[1].url
+				var songName = self.props.savedTracks[i].track.name;
+				self.props.setCurrentTrackName(songName);
+				self.setState({
+					currentTrackName: songName
+				})
+				console.log('songname: ', songName);
+				var artObj = {
+					'url': art
+				}
+				self.setState({
+					trackArt: art
+				})
+				self.props.setArt(art);
+				self.handleClickPlay(i);
+		     }
+
+		  };
+		 
+		  // Add our commands to annyang 
+		  annyang.addCommands(commands);
+
+		  // Add callbacks for logging
+		  annyang.addCallback('resultMatch', function(userSaid, commandText, phrases) {
+			  console.log(userSaid); // sample output: 'hello'
+			  console.log(commandText); // sample output: 'hello (there)'
+			  console.log(phrases); // sample output: ['hello', 'halo', 'yellow', 'polo', 'hello kitty']
+			});
+
+		  // Start listening. 
+		  annyang.start();
+		}
+	},
+
 	// When a user submits... 
 	handleClickPlay: function(i){
-		// this.state.savedTracks[i + 1].track.uri
 		console.log(i);
 		this.setState({index: i});
 		this.props.setIndex(i);
@@ -40,6 +139,29 @@ var Tracks = React.createClass({
 		this.props.setArt(art);	
 		helpers.playMusic(this.props.savedTracks, i);
 	},
+
+	// componentDidUpdate: function() {
+	// 	var self = this;
+	// 	var myVar = setInterval(myTimer, 5000);
+	// 	function myTimer(){ 
+	// 		var i = self.props.index;
+	// 		console.log(i);
+	// 		var art = self.props.savedTracks[i].track.album.images[1].url
+	// 		var songName = self.props.savedTracks[i].track.name;
+	// 		self.props.setCurrentTrackName(songName);
+	// 		self.setState({
+	// 			currentTrackName: songName
+	// 		})
+	// 		console.log('songname: ', songName);
+	// 		var artObj = {
+	// 			'url': art
+	// 		}
+	// 		self.setState({
+	// 			trackArt: art
+	// 		})
+	// 		self.props.setArt(art);
+	// 	}
+	// },
 
 	// Here we render the function
 	render: function(){

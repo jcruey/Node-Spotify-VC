@@ -154,7 +154,7 @@ spotifyApi.getUserPlaylists(req.user.username)
       rrplaylistID = user.playlists[0].id;
       user.playlists = playlistObj;
       user.save(function(){
-        console.log('saved to DB');
+        console.log('saved User playlists to DB');
       });
     });
   });
@@ -323,9 +323,10 @@ app.post('/play', function(req, res){
   }
   console.log('Current Track: ', trackObj);
   sp.play(trackObj)
-  sp.progress(trackList, currentIndex, function(){
-    // currentIndex++ 
-    });
+  // sp.progress(trackList, currentIndex, function(){
+  //   // currentIndex++ 
+  //   // globalSocket.emit('show next album art', currentIndex)
+  //   });
   res.send('200');
 });
 
@@ -341,6 +342,10 @@ app.post('/stop', function(req, res){
   res.send('200');
 });
 
+app.post('/checkIndex', function(req, res){
+  var updateData = {tracks: trackList, index: currentIndex}
+  res.send(updateData);
+})
 
 // -------------------------------------------------
 
@@ -357,5 +362,4 @@ app.listen(PORT, function() {
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
   res.redirect('/');
-  console.log(req.user);
 };

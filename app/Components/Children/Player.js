@@ -1,7 +1,7 @@
 // Include React 
 var React = require('react');
 var helpers = require('../utils/helpers.js');
-var ReactTranscriber = require('react-transcriber');
+
 
 // This is the player component. 
 var Player = React.createClass({
@@ -16,6 +16,16 @@ var Player = React.createClass({
 			currentTrackElapsed: "",
 			index: 0
 		}
+	},
+
+	componentDidMount: function(){
+		// this.turnOnSockets
+	},
+
+	turnOnSockets: function(){
+		socket.on('show next album art', function(nextIndex){
+
+		});
 	},
 
 	// When a user submits... 
@@ -53,46 +63,53 @@ var Player = React.createClass({
 
 	// When a user submits... 
 	handleClickBack: function(){
-		var i = this.props.index;
-		i--;
-		this.props.setIndex(i);
-		var art = this.props.savedTracks[i].track.album.images[1].url
-		var songName = this.props.savedTracks[i].track.name;
-		this.props.setCurrentTrackName(songName);
-		this.setState({
-			currentTrackName: songName
-		})
-		console.log('songname: ', songName);
-		var artObj = {
-			'url': art
+		var self = this;
+		var i = self.props.index;
+		if(i > 0) {
+			i--;
+			self.props.setIndex(i);
+			var art = self.props.savedTracks[i].track.album.images[1].url
+			var songName = self.props.savedTracks[i].track.name;
+			self.props.setCurrentTrackName(songName);
+			self.setState({
+				currentTrackName: songName
+			})
+			console.log('songname: ', songName);
+			var artObj = {
+				'url': art
+			}
+			self.setState({
+				trackArt: art
+			})
+			self.props.setArt(art);
+			self.handleClickPlay(i);
 		}
-		this.setState({
-			trackArt: art
-		})
-		this.props.setArt(art);
-		this.handleClickPlay(i);
 	},
 
 	// When a user submits... 
 	handleClickForward: function(){
-		var i = this.props.index;
-		i++;
-		this.props.setIndex(i);
-		var art = this.props.savedTracks[i].track.album.images[1].url
-		var songName = this.props.savedTracks[i].track.name;
-		this.props.setCurrentTrackName(songName);
-		this.setState({
-			currentTrackName: songName
-		})
-		console.log('songname: ', songName);
-		var artObj = {
-			'url': art
+		var self = this;
+		var i = self.props.index;
+		if(i <= self.props.savedTracks.length-1) {
+			i++;
+			console.log('newIndex', i);
+			self.props.setIndex(i);
+			var art = self.props.savedTracks[i].track.album.images[1].url
+			var songName = self.props.savedTracks[i].track.name;
+			self.props.setCurrentTrackName(songName);
+			self.setState({
+				currentTrackName: songName
+			})
+			console.log('songname: ', songName);
+			var artObj = {
+				'url': art
+			}
+			self.setState({
+				trackArt: art
+			})
+			self.props.setArt(art);
+			self.handleClickPlay(i);
 		}
-		this.setState({
-			trackArt: art
-		})
-		this.props.setArt(art);
-		this.handleClickPlay(i);
 	},
 
 	// Here we render the function

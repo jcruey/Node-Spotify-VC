@@ -84,7 +84,17 @@ var Main = React.createClass({
 		.then(function(response) {
 			// console.log('response',response.data);
 			this.setState({savedTracks: response.data})
-		}.bind(this))
+		}.bind(this));
+	},
+
+	componentDidUpdate: function() {
+		var myVar = setInterval(myTimer, 5000);
+		function myTimer(){
+			helpers.checkGlobalIndex()
+				.then(function(response) {
+				this.setState({index: response.data.index})
+				}.bind(this));
+		}
 	},
 
 
@@ -136,7 +146,7 @@ var Main = React.createClass({
 					</div>
 
 					<div className="col-md-6">
-						<p>Voice Control: Use your voice to control the Spotify player. You can say things like Play Jan Blomqvist.</p>
+						<p>Voice Control: Use your voice to control the Spotify player. You can say things like: 'Play', 'Stop', 'Next', 'Back'</p>
 					</div>
 
 				</div>
