@@ -46,9 +46,13 @@ exports.stop = function() {
 
 exports.progress = function(trackList, index, callback) {
 	global.currentIndex = index;
-	
+	function getTrackList() {
+		return global.trackList;
+	}
+	// spotify.player.off('progress');
 	spotify.player.on('progress', function (progress) {
 		// console.dir(progress);
+		var trackList = getTrackList();
 		console.log(trackList[global.currentIndex].track.name);
 		console.log('globalindex', global.currentIndex);
 		console.log('tracklistlength', trackList.length);
@@ -62,6 +66,7 @@ exports.progress = function(trackList, index, callback) {
 		 	console.log('track ended')
 		 	global.currentIndex++;
 		 	console.log(global.currentIndex);
+		 	// spotify.player.stop();
 		 	this.play(trackList[global.currentIndex].track)
 		 	callback();  
 	 	}

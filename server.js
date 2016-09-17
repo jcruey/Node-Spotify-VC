@@ -15,8 +15,10 @@ var SpotifyWebApi = require('spotify-web-api-node');
 var appKey = process.env.appKey;
 var appSecret = process.env.appSecret;
 
-var trackList = [];
-var currentIndex = 0;
+global.trackList = []
+var trackList = global.trackList;
+global.currentIndex = 0;
+var currentIndex = global.currentIndex;
 var dwplaylistID = "";
 var rrplaylistID = "";
 
@@ -129,6 +131,7 @@ app.get('/tracks', function(req, res) {
   .then(function(data) {
     console.log('Done!');
     var trackObj = data.body.items
+    global.trackList = trackObj;
 ;    // for (var i = 0; i<trackObj.length; i++) {
     //   console.log('------------------------------------------');
     //   console.log('Track: ' + trackObj[i].track.name);
@@ -185,7 +188,7 @@ app.get('/favoriteTracks', function(req, res) {
     //   console.log('Uri: ' + favTrackObj[i].uri);
     //   console.log('------------------------------------------');
     }
-    trackList = tracks;
+    global.trackList = tracks;
     userschema.findOne({"username": req.user.username}).exec(function(err, user){
       user.favTracks = tracks;
       user.save(function(){
@@ -208,8 +211,9 @@ app.get('/discoverWeekly', function(req, res) {
     spotifyApi.getPlaylist('spotifydiscover', dwplaylistID)
   .then(function(data) {
     var playlistTracks = data.body.tracks.items
-      trackList = data.body.tracks.items;
-      console.log('DW update ', trackList);
+      global.trackList = playlistTracks;
+      global.currentIndex = 0;
+      // console.log('DW update ', trackList);
     console.log("Discover Weekly");
     // for (var i = 0; i<playlistTracks.length; i++) {
     //   console.log('------------------------------------------');
@@ -241,8 +245,9 @@ app.get('/newTracks', function(req, res) {
     spotifyApi.getPlaylist('spotify', rrplaylistID)
   .then(function(data) {
     var playlistTracks = data.body.tracks.items
-      trackList = data.body.tracks.items;
-      console.log('RR update ', trackList);
+      global.trackList = playlistTracks;
+      global.currentIndex = 0;
+      // console.log('RR update ', trackList);
     console.log("Release Radar");
     // for (var i = 0; i<playlistTracks.length; i++) {
     //   console.log('------------------------------------------');
@@ -315,7 +320,7 @@ app.post('/play', function(req, res){
   // console.log('Req.body: ', req.body);
   trackList = req.body.tracks;
   currentIndex = req.body.index;
-  console.log('currently loaded ', trackList);
+  // console.log('currently loaded ', trackList);
   var trackObj = {
     uri: trackList[currentIndex].track.uri
   }
@@ -323,8 +328,6 @@ app.post('/play', function(req, res){
   console.log('Song Playing: ', trackList[currentIndex].track.name, trackObj.uri);
   sp.play(trackObj)
    sp.progress(trackList, currentIndex, function(){
-    // currentIndex++ 
-    // globalSocket.emit('show next album art', currentIndex)
    });
   res.send('200');
 });

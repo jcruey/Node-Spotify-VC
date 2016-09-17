@@ -61,6 +61,7 @@ var Main = React.createClass({
 	setFavArtists: function(){
 		var self = this;
 		helpers.getFavArtists().then(function(response){
+			console.log(response)
 			self.setState({
 				savedTracks: response.data
 			})

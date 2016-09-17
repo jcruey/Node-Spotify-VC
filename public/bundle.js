@@ -19820,6 +19820,7 @@
 		setFavArtists: function setFavArtists() {
 			var self = this;
 			helpers.getFavArtists().then(function (response) {
+				console.log(response);
 				self.setState({
 					savedTracks: response.data
 				});
