@@ -148,6 +148,7 @@ app.get('/tracks', function(req, res) {
 });
 spotifyApi.getUserPlaylists(req.user.username)
   .then(function(data) {
+    console.log(data);
     var playlistObj = data.body.items;
     userSchema.findOne({"username": req.user.username}).exec(function(err, user){
       dwplaylistID = user.playlists[1].id;
