@@ -151,12 +151,12 @@ spotifyApi.getUserPlaylists(req.user.username)
     // console.log(data);
     var playlistObj = data.body.items;
     userschema.findOne({"username": req.user.username}).exec(function(err, user){
-      dwplaylistID = user.playlists[1].id;
-      rrplaylistID = user.playlists[0].id;
-      // console.log('playistObj ', playlistObj);
+      console.log('playistObj ', playlistObj);
       user.playlists = playlistObj;
       user.save(function(){
         console.log('saved User playlists to DB');
+        dwplaylistID = user.playlists[1].id;
+        rrplaylistID = user.playlists[0].id;
       });
     });
   }, function(err) {
@@ -209,6 +209,7 @@ app.get('/discoverWeekly', function(req, res) {
   .then(function(data) {
     var playlistTracks = data.body.tracks.items
       trackList = data.body.tracks.items;
+      console.log('DW update ', trackList);
     console.log("Discover Weekly");
     // for (var i = 0; i<playlistTracks.length; i++) {
     //   console.log('------------------------------------------');
@@ -241,6 +242,7 @@ app.get('/newTracks', function(req, res) {
   .then(function(data) {
     var playlistTracks = data.body.tracks.items
       trackList = data.body.tracks.items;
+      console.log('RR update ', trackList);
     console.log("Release Radar");
     // for (var i = 0; i<playlistTracks.length; i++) {
     //   console.log('------------------------------------------');
@@ -313,6 +315,7 @@ app.post('/play', function(req, res){
   // console.log('Req.body: ', req.body);
   trackList = req.body.tracks;
   currentIndex = req.body.index;
+  console.log('currently loaded ', trackList);
   var trackObj = {
     uri: trackList[currentIndex].track.uri
   }
