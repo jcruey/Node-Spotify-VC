@@ -100,7 +100,7 @@ var spotifySchema = new Schema({
   playlists: []
 });
 
-var userSchema = mongoose.model('userSchema', spotifySchema); 
+var userschema = mongoose.model('userschema', spotifySchema); 
 // -------------------------------------------------
 
 // Main Route. This route will redirect to our rendered React application
@@ -137,7 +137,7 @@ app.get('/tracks', function(req, res) {
     //   console.log('Uri: ' + trackObj[i].track.uri);
     //   console.log('------------------------------------------');
     // }
-    userSchema.findOne({"username": req.user.username}).exec(function(err, user){
+    userschema.findOne({"username": req.user.username}).exec(function(err, user){
       user.savedTracks = trackObj;
       user.save(function(){
         res.send(trackObj);
@@ -150,7 +150,7 @@ spotifyApi.getUserPlaylists(req.user.username)
   .then(function(data) {
     console.log(data);
     var playlistObj = data.body.items;
-    userSchema.findOne({"username": req.user.username}).exec(function(err, user){
+    userschema.findOne({"username": req.user.username}).exec(function(err, user){
       dwplaylistID = user.playlists[1].id;
       rrplaylistID = user.playlists[0].id;
       console.log('playistObj ', playlistObj);
@@ -186,7 +186,7 @@ app.get('/favoriteTracks', function(req, res) {
     //   console.log('------------------------------------------');
     }
     trackList = tracks;
-    userSchema.findOne({"username": req.user.username}).exec(function(err, user){
+    userschema.findOne({"username": req.user.username}).exec(function(err, user){
       user.favTracks = tracks;
       user.save(function(){
         res.send(tracks);
@@ -218,7 +218,7 @@ app.get('/discoverWeekly', function(req, res) {
     //   console.log('Uri: ' + playlistTracks[i].track.uri);
     //   console.log('------------------------------------------');
     // }
-    userSchema.findOne({"username": req.user.username}).exec(function(err, user){
+    userschema.findOne({"username": req.user.username}).exec(function(err, user){
       user.discoverWeekly = playlistTracks;
       user.save(function(){
         res.send(playlistTracks);
@@ -250,7 +250,7 @@ app.get('/newTracks', function(req, res) {
     //   console.log('Uri: ' + playlistTracks[i].track.uri);
     //   console.log('------------------------------------------');
     // }
-    userSchema.findOne({"username": req.user.username}).exec(function(err, user){
+    userschema.findOne({"username": req.user.username}).exec(function(err, user){
       user.releaseRadar = playlistTracks;
       user.save(function(){
         res.send(playlistTracks);
@@ -288,9 +288,9 @@ app.get('/auth/spotify',
 app.get('/callback',
   passport.authenticate('spotify', { failureRedirect: '/login' }),
   function(req, res) {
-    userSchema.findOne({"username": req.user.username}).exec(function(err, user){
+    userschema.findOne({"username": req.user.username}).exec(function(err, user){
       if (!user) {
-        var user = new userSchema({
+        var user = new userschema({
           username: req.user.username
         });
         user.save(function(){
