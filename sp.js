@@ -53,9 +53,12 @@ exports.progress = function(trackList, index, callback) {
 		console.log('globalindex', global.currentIndex);
 		console.log('tracklistlength', trackList.length);
 
-		if (global.currentIndex >= trackList.length-1) return;
+		if (global.currentIndex >= trackList.length-1) {
+			// spotify.player.stop();
+			return;
+		}
 		
-		if (progress.elapsed >= 36 /*progress.duration*/){
+		if (progress.elapsed >= 6 /*progress.duration*/){
 		 	console.log('track ended')
 		 	global.currentIndex++;
 		 	console.log(global.currentIndex);

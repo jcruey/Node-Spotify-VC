@@ -152,11 +152,14 @@ spotifyApi.getUserPlaylists(req.user.username)
     userSchema.findOne({"username": req.user.username}).exec(function(err, user){
       dwplaylistID = user.playlists[1].id;
       rrplaylistID = user.playlists[0].id;
+      console.log('playistObj ', playlistObj);
       user.playlists = playlistObj;
       user.save(function(){
         console.log('saved User playlists to DB');
       });
     });
+  }, function(err) {
+    console.log("err ", err);
   });
 });
 
