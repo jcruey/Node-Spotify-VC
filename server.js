@@ -315,10 +315,10 @@ app.post('/play', function(req, res){
   console.log('Current Track: ', trackObj);
   console.log('Song Playing: ', trackList[currentIndex].track.name, trackObj.uri);
   sp.play(trackObj)
-  // sp.progress(trackList, currentIndex, function(){
+   sp.progress(trackList, currentIndex, function(){
     // currentIndex++ 
     // globalSocket.emit('show next album art', currentIndex)
-  // });
+   });
   res.send('200');
 });
 

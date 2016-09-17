@@ -19,14 +19,28 @@ var Player = React.createClass({
 	},
 
 	componentDidMount: function(){
-		// this.turnOnSockets
+		var self = this;
+		var myVar = setInterval(myTimer, 1000);
+		function myTimer(){ 
+			var i = self.props.index;
+			// console.log(i);
+			var art = self.props.savedTracks[i].track.album.images[1].url
+			var songName = self.props.savedTracks[i].track.name;
+			self.props.setCurrentTrackName(songName);
+			self.setState({
+				currentTrackName: songName
+			})
+			// console.log('songname: ', songName);
+			var artObj = {
+				'url': art
+			}
+			self.setState({
+				trackArt: art
+			})
+			self.props.setArt(art);
+		}
 	},
 
-	turnOnSockets: function(){
-		socket.on('show next album art', function(nextIndex){
-
-		});
-	},
 
 	// When a user submits... 
 	handleClickPlay: function(i){

@@ -19840,18 +19840,17 @@
 	
 		componentDidMount: function componentDidMount() {
 			var self = this;
-			// var myVar = setInterval(myTimer, 5000);
+			var myVar = setInterval(myTimer, 6000);
 			helpers.getSavedTracks().then(function (response) {
 				// console.log('response',response.data);
 				this.setState({ savedTracks: response.data });
 			}.bind(this));
 	
-			// function myTimer(){
-			// 	helpers.checkGlobalIndex()
-			// 		.then(function(response) {
-			// 		self.setState({index: response.data.index})
-			// 		}.bind(this));
-			// }
+			function myTimer() {
+				helpers.checkGlobalIndex().then(function (response) {
+					self.setState({ index: response.data.index });
+				}.bind(this));
+			}
 		},
 	
 		// Here we render the function
@@ -20010,11 +20009,26 @@
 		},
 	
 		componentDidMount: function componentDidMount() {
-			// this.turnOnSockets
-		},
-	
-		turnOnSockets: function turnOnSockets() {
-			socket.on('show next album art', function (nextIndex) {});
+			var self = this;
+			var myVar = setInterval(myTimer, 1000);
+			function myTimer() {
+				var i = self.props.index;
+				// console.log(i);
+				var art = self.props.savedTracks[i].track.album.images[1].url;
+				var songName = self.props.savedTracks[i].track.name;
+				self.props.setCurrentTrackName(songName);
+				self.setState({
+					currentTrackName: songName
+				});
+				// console.log('songname: ', songName);
+				var artObj = {
+					'url': art
+				};
+				self.setState({
+					trackArt: art
+				});
+				self.props.setArt(art);
+			}
 		},
 	
 		// When a user submits... 
@@ -20234,16 +20248,14 @@
 			return axios.post('/stop').then(function (response) {
 				console.log(response);
 			});
+		},
+	
+		checkGlobalIndex: function checkGlobalIndex() {
+			return axios.post('/checkIndex').then(function (response) {
+				// console.log('updateData ', response);
+				return response;
+			});
 		}
-	
-		// checkGlobalIndex: function() {
-		// 	return axios.post('/checkIndex')
-		// 		.then(function(response){
-		// 			// console.log('updateData ', response);
-		// 			return response;
-		// 		});
-		// }
-	
 	
 	};
 	
@@ -21610,29 +21622,6 @@
 			this.props.setArt(art);
 			helpers.playMusic(this.props.savedTracks, i);
 		},
-	
-		// componentDidUpdate: function() {
-		// 	var self = this;
-		// 	var myVar = setInterval(myTimer, 5000);
-		// 	function myTimer(){ 
-		// 		var i = self.props.index;
-		// 		console.log(i);
-		// 		var art = self.props.savedTracks[i].track.album.images[1].url
-		// 		var songName = self.props.savedTracks[i].track.name;
-		// 		self.props.setCurrentTrackName(songName);
-		// 		self.setState({
-		// 			currentTrackName: songName
-		// 		})
-		// 		console.log('songname: ', songName);
-		// 		var artObj = {
-		// 			'url': art
-		// 		}
-		// 		self.setState({
-		// 			trackArt: art
-		// 		})
-		// 		self.props.setArt(art);
-		// 	}
-		// },
 	
 		// Here we render the function
 		render: function render() {

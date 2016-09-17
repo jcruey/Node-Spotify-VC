@@ -140,29 +140,6 @@ var Tracks = React.createClass({
 		helpers.playMusic(this.props.savedTracks, i);
 	},
 
-	// componentDidUpdate: function() {
-	// 	var self = this;
-	// 	var myVar = setInterval(myTimer, 5000);
-	// 	function myTimer(){ 
-	// 		var i = self.props.index;
-	// 		console.log(i);
-	// 		var art = self.props.savedTracks[i].track.album.images[1].url
-	// 		var songName = self.props.savedTracks[i].track.name;
-	// 		self.props.setCurrentTrackName(songName);
-	// 		self.setState({
-	// 			currentTrackName: songName
-	// 		})
-	// 		console.log('songname: ', songName);
-	// 		var artObj = {
-	// 			'url': art
-	// 		}
-	// 		self.setState({
-	// 			trackArt: art
-	// 		})
-	// 		self.props.setArt(art);
-	// 	}
-	// },
-
 	// Here we render the function
 	render: function(){
 		var savedTracks = this.props.savedTracks || [];

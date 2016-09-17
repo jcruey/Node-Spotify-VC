@@ -55,7 +55,7 @@ exports.progress = function(trackList, index, callback) {
 
 		if (global.currentIndex >= trackList.length-1) return;
 		
-		if (progress.elapsed >= progress.duration){
+		if (progress.elapsed >= 36 /*progress.duration*/){
 		 	console.log('track ended')
 		 	global.currentIndex++;
 		 	console.log(global.currentIndex);

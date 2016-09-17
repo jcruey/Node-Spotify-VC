@@ -75,15 +75,15 @@ var helpers = {
 				console.log(response);
 		})
 
-	}
+	},
 
-	// checkGlobalIndex: function() {
-	// 	return axios.post('/checkIndex')
-	// 		.then(function(response){
-	// 			// console.log('updateData ', response);
-	// 			return response;
-	// 		});
-	// }
+	checkGlobalIndex: function() {
+		return axios.post('/checkIndex')
+			.then(function(response){
+				// console.log('updateData ', response);
+				return response;
+			});
+	}
 
 
 }

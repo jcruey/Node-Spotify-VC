@@ -81,19 +81,19 @@ var Main = React.createClass({
 
 	componentDidMount: function() {
 		var self = this;
-		// var myVar = setInterval(myTimer, 5000);
+		var myVar = setInterval(myTimer, 6000);
 		helpers.getSavedTracks()
 		.then(function(response) {
 			// console.log('response',response.data);
 			this.setState({savedTracks: response.data})
 		}.bind(this));
 		
-		// function myTimer(){
-		// 	helpers.checkGlobalIndex()
-		// 		.then(function(response) {
-		// 		self.setState({index: response.data.index})
-		// 		}.bind(this));
-		// }
+		function myTimer(){
+			helpers.checkGlobalIndex()
+				.then(function(response) {
+				self.setState({index: response.data.index})
+				}.bind(this));
+		}
 	},
 
 
